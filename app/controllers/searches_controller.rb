@@ -10,7 +10,11 @@ class SearchesController < ApplicationController
   # GET /searches/1
   # GET /searches/1.json
   def show
-    @results = generate_yelp_results(@search.search_term, @search.location)
+    results = generate_yelp_results(@search.search_term, @search.location)
+    
+    @results = JSON.parse(results)
+    
+    @center = @results['region']['center']
   end
 
   # GET /searches/new

@@ -1,13 +1,37 @@
-<%= content_for :page %>
+<% content_for :headers do %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map-canvas { height: 100% }
+  </style>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDlSxeYeXcN5eJrtqIgJR9wR_Q5rAAajQ&sensor=true">
+  </script>
+  <script type="text/javascript">
+    function initialize() {
+      var mapOptions = {
+        center: new google.maps.LatLng(37.75, -122.5),
+        zoom: 11
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+
+<% end %>
+
+
+<%= content_for :page do %>
+
+<div id="map-canvas" style="width: 100%; height: 30vh; display: block; text-align: center"></div>
 
 <p id="notice"><%= notice %></p>
 
-Hello?
-
 <div id="results_list">
-  
-  <%= @results.to_s %>
-  
+  <strong><%= @center %></strong>
+  <%= @results %>
 </div>
 
 <%= link_to 'Edit', edit_search_path(@search) %> |
