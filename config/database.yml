@@ -1,0 +1,24 @@
+# using heroku postgresql for databases
+# to create a new local database 
+# heroku pg:pull HEROKU_POSTGRESQL_RED mytestdb --app safe-fjord-6810
+
+development:
+  adapter: postgresql
+  database: yelp_app
+  host: localhost
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test: &test
+  adapter: postgresql
+  database: yelp_app_test
+  host: localhost
+  
+production:
+  adapter: postgresql
+  database: yelp_app
+  host: localhost
+
+cucumber:
+  <<: *test
