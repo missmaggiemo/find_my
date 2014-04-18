@@ -1,5 +1,38 @@
-<h1>New search</h1>
+<% content_for :headers do %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    html { height: 100% }
+    body { height: 100%; margin: 0; padding: 0 }
+    #map-canvas { height: 100% }
+  </style>
+  <script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDlSxeYeXcN5eJrtqIgJR9wR_Q5rAAajQ&sensor=true">
+  </script>
+  <script type="text/javascript">
+    function initialize() {
+      var mapOptions = {
+        center: new google.maps.LatLng(37.75, -122.5),
+        zoom: 11
+      };
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 
-<%= render 'form' %>
+<% end %>
 
-<%= link_to 'Back', searches_path %>
+
+<%= content_for :page do %>
+  <div id="map-canvas" style="width: 50%; display: inline-block; text-align: center"></div>
+  <div style="display: inline-block; vertical-align: top; text-align: center; width: 40%; margin: 40vh 0 40vh 0;">
+    <div id="search_form" style="text-align: center;">
+      <%= render 'form' %>
+    </div>
+  </div>
+  
+  <%= link_to 'Back', searches_path %>
+  
+<% end %>
+
+

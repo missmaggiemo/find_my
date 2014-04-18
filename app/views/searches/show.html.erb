@@ -1,4 +1,16 @@
+<%= content_for :page %>
+
 <p id="notice"><%= notice %></p>
+
+Hello?
+
+<div id="results_list">
+  
+  <%= @results.to_s %>
+  
+</div>
 
 <%= link_to 'Edit', edit_search_path(@search) %> |
 <%= link_to 'Back', searches_path %>
+
+<% end %>
