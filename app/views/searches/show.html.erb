@@ -16,7 +16,7 @@
       var data_long = script.getAttribute('data-long');
       
       var mapOptions = {
-        center: new google.maps.LatLng(37.75, -122.5),
+        center: new google.maps.LatLng(data_lat, data_long),
         zoom: 11
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
