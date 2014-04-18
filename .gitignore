@@ -17,4 +17,9 @@
 
 
 # Ignore database YAML file
-/config/database.yml
+config/database.yml
+
+
+# Ignore Oauth keys
+
+config/local_env.yml

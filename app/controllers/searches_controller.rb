@@ -79,10 +79,10 @@ class SearchesController < ApplicationController
     
     def generate_yelp_results(search_term, location)
   
-      consumer_key = 'MNTfhf4kOwBD0KYKjwOY_w'
-      consumer_secret = 'i3O_Q8kZmZaj3AVkpZnjwZMOqcw'
-      token = 'UEFYT8HKCo3tqTAwNDYvFy3H_tfLN6MY'
-      token_secret = 'Hb4-Of9I9vt-w6_-VMM0qC432GU'
+      consumer_key = ENV['YELP_CONSUMER_KEY']
+      consumer_secret = ENV['YELP_CONSUMER_SECRET']
+      token = ENV['YELP_TOKEN']
+      token_secret = ENV['YELP_TOKEN_SECRET']
 
       api_host = 'api.yelp.com'
 

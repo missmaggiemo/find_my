@@ -77,4 +77,13 @@ YelpApp::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  
+  
+  
+  # SET HEROKU PRODUCTION VARS BEFORE PUSHING TO PRODUCTION
+  
+  
+  
+  
 end
