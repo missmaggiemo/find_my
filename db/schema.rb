@@ -11,10 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418020731) do
+ActiveRecord::Schema.define(version: 20140421171759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: true do |t|
+    t.string   "name",                 null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "is_claimed"
+    t.float    "rating"
+    t.string   "mobile_url"
+    t.string   "rating_img_url"
+    t.string   "rating_img_url_large"
+    t.integer  "review_count"
+    t.string   "snippet_image_url"
+    t.string   "rating_img_url_small"
+    t.string   "url"
+    t.integer  "menu_date_updated"
+    t.integer  "phone"
+    t.text     "snippet_text"
+    t.string   "image_url"
+    t.string   "display_phone"
+    t.string   "menu_provider"
+    t.string   "id_string"
+    t.boolean  "is_closed"
+  end
 
   create_table "searches", force: true do |t|
     t.string   "location",    null: false
