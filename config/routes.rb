@@ -1,4 +1,8 @@
 YelpApp::Application.routes.draw do
+  # resources :neighborhoods
+
+  # resources :locations
+
   resources :businesses
 
   resources :searches

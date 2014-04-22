@@ -1,29 +1,6 @@
 <% content_for :headers do %>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <style type="text/css">
-    html { height: 100% }
-    body { height: 100%; margin: 0; padding: 0 }
-    #map-canvas { height: 100% }
-  </style>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDlSxeYeXcN5eJrtqIgJR9wR_Q5rAAajQ&sensor=true" >
-  </script>
-  <script id="center_map" type="text/javascript" data-long=<%= @center['longitude']%> data-lat=<%= @center['latitude']%> >
-    function initialize() {
-      
-      var script = document.getElementById("center_map");
-      var data_lat = script.getAttribute('data-lat');
-      var data_long = script.getAttribute('data-long');
-      
-      var mapOptions = {
-        center: new google.maps.LatLng(data_lat, data_long),
-        zoom: 11
-      };
-      var map = new google.maps.Map(document.getElementById("map-canvas"),
-          mapOptions);
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
+  
+<%= render partial: 'map', locals: {center: @center} %>
 
 <% end %>
 
@@ -35,8 +12,12 @@
 <p id="notice"><%= notice %></p>
 
 <div id="results_list">
+  
   <strong><%= @center %></strong>
-  <%= @business_results.first %>
+  <% @business_results. each do |business| %>
+    <%= render partial: 'business_snippet', locals: {business: business} %>
+  <% end %>
+  
 </div>
 
 <%= link_to 'Edit', edit_search_path(@search) %> |

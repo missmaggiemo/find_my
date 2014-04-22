@@ -1,4 +1,27 @@
 class Business < ActiveRecord::Base
+  
+  def self.yelp_businesses_json_to_businesses(yelp_businesses_json)    
+    yelp_businesses_json.each.with_object([]) do |business_json, business_arr|
+      business_arr << json_to_business(business_json)
+    end
+  end
+  
+  def self.json_to_business(json)    
+    new_biz = Business.new(
+      name: json["name"],
+      rating: json["rating"],
+      review_count: json["review_count"],
+      display_phone: json["display_phone"],
+      url: json["url"],
+      id_string: json["id"]
+    )
+      
+    unless Business.find_by(id_string: new_biz.id_string)
+      new_biz.save!
+    end
+    new_biz
+  end
+  
 end
 
 
