@@ -1,8 +1,11 @@
 class Business < ActiveRecord::Base
   
+  has_one :location
+  
   def self.yelp_businesses_json_to_businesses(yelp_businesses_json)    
     yelp_businesses_json.each.with_object([]) do |business_json, business_arr|
       business_arr << json_to_business(business_json)
+      Location.json_to_location(business_arr.last.id, business_json['location'])
     end
   end
   
@@ -13,13 +16,15 @@ class Business < ActiveRecord::Base
       review_count: json["review_count"],
       display_phone: json["display_phone"],
       url: json["url"],
+      image_url: json["image_url"],
+      snippet_text: json["snippet_text"],
       id_string: json["id"]
     )
       
     unless Business.find_by(id_string: new_biz.id_string)
       new_biz.save!
     end
-    new_biz
+    Business.find_by(id_string: new_biz.id_string)
   end
   
 end

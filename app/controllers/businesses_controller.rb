@@ -10,6 +10,11 @@ class BusinessesController < ApplicationController
   # GET /businesses/1
   # GET /businesses/1.json
   def show
+    @center = { 'longitude' => "-122.5", 'latitude' => "37.75" }
+    respond_to do |format|
+      format.html { render action: 'show' }
+      format.json { render json: @business }
+    end
   end
 
   # GET /businesses/new

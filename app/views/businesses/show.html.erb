@@ -1,4 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% content_for :headers do %>
+  
+<%= render partial: 'layouts/map', locals: {center: @center} %>
 
-<%= link_to 'Edit', edit_business_path(@business) %> |
-<%= link_to 'Back', businesses_path %>
+<% end %>
+
+
+<% content_for :page do %>
+
+<div id="map-canvas" style="width: 100%; height: 50vh; display: block; text-align: center"></div>
+
+  <h1 id="business_name"><%= link_to @business.name, @business.url %></h1>
+  <p id="notice"><%= notice %></p>
+
+  <img src="<%= @business.image_url %>">
+
+  <p>Rating: <%= @business.rating %></p>
+  <p>Number of Reviews: <%= @business.review_count%></p>
+  <p>Phone Number: <%= @business.display_phone %></p>
+
+  <p><%= @business.snippet_text %></p>
+
+  <%= link_to 'Edit', edit_business_path(@business) %> |
+  <%= link_to 'Back', businesses_path %>
+
+<% end %>
