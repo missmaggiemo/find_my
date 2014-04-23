@@ -30,6 +30,8 @@ gem 'jbuilder', '1.0.2'
 gem 'sprockets', '2.11.0'
 
 gem 'oauth', '0.4.7'
+gem 'addressable'
+gem 'rest-client'
 
 
 group :development, :test do

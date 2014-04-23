@@ -19,9 +19,15 @@ class Location < ActiveRecord::Base
     end
   end
   
-  # def coodinates
-#     # get lat/long coordinates from Google API
-#   end
+  def coordinates
+    # get lat/long coordinates from Google API
+    json = GeocodeSession.get_geocode_from_address(self.display_address)
+    
+    {}.tap do |geocode_hash|
+      geocode_hash['latitude'] = json["results"][0]["geometry"]["location"]["lat"]
+      geocode_hash['longitude'] = json["results"][0]["geometry"]["location"]["lng"]
+    end
+  end
   
 end
 
