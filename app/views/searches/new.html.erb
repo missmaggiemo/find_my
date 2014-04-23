@@ -12,10 +12,12 @@
     
     function make_map(position) {
       
-      var lat = typeof position !== 'undefined' ? position.coords.latitude : 37.7792;
-      var lng = typeof position !== 'undefined' ? position.coords.longitude : -122.4191;
+      var lat = typeof position !== 'undefined' ? position.coords.latitude : 37.4292;
+      var lng = typeof position !== 'undefined' ? position.coords.longitude : -122.1381;
       
+      console.log("Here's where the map is currently centered:");
       console.log(lat, lng);
+      console.log("Default map location is Palo Alto.");
       
       var mapOptions = {
         center: new google.maps.LatLng(lat, lng),
@@ -25,21 +27,24 @@
           mapOptions);
     }
     
-    
     function handleError(error)
       {
       switch(error.code) 
         {
         case error.PERMISSION_DENIED:
+          console.log("Geolocation permission denied!");
           make_map();
           break;
         case error.POSITION_UNAVAILABLE:
+          console.log("Geolocation permission unavailable!");
           make_map();
           break;
         case error.TIMEOUT:
+          console.log("Geolocation timeout!");
           make_map();
           break;
         case error.UNKNOWN_ERROR:
+          console.log("Geolocation ERROR UNKNOWN!");
           make_map();
           break;
         }
@@ -50,7 +55,7 @@
         navigator.geolocation.getCurrentPosition(make_map, handleError);
       }
       else{
-        console.log("No geolocation!");
+        console.log("No geolocation whatsoever!");
         make_map();
       }
     }
