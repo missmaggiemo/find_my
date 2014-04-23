@@ -2,3 +2,6 @@
 
 SET HEROKU PRODUCTION VARS BEFORE PUSHING TO PRODUCTION
 
+Add users.
+
+Add Facebook login for users.
