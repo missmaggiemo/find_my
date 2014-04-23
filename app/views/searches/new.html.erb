@@ -9,16 +9,38 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDlSxeYeXcN5eJrtqIgJR9wR_Q5rAAajQ&sensor=true">
   </script>
   <script type="text/javascript">
+    
     function initialize() {
       var mapOptions = {
-        center: new google.maps.LatLng(37.75, -122.5),
-        zoom: 11
+        center: new google.maps.LatLng(37.7792, -122.4191),
+        zoom: 13
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
     }
     google.maps.event.addDomListener(window, 'load', initialize);
   </script>
+ <script type="text/javascript">
+   console.log("location api!");
+      
+   function getLocation()
+     {
+     if (navigator.geolocation)
+       {
+       navigator.geolocation.getCurrentPosition(showPosition);
+       }
+     else{console.log("Geolocation is not supported by this browser.");}
+     }
+   function showPosition(position)
+     {  
+       var x = document.getElementById("demo");
+       console.log("Latitude: " + position.coords.latitude + 
+     "<br>Longitude: " + position.coords.longitude);
+     x.innerHTML = "Latitude: " + position.coords.latitude + 
+     "<br>Longitude: " + position.coords.longitude; 
+     }
+    getLocation();
+ </script>
 
 <% end %>
 
@@ -30,6 +52,7 @@
       <%= render 'form' %>
     </div>
   </div>
+  <div id="demo"></div>
   
   <%= link_to 'Back', searches_path %>
   
