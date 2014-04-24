@@ -10,6 +10,8 @@
 <script id="center_map" type="text/javascript" data-long=<%= center['longitude']%> data-lat=<%= center['latitude']%> >
   function initialize() {
     
+    console.log("map center:", <%= center['latitude'] %>, <%= center['longitude'] %>);
+    
     var script = document.getElementById("center_map");
     var data_lat = script.getAttribute('data-lat');
     var data_long = script.getAttribute('data-long');

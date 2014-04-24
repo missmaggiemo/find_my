@@ -1,4 +1,5 @@
-<h3><%= link_to business[:name], business[:url] %></h3>
+<h3><%= link_to business[:name], business_path(business) %></h3>
 <p>Rating: <%= business[:rating] %></p>
 <p>Number of Reviews: <%= business[:review_count]%></p>
+<p>Address: <%= business.location.display_address %></p>
 <p>Phone Number: <%= business[:display_phone] %></p>
