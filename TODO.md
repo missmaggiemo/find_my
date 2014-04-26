@@ -1,7 +1,10 @@
 # TODO
 
+Something like "map loading" instead of blank page while the map is loading-- even a nice background image would be fine. But the blank page is extremely disconcerting.
 
 ### Searches
+
+Autofill current location
 
 Fancy links for searches?
 
