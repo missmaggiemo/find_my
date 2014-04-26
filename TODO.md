@@ -6,7 +6,3 @@ Add users.
 
 Add Facebook login for users?
 
-Geolocation for new searches page.
-
-Geo coordinates for businesses.
-
