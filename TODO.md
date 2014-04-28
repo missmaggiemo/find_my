@@ -10,6 +10,8 @@ Autofill current location
 
 Fancy links for searches?
 
+**searches aren't objects-- just calls a get method, etc. Users can save searches by saving the links to the searches.
+
 ### Businesses
 
 Fancy links for businesses?
