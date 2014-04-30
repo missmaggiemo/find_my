@@ -66,9 +66,11 @@
 
 <% end %>
 
+<% content_for :map do %>
+<%= render 'searches/new_search_map' %>
+<% end %>
 
-<%= content_for :page do %>
-  <div id="map-canvas" style="width: 50%; display: inline-block; text-align: center"></div>
+<% content_for :page do %>
   <div style="display: inline-block; vertical-align: top; text-align: center; width: 40%; margin: 40vh 0 40vh 0;">
     <div id="search_form" style="text-align: center;">
       <%= render 'form' %>
