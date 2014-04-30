@@ -6,7 +6,7 @@ But the blank page is extremely disconcerting.
 
 ### Searches
 
-Autofill current location
+Autofill current location-- reverse of geocoding api!
 
 Fancy links for searches?
 
@@ -15,7 +15,7 @@ Fancy links for searches?
 ### Businesses
 
 Fancy links for businesses?
-
+/business/name-of-business-city-state
 
 ### Locations
 
@@ -44,6 +44,10 @@ Users can save searches-- keep track of frequent searches?
 Users have ratings, restuarants have ratings, 
 
 user_id | business_id | rating_number (int or float?)
+
+#### Reviews?
+
+Users can write reviews-- (that don't go on Yelp)
 
 ### Production
 
