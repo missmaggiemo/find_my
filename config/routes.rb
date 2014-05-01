@@ -1,6 +1,6 @@
 YelpApp::Application.routes.draw do
   
-  root 'searches#new'
+  root to: redirect('/searches/new')
   
   devise_for :users
   

@@ -1,0 +1,19 @@
+<% content_for :page do %>
+
+<h1 id="user_welcome"><%= @user.username %></h1>
+
+<p>Your email address is <%= @user.email %></p>
+
+<p>TODO: </p>
+<p>See location?</p>
+<p>See picture? Gravatar?</p>
+<p>See ratings?</p>
+<p>See favorite places? Can 'star' businesses?</p>
+<p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
+<p>See saved searches? Create a saved_search join table where users can save frequent searches?</p>
+
+<div id="new_search">
+  <h3><%= link_to "What are you looking for?", new_search_url %></h3>
+</div>
+
+<% end %>
