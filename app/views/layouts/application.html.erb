@@ -9,12 +9,13 @@
   <%= yield :headers %>
 </head>
 <body>
-  
+      
 <%= yield :map %>
 
-<%= render('layouts/user_menu') unless request.original_url.match('searches/new')%>
+<%= render 'layouts/user_menu' %>
 
-<%= yield :page %>
+
+<%= yield :page %>    
 
 </body>
 </html>

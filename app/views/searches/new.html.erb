@@ -71,13 +71,11 @@
 <% end %>
 
 <% content_for :page do %>
-  <div style="display: inline-block; vertical-align: top; text-align: center; width: 40%; margin: 40vh 0 40vh 0;">
+  <div style="display: inline-block; vertical-align: top; text-align: center; width: 40%; margin: 40vh 0 40vh 0; position: absolute; top: 0px; right: 0px;">
     <div id="search_form" style="text-align: center;">
       <%= render 'searches/form' %>
     </div>
   </div>
-  
-  <%= link_to 'Back', searches_path %>
   
 <% end %>
 
