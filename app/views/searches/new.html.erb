@@ -13,12 +13,14 @@
     function codeLatLng(latlng) {
       geocoder = new google.maps.Geocoder();
       geocoder.geocode({'latLng': latlng}, function(results, status) {
+        console.log( "Geocoder status: " + status.toString());
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
-            document.getElementById("search_location").setAttribute('value', results[0].formatted_address);
+            var address = results[0].formatted_address;
+            document.getElementById("search_location").setAttribute('value', address);
           }
         } else {
-          alert("Geocoder failed due to: " + status);
+          console.log("Geocoder failed due to: " + status);
         }
       });
     }
@@ -40,13 +42,13 @@
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
-          
+      
+      codeLatLng(latlng);
+      
       var marker = new google.maps.Marker({
           position: latlng,
           map: map
       });
-      
-      codeLatLng(latlng);
     }
     
     function handleError(error) {
