@@ -9,7 +9,20 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDlSxeYeXcN5eJrtqIgJR9wR_Q5rAAajQ&sensor=true">
   </script>
   <script type="text/javascript">
-    
+  
+    function codeLatLng(latlng) {
+      geocoder = new google.maps.Geocoder();
+      geocoder.geocode({'latLng': latlng}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            document.getElementById("search_location").setAttribute('value', results[0].formatted_address);
+          }
+        } else {
+          alert("Geocoder failed due to: " + status);
+        }
+      });
+    }
+  
     function make_map(position) {
       
       var lat = typeof position !== 'undefined' ? position.coords.latitude : 37.4292;
@@ -19,18 +32,25 @@
       console.log(lat, lng);
       console.log("Default map location is Palo Alto.");
       
+      var latlng = new google.maps.LatLng(lat, lng);
+      
       var mapOptions = {
-        center: new google.maps.LatLng(lat, lng),
+        center: latlng,
         zoom: 13
       };
       var map = new google.maps.Map(document.getElementById("map-canvas"),
           mapOptions);
+          
+      var marker = new google.maps.Marker({
+          position: latlng,
+          map: map
+      });
+      
+      codeLatLng(latlng);
     }
     
-    function handleError(error)
-      {
-      switch(error.code) 
-        {
+    function handleError(error) {
+      switch(error.code) {
         case error.PERMISSION_DENIED:
           console.log("Geolocation permission denied!");
           make_map();
@@ -47,8 +67,8 @@
           console.log("Geolocation ERROR UNKNOWN!");
           make_map();
           break;
-        }
       }
+    }
     
     function initialize() {
       if (navigator.geolocation){

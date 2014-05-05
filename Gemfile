@@ -34,6 +34,14 @@ gem 'addressable'
 gem 'rest-client'
 gem 'devise'
 
+group :development do
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'annotate'
+
+end
+
 
 group :development, :test do
   # gem 'sqlite3', '1.3.8'

@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: locations
+#
+#  id              :integer          not null, primary key
+#  business_id     :string(255)
+#  city            :string(255)
+#  display_address :string(255)
+#  neighborhoods   :string(255)
+#  postal_code     :string(255)
+#  country_code    :string(255)
+#  address         :string(255)
+#  state_code      :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class Location < ActiveRecord::Base
   
   belongs_to :business
@@ -20,27 +37,9 @@ class Location < ActiveRecord::Base
   end
   
   def coordinates
-    # get lat/long coordinates from Google API
-    json = GeocodeSession.get_geocode_from_address(self.display_address)
-    
-    {}.tap do |geocode_hash|
-      geocode_hash['latitude'] = json["results"][0]["geometry"]["location"]["lat"]
-      geocode_hash['longitude'] = json["results"][0]["geometry"]["location"]["lng"]
-    end
+    # get lat/long coordinates from Google API-- see lib
+    GeocodeSession.get_geocode_from_address(self.display_address)
   end
   
 end
 
-
-# create_table "locations", force: true do |t|
-#   t.string   "business_id"
-#   t.string   "city"
-#   t.string   "display_address"
-#   t.string   "neighborhoods"
-#   t.string   "postal_code"
-#   t.string   "country_code"
-#   t.string   "address"
-#   t.string   "state_code"
-#   t.datetime "created_at"
-#   t.datetime "updated_at"
-# end
