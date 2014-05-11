@@ -6,8 +6,6 @@ But the blank page is extremely disconcerting.
 
 ### Searches
 
-Autofill current location-- reverse of geocoding api!
-
 Fancy links for searches?
 
 **searches aren't objects-- just calls a get method, etc. Users can save searches by saving the links to the searches.
