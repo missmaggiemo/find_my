@@ -1,10 +1,10 @@
 # TODO
 
-Something like "map loading" instead of blank page while the map is loading-- 
-even a nice background image would be fine. 
-But the blank page is extremely disconcerting.
+Something like "map loading" instead of blank page while the map is loading-- even a nice background image would be fine. But the blank page is extremely disconcerting.
 
 ### Searches
+
+Pins for businesses.
 
 Fancy links for searches?
 
@@ -13,6 +13,7 @@ Fancy links for searches?
 ### Businesses
 
 Fancy links for businesses?
+
 /business/name-of-business-city-state
 
 ### Locations
