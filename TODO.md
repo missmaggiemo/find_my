@@ -1,5 +1,7 @@
 # TODO
 
+Load data so that I don't have to ping the database? (Just for demo?)
+
 Something like "map loading" instead of blank page while the map is loading-- even a nice background image would be fine. But the blank page is extremely disconcerting.
 
 ### Searches
@@ -28,8 +30,7 @@ Should be able to visit the page for your neighborhood and see the highest rated
 
 ### Users
 
-
-Add users.
+<!-- Add users. -->
 
 * Users have ratings which are different from the Yelp ratings -> ratings model?
 

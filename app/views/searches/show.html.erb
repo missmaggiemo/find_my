@@ -1,11 +1,9 @@
 <% content_for :headers do %>
-  
-<%= render partial: 'layouts/map_js', locals: {center: @center} %>
-
+  <%= render partial: 'searches/show_map_js', locals: {center: @center, businesses: @business_results} %>
 <% end %>
 
 <% content_for :map do %>
-<%= render partial: 'map' %>
+  <%= render partial: 'map' %>
 <% end %>
 
 
@@ -15,7 +13,7 @@
 
 <div id="results_list">
   
-  <% @business_results. each do |business| %>
+  <% @business_results.each do |business| %>
     <%= render partial: 'business_snippet', locals: {business: business} %>
   <% end %>
   
