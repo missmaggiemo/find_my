@@ -1,10 +1,18 @@
 # TODO
 
+Use flexbox from the beginning.
+
 There's got to be a way to query the Yelp API to infinite scroll through results (or at least load more results)
 
 Load data so that I don't have to ping the database? (Just for demo?)
 
 Something like "map loading" instead of blank page while the map is loading-- even a nice background image would be fine. But the blank page is extremely disconcerting.
+
+Log in w/ FB.
+
+
+
+
 
 ### Searches
 
@@ -13,6 +21,8 @@ Pins for businesses.
 Fancy links for searches?
 
 **searches aren't objects-- just calls a get method, etc. Users can save searches by saving the links to the searches.
+
+Save searches automagically when user is logged in. Save 10 most recent searches (and that's it).
 
 ### Businesses
 
@@ -57,3 +67,8 @@ SET HEROKU PRODUCTION VARS BEFORE PUSHING TO PRODUCTION
 
 
 
+###V2?
+
+Integrate 4square, better sorting of results.
+
+Log in with FB.-- can you see friends? send friend recommendations?
