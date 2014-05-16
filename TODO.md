@@ -1,5 +1,7 @@
 # TODO
 
+There's got to be a way to query the Yelp API to infinite scroll through results (or at least load more results)
+
 Load data so that I don't have to ping the database? (Just for demo?)
 
 Something like "map loading" instead of blank page while the map is loading-- even a nice background image would be fine. But the blank page is extremely disconcerting.

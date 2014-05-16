@@ -1,6 +1,6 @@
 class YelpSession
   
-  def self.generate_yelp_results(search_term, location)
+  def self.generate_yelp_results(search_term, location, offset = 0)
 
     consumer_key = ENV['YELP_CONSUMER_KEY']
     consumer_secret = ENV['YELP_CONSUMER_SECRET']
@@ -12,7 +12,7 @@ class YelpSession
     consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
-    path = "/v2/search?term=#{URI::encode(search_term)}&location=#{URI::encode(location)}"
+    path = "/v2/search?term=#{URI::encode(search_term)}&offset=#{offset}&location=#{URI::encode(location)}"
 
     access_token.get(path).body
 
