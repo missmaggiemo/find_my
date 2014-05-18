@@ -30,6 +30,8 @@ Fancy links for businesses?
 
 /business/name-of-business-city-state
 
+Businesses have lnks to Yelp if you want to review and Foursquare if you want to check-in.
+
 ### Locations
 
 From your location, should be able to see highest rated restaurants? 
