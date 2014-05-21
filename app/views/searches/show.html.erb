@@ -15,14 +15,15 @@
 
 <p id="notice"><%= notice %></p>
 
-<div id="results_list">
+<div class="container list-wrapper">
+  <div id="results-list">
   
-  <% @business_results.each do |business| %>
-    <%= render partial: 'business_snippet', locals: {business: business} %>
-  <% end %>
+    <% @business_results.each do |business| %>
+      <%= render partial: 'business_snippet', locals: {business: business} %>
+    <% end %>
   
+  </div>  
 </div>
 
-<%= link_to 'Back', :back %>
 
 <% end %>

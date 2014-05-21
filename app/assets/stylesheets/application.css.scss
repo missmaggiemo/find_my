@@ -89,7 +89,7 @@ body, html {
   }
 }
 
-.map-canvas-new {
+.search-map-canvas.new-search {
   width: 100%; 
   height: 100%;
   display: inline-block; 
@@ -124,7 +124,43 @@ body, html {
 
 
 
+//search show
 
+.search-map-canvas.show-search {
+  width: 50%; 
+  height: 100vh; 
+  display: inline-block; 
+}
+
+.container.list-wrapper {
+  display: inline-block;
+  vertical-align: top;
+  width: 45vw;
+  height: 100vh;
+  margin: 3em 0 0 0;
+  padding: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  overflow: hidden;
+  
+  #results-list {
+    overflow: auto;
+    width: 110%;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+  }  
+}
+
+
+//biz snippet
+
+.biz-hr {
+  width: 70%;
+  position: relative;
+  left: -20%;
+}
 
 
 

@@ -35,8 +35,13 @@ class Location < ActiveRecord::Base
   end
   
   def coordinates
-    # get lat/long coordinates from Google API-- see lib
-    GeocodeSession.get_geocode_from_address(self.display_address)
+    if self.latitutde.nil? && self.longitude.nil? 
+      # get lat/long coordinates from Google API-- see lib
+      coords = GeocodeSession.get_geocode_from_address(self.display_address)
+      self.update(latitude: coords["latitude"], longitude: coords["longitude"])
+    end
+    
+    { "latitude": self.latitude, "longitude": self.longitude }
   end
   
 end
