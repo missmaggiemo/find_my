@@ -36,9 +36,6 @@ From your location, should be able to see highest rated restaurants?
 
 Highest rated stuff comes up on root new search page? (Pins in the highest-rated stuff on the map?)
 
-### Neighborhoods
-
-Should be able to visit the page for your neighborhood and see the highest rated restaurants, etc.
 
 ### Users
 

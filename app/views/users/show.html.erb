@@ -1,3 +1,7 @@
+<% content_for :navbar do %>
+  <%= render 'layouts/user_menu' %>
+<% end %>
+
 <% content_for :page do %>
 
 <h1 id="user_welcome"><%= @user.username %></h1>

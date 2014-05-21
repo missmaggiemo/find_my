@@ -2,6 +2,10 @@
   <%= render partial: 'searches/show_map_js', locals: {center: @center, businesses: @business_results} %>
 <% end %>
 
+<% content_for :navbar do %>
+  <%= render 'layouts/user_menu' %>
+<% end %>
+
 <% content_for :map do %>
   <%= render partial: 'map' %>
 <% end %>

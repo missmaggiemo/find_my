@@ -14,6 +14,7 @@
 
 @import "bootstrap";
 
+
 .logo.my {
   font-family: 'Satisfy', cursive;
   font-size: 150%;
@@ -23,28 +24,65 @@
   font-weight: bold;
 }
 
+
 .navbar {
   border: none;
   border-radius: 0;
-  min-height: 30px;
+  min-height: 20px;
+  margin: 0;
+  z-index: 1;
+  
+  a {
+    font-size: 1em;
+  }
+  
+  li a {
+    padding: 10px;
+    .logo.my {
+      font-size: 120%;
+    }
+  }
+  
+  
+  a.navbar-brand {
+    font-size: 1.2em;
+    padding: 10px;
+    height: auto;
+    line-height: auto;
+  }
 }
+
 
 #new-search {
   display: inline-block;
   vertical-align: top;
   width: 40%;
-  margin: 40vh 0;
+  margin: 40vh 0 0 0;
   position: absolute;
   top: 0px;
   right: 0px;
+  
+  .container {
+    width: 75%;
+    margin: auto;
+  }
+  
+  @media (max-width: 600px) {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    margin: 50vh 0 0 0;
+  }
 }
 
 .map-canvas-new {
   width: 100%; 
+  height: 100%;
   display: inline-block; 
   text-align: center; 
   position: absolute; 
   top: 0px;
+//  z-index: -1;
 }
 
 #new-search-form {
@@ -60,3 +98,9 @@
   text-align: right;
 }
 
+
+
+.user-form {
+  width: 40%;
+  margin: 5vw;
+}
