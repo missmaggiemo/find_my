@@ -1,7 +1,5 @@
 # TODO
 
-Use flexbox from the beginning.
-
 There's got to be a way to query the Yelp API to infinite scroll through results (or at least load more results)
 
 Load data so that I don't have to ping the database? (Just for demo?)
@@ -16,7 +14,7 @@ Log in w/ FB.
 
 ### Searches
 
-Pins for businesses.
+Pins for businesses-- click pin and sends you to business, or at leastshows you the business name
 
 Fancy links for searches?
 

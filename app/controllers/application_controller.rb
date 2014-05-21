@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   
+  helper_method :form_auth
+  
   def after_sign_in_path_for(user)
     user_path(user)
   end
@@ -13,7 +15,11 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  protected
+  def form_auth
+    "<input type='hidden' name='authenticity_token' value='#{form_authenticity_token}' id='authenticity_token'>".html_safe
+  end
+  
+  private
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :username

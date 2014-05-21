@@ -6,7 +6,6 @@
 #  business_id     :string(255)
 #  city            :string(255)
 #  display_address :string(255)
-#  neighborhoods   :string(255)
 #  postal_code     :string(255)
 #  country_code    :string(255)
 #  address         :string(255)
@@ -24,7 +23,6 @@ class Location < ActiveRecord::Base
       business_id: business_id,
       city: json["city"],
       display_address: json["display_address"].join(', '),
-      neighborhoods: json["neighborhoods"].join(', '),
       postal_code: json["postal_code"],
       country_code: json["country_code"],
       address: json["address"].first,

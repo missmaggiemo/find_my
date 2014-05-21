@@ -1,22 +1,15 @@
-<%= form_for(@search) do |f| %>
-  <% if @search.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@search.errors.count, "error") %> prohibited this search from being saved:</h2>
-
-      <ul>
-      <% @search.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="col-md-8">
+  <form role="form" id="new-search-form" action="/searches" method="post">
+    <%= form_auth %>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input type="text" class="form-control" id="search_location" placeholder="e.g., 123 Abc Street, Centerville, IA" name="search[location]">
     </div>
-  <% end %>
-  
- <%= f.label :location %>
- <%= f.text_field :location %><br />
- <%= f.label :search_term %>
- <%= f.text_field :search_term %><br />
- 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <label for="search_term"><span class="logo find">Find </span><span class="logo my">my</span></label>
+      <input type="text" class="form-control" id="search_term" placeholder="e.g., Dinner" name="search[search_term]">
+    </div>
+    <input type="submit" class="btn btn-default" name="commit" value="Go!"></input>
+  </form>
+</div>
+

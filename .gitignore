@@ -21,5 +21,8 @@ config/database.yml
 
 
 # Ignore Oauth keys
-
 config/local_env.yml
+
+
+# Ignore scraps files
+/scraps*
