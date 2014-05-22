@@ -8,34 +8,51 @@
 
   <div class="row">
     <div class="col-md-3" id="profile-pic-container">
-      <div class="gravatar">
-        <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=150&r=pg">
-      </div>
-      <div class="info">
-        <p>Email: <%= @user.email %></p>
-        <p>User since: <%= @user.created_at.strftime("%B %d, %Y") %></p>
+
+      <div class="gravatar" id="profile-pic">
+        <a href="http://en.gravatar.com/emails" target="_blank">
+          <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=200&r=pg">
+        </a>
       </div>
     </div>
 
     <div class="col-md-7" id="profile-info-container">
       <div class="profile-header">
-          <h1 id="user-welcome"><%= @user.username %></h1>
+        <h1 id="user-welcome"><%= @user.username %> <small><%= @user.email %></small></h1>
       </div>  
+      <div class="info">
 
-      <p>TODO: </p>
-      <p>See location?</p>
+        <p>TODO: </p>
+        <p>See location?</p>
 
-      <p>See recent ratings? <span class="rating"><%- 5.times do %><span class="glyphicon glyphicon-star"></span><% end -%></span></p>
+        <p>See recent ratings? <span class="rating"><%- 5.times do %><span class="glyphicon glyphicon-star"></span><% end -%></span></p>
 
-      <p>See favorite places? Can <span class="favorite"><span class="glyphicon glyphicon-heart-empty"></span></span> businesses?</p>
+        <p>See favorite places? Can <span class="favorite"><span class="glyphicon glyphicon-heart-empty"></span></span> businesses?</p>
         
-      <p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
-
+        <p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
+        
+      </div>
 
     </div>
   
   </div>
   
 </div>
+
+<% end %>
+
+
+<% content_for :scripts do %>
+
+<script type="text/javascript">
+// $("#profile-pic").mouseover(function (event) {
+//   $("#gravatar-change").attr("class", "show");
+// });
+// 
+// $("#profile-pic").mouseleave(function (event) {
+//   $("#gravatar-change").attr("class", "hidden");
+// });
+
+</script>
 
 <% end %>
