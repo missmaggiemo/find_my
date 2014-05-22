@@ -23,20 +23,20 @@
     
     <div class="info-aspect rating-container">
         <% if @business.rating %>
-          <h2><span class="rating">
+          <h3><span class="rating">
             <% @business.rating.to_i.times do %>
               <span class="glyphicon glyphicon-star"></span>
             <% end %>
             <% if @business.rating - @business.rating.to_i > 0 %>
               <span class="glyphicon glyphicon-star-empty"></span>
             <% end %>
-          </span></h1>
+          </span></h3>
         <% else %>
-          <h1><span class="no-rating">Not yet rated.</span></h2>
+          <h3><span class="no-rating">Not yet rated.</span></h3>
         <% end %>
     </div>
     <div class="info-aspect phone-container">
-      <h3><%= @business.display_phone %></h3>
+      <h4><%= @business.display_phone %></h4>
     </div>
     <div class="info-aspect address-container">
       <h4><%= @business.location.display_address %></h4>

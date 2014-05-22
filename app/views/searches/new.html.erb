@@ -2,17 +2,20 @@
   <%= render 'searches/new_map_js' %>
 <% end %>
 
-
 <% content_for :navbar do %>
   <%= render 'layouts/user_menu' %>
 <% end %>
-
 
 <% content_for :map do %>
   <%= render 'searches/new_search_map' %>
 <% end %>
 
 <% content_for :page do %>
+
+  <div id="logo-background">
+    <span class="logo find">Find</span><span class="logo my">my</span>
+  </div>
+
   <div id="new-search">    
       <%= render 'searches/form' %>
   </div>

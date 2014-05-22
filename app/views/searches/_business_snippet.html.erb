@@ -1,12 +1,12 @@
-<div class="biz-snippet">
-  <h3><%= link_to business[:name], business_path(business) %></h3>
+<a class="biz-snippet-link" href="<%= business_path(business) %>"><div class="biz-snippet">
+  <h3><%= business[:name] %></h3>
   <p>Average Rating: 
-    <% if @business.rating %>
+    <% if business.rating %>
       <span class="rating">
-        <% @business.rating.to_i.times do %>
+        <% business.rating.to_i.times do %>
           <span class="glyphicon glyphicon-star"></span>
         <% end %>
-        <% if @business.rating - @business.rating.to_i > 0 %>
+        <% if business.rating - business.rating.to_i > 0 %>
           <span class="glyphicon glyphicon-star-empty"></span>
         <% end %>
       </span>  
@@ -18,4 +18,4 @@
   <p>Address: <%= business.location.display_address %></p>
   <p>Phone Number: <%= business[:display_phone] %></p>
   <hr class="biz-hr">  
-</div>
+</div></a>

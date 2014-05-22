@@ -176,10 +176,26 @@ body, html {
 
 //biz snippet
 
+.biz-snippet {
+  padding: 20px;
+  margin: 20px 0 0 0;
+  width: 80%;
+  border-radius: 10px;
+}
+
+a.biz-snippet-link {
+  &:hover {
+    color: black;
+    div.biz-snippet {
+      background-color: #F8F8F8;
+    }
+  }
+}
+
 .biz-hr {
-  width: 70%;
+  width: 100%;
   position: relative;
-  left: -20%;
+  left: 0;
 }
 
 .rating {

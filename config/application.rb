@@ -22,5 +22,7 @@ module YelpApp
     
     I18n.enforce_available_locales = false
 
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
   end
 end
