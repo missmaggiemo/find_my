@@ -4,20 +4,38 @@
 
 <% content_for :page do %>
 
-<h1 id="user_welcome"><%= @user.username %></h1>
+<div class="container user-show">
 
-<p>Your email address is <%= @user.email %></p>
+  <div class="row">
+    <div class="col-md-3" id="profile-pic-container">
+      <div class="gravatar">
+        <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=150&r=pg">
+      </div>
+      <div class="info">
+        <p>Email: <%= @user.email %></p>
+        <p>User since: <%= @user.created_at.strftime("%B %d, %Y") %></p>
+      </div>
+    </div>
 
-<p>TODO: </p>
-<p>See location?</p>
-<p>See picture? Gravatar?</p>
-<p>See ratings?</p>
-<p>See favorite places? Can 'star' businesses?</p>
-<p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
-<p>See saved searches? Create a saved_search join table where users can save frequent searches?</p>
+    <div class="col-md-7" id="profile-info-container">
+      <div class="profile-header">
+          <h1 id="user-welcome"><%= @user.username %></h1>
+      </div>  
 
-<div id="new_search">
-  <h3><%= link_to "What are you looking for?", new_search_url %></h3>
+      <p>TODO: </p>
+      <p>See location?</p>
+
+      <p>See recent ratings? <span class="rating"><%- 5.times do %><span class="glyphicon glyphicon-star"></span><% end -%></span></p>
+
+      <p>See favorite places? Can <span class="favorite"><span class="glyphicon glyphicon-heart-empty"></span></span> businesses?</p>
+        
+      <p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
+
+
+    </div>
+  
+  </div>
+  
 </div>
 
 <% end %>

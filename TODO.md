@@ -55,12 +55,13 @@ Highest rated stuff comes up on root new search page? (Pins in the highest-rated
 
 <!-- Add users. -->
 
-* Users have ratings which are different from the Yelp ratings -> ratings model?
+* Users can 'favorite' businesses.
+
+* Users can 'rate' businesses.
+
+Keep track of 10 most recent searches. (Or maybe all searches made w/in 1 week?)
 
 Add Facebook login for users?
-
-Users can save searches-- keep track of frequent searches?
-
 
 
 ### Ratings
