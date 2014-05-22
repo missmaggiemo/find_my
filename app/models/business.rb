@@ -30,11 +30,12 @@ class Business < ActiveRecord::Base
       id_string: json["id"]
     )
       
-    unless Business.find_by(id_string: new_biz.id_string)
+    # this could all be totally broken because I can't test it right now
+    unless biz = Business.find_by(id_string: new_biz.id_string)
       new_biz.save!
       Rating.create(user_id: 0, business_id: new_biz.id, stars: json["rating"].to_i)
     end
-    Business.find_by(id_string: new_biz.id_string)
+    biz || new_biz
   end
   
 end

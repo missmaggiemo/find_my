@@ -20,6 +20,16 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
+  def after_registration_path_for(args)
+    registration_url = url_for(:action => 'new', :controller => 'users', :only_path => false, :protocol => 'http')
+    if request.referer == registration_url
+      super
+    else
+      stored_location_for(user) || request.referer || root_path
+    end
+  end
+
+  
   def form_auth
     "<input type='hidden' name='authenticity_token' value='#{form_authenticity_token}' id='authenticity_token'>".html_safe
   end

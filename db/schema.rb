@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522015058) do
+ActiveRecord::Schema.define(version: 20140522161456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 20140522015058) do
     t.string   "id_string"
     t.boolean  "is_closed"
   end
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "business_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["business_id"], name: "index_favorites_on_business_id", using: :btree
+  add_index "favorites", ["user_id", "business_id"], name: "index_favorites_on_user_id_and_business_id", unique: true, using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "business_id"
