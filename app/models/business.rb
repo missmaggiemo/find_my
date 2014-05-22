@@ -29,6 +29,8 @@ class Business < ActiveRecord::Base
   
   has_one :location
   
+  has_many :ratings
+  
   def self.yelp_businesses_json_to_businesses(yelp_businesses_json)    
     yelp_businesses_json.each.with_object([]) do |business_json, business_arr|
       business_arr << json_to_business(business_json)
