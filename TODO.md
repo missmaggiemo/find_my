@@ -5,6 +5,7 @@
 * Mission for 5/22/2014: Make sure that doesn't happen again.
 
 
+Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)
 
 
 There's got to be a way to query the Yelp API to infinite scroll through results (or at least load more results)
