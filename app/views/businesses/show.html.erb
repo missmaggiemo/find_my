@@ -15,13 +15,17 @@
 <% content_for :page do %>
 
 <div class="container col-md-8" id="business-show-container">
-  <h1 id="business_name"><%= link_to @business.name, @business.url %></h1>
-  <p id="notice"><%= notice %></p>
+  
+  <div class="biz-header">
+      <h1 id="business_name"><%= link_to @business.name, @business.url %> <small><%= @business.location.city %></small></h1>
+  </div>  
+  <div class="info">
+
   <p><strong>Map Center: <%= @center %></strong></p>
 
   <img src="<%= @business.image_url %>">
 
-  <p>Rating: 
+  <p>Average Rating: 
       <% if @business.rating %>
         <span class="rating">
           <% @business.rating.to_i.times do %>
@@ -39,6 +43,8 @@
   <p>Street Address: <%= @business.location.display_address %></p>
 
   <p><%= @business.snippet_text %></p>
+    
+  </div>
   
 </div>
 

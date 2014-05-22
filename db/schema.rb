@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522161456) do
+ActiveRecord::Schema.define(version: 20140522175537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,5 +103,23 @@ ActiveRecord::Schema.define(version: 20140522161456) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "yelp_reviews", force: true do |t|
+    t.text     "excerpt"
+    t.string   "id_string",              null: false
+    t.integer  "rating"
+    t.string   "rating_image_large_url"
+    t.string   "rating_image_small_url"
+    t.string   "rating_image_url"
+    t.integer  "yelp_time_created"
+    t.string   "yelp_user_id",           null: false
+    t.string   "yelp_user_img"
+    t.string   "yelp_user_name"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "yelp_reviews", ["id_string"], name: "index_yelp_reviews_on_id_string", unique: true, using: :btree
 
 end
