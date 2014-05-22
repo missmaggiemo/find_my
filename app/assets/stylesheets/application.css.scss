@@ -23,6 +23,11 @@ body, html {
   width: 100%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 //logo
 
 #logo-background {
@@ -150,7 +155,14 @@ body, html {
   width: 50%; 
   height: 100vh; 
   display: inline-block; 
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+    height: 50vh;
+  }
 }
+
 
 .container.list-wrapper {
   display: inline-block;
@@ -164,7 +176,15 @@ body, html {
   right: 0px;
   overflow: hidden;
   
-  #results-list {
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 20px 0 0 40px;
+    height: 100vh;
+    position: relative;
+  }
+  
+  #results-list {    
+    text-align: left;
     overflow: auto;
     width: 110%;
     height: 100%;
