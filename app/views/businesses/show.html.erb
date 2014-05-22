@@ -1,29 +1,45 @@
-<% content_for :headers do %>
-  
-<%= render partial: 'businesses/show_map_js', locals: {center: @center} %>
+<% content_for :headers do %>  
+  <%= render partial: 'businesses/show_map_js', locals: {center: @center} %>
+<% end %>
 
+<% content_for :navbar do %>
+  <%= render 'layouts/user_menu' %>
 <% end %>
 
 <% content_for :map do %>
-<%= render partial: 'map' %>
+  <div class="col-md-4">
+    <%= render partial: 'map' %>
+  </div>
 <% end %>
 
 <% content_for :page do %>
 
+<div class="container col-md-8" id="business-show-container">
   <h1 id="business_name"><%= link_to @business.name, @business.url %></h1>
   <p id="notice"><%= notice %></p>
   <p><strong>Map Center: <%= @center %></strong></p>
 
   <img src="<%= @business.image_url %>">
 
-  <p>Rating: <%= @business.rating %></p>
-  <p>Number of Reviews: <%= @business.review_count%></p>
+  <p>Rating: 
+      <% if @business.rating %>
+        <span class="rating">
+          <% @business.rating.to_i.times do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+          <% if @business.rating - @business.rating.to_i > 0 %>
+            <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+        </span>  
+      <% else %>
+        <span class="no-rating">Not yet rated.</span>
+      <% end %>
+  </p>
   <p>Phone Number: <%= @business.display_phone %></p>
   <p>Street Address: <%= @business.location.display_address %></p>
 
   <p><%= @business.snippet_text %></p>
-
-  <%= link_to 'Edit', edit_business_path(@business) %> |
-  <%= link_to "Back", :back %>
+  
+</div>
 
 <% end %>

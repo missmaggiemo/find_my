@@ -1,15 +1,15 @@
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
-# the LocationsHelper. For example:
+# the FavoritesHelper. For example:
 #
-# describe LocationsHelper do
+# describe FavoritesHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
 # end
-describe LocationsHelper do
+describe FavoritesHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

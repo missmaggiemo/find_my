@@ -212,3 +212,30 @@ body, html {
 
 
 
+//biz show
+
+.biz-show-map#map-canvas {
+  height: 30vw;
+  width: 30vw;
+  display: block;
+  margin: 20px;
+  
+  @media (max-width: 992px) {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}
+
+.no-rating {
+  color: #999;
+  font-style: italic;
+}
+
+
+
+
+
+
+
+
+
