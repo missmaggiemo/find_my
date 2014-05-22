@@ -159,7 +159,7 @@ body {
   @media (max-width: 768px) {
     width: 100%;
     margin: 0;
-    height: 50vh;
+    height: 45vh;
   }
 }
 
@@ -190,7 +190,14 @@ body {
     height: 100%;
     margin: 0;
     padding-bottom: 20px;
+    
+    a:first-child {
+      div {
+       margin: 20px 0 0 0; 
+      }
+    }
   }  
+
 }
 
 
@@ -198,7 +205,6 @@ body {
 
 .biz-snippet {
   padding: 20px;
-  margin: 20px 0 0 0;
   width: 80%;
   border-radius: 10px;
 }
