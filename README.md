@@ -1,6 +1,6 @@
 # README
 
-### Welcome to find_my_, my final project for App Academy.
+### Welcome to find _my_, my final project for App Academy.
 
 So, like, it's basically... A redesign of Yelp. 
 
