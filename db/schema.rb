@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140522175537) do
+ActiveRecord::Schema.define(version: 20140522190102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140522175537) do
     t.string   "menu_provider"
     t.string   "id_string"
     t.boolean  "is_closed"
+    t.float    "yelp_rating"
   end
 
   create_table "favorites", force: true do |t|

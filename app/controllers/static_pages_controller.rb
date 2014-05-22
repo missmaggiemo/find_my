@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
  
-  def results
+  def home
     
   end
   

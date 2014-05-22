@@ -2,6 +2,8 @@ YelpApp::Application.routes.draw do
   
   root 'searches#new'
   
+  get 'home', to: 'static_pages#home'
+  
   devise_for :users
   
   resources :users

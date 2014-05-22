@@ -11,6 +11,8 @@ class BusinessesController < ApplicationController
   # GET /businesses/1.json
   def show
     @center = @business.location.coordinates
+    biz_results = JSON.parse(YelpSession.get_yelp_json_for_business(@business.id_string))
+    @yelp_reviews = YelpReview.yelp_business_json_to_reviews(@business.id, biz_results)
     respond_to do |format|
       format.html { render action: 'show' }
       format.json { render json: @business }

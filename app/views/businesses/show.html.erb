@@ -20,29 +20,48 @@
       <h1 id="business_name"><%= link_to @business.name, @business.url %> <small><%= @business.location.city %></small></h1>
   </div>  
   <div class="info">
-
-  <p><strong>Map Center: <%= @center %></strong></p>
-
-  <img src="<%= @business.image_url %>">
-
-  <p>Average Rating: 
-      <% if @business.rating %>
-        <span class="rating">
-          <% @business.rating.to_i.times do %>
-            <span class="glyphicon glyphicon-star"></span>
+    
+    <div class="info-aspect rating-container">
+        <% if @business.rating %>
+          <h2><span class="rating">
+            <% @business.rating.to_i.times do %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% if @business.rating - @business.rating.to_i > 0 %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+          </span></h1>
+        <% else %>
+          <h1><span class="no-rating">Not yet rated.</span></h2>
+        <% end %>
+    </div>
+    <div class="info-aspect phone-container">
+      <h3><%= @business.display_phone %></h3>
+    </div>
+    <div class="info-aspect address-container">
+      <h4><%= @business.location.display_address %></h4>
+    </div>
+    
+    <a id="biz-show-yelp-link" href="<%= @business.url %>" target="_blank">
+      <div class="yelp-info-container row">
+        <div class="yelp-info col-md-4">
+          <div class="yelp-logo"><%= image_tag "yelp_logo.png", class: "img-responsive" %></div>
+          <h4>Review Count: <%= @business.review_count %></h4>
+          <h4>Average Rating: <%= @business.yelp_rating %></h4>
+        </div>
+        <div class="yelp_review_container col-md-6">
+          <% @yelp_reviews.each do |review| %>
+            <div class="yelp-review-snippet">
+              <p><%= review.yelp_user_name %></p>
+              <img src="<%= review.rating_image_large_url %>">
+              <p><%= review.excerpt %></p>
+            </div>
           <% end %>
-          <% if @business.rating - @business.rating.to_i > 0 %>
-            <span class="glyphicon glyphicon-star-empty"></span>
-          <% end %>
-        </span>  
-      <% else %>
-        <span class="no-rating">Not yet rated.</span>
-      <% end %>
-  </p>
-  <p>Phone Number: <%= @business.display_phone %></p>
-  <p>Street Address: <%= @business.location.display_address %></p>
-
-  <p><%= @business.snippet_text %></p>
+        </div>
+        <div class="yelp-pic col-md-2"><img class="img-responsive" src="<%= @business.image_url %>"></div>
+      </div>
+    </a>
+    
     
   </div>
   
