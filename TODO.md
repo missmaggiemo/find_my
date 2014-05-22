@@ -4,13 +4,15 @@
 
 * Mission for 5/22/2014: Make sure that doesn't happen again.
 
-if its easy to share things w/in this app, they will-- create social circles.
+
+If its easy to share things w/in this app, they will-- create social circles.
 
 Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)
 
 
 
 Bizarre error crap when there's an error. WTF. That needs to be fixed.
+Also, it sends users to /users?
 
 
 

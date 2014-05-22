@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     root_path
   end
   
-  def after_registration_path_for(args)
+  def after_sign_up_path_for(user)
     registration_url = url_for(:action => 'new', :controller => 'users', :only_path => false, :protocol => 'http')
     if request.referer == registration_url
       super
