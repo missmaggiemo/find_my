@@ -261,6 +261,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.0.2)
   rails_12factor (= 0.0.2)
+  rails_serve_static_assets
   rest-client
   rspec-rails (= 2.13.1)
   sass (= 3.2.13)
