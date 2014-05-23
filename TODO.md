@@ -1,8 +1,7 @@
 # TODO
 
-* You locked yourself out of the Geocoding API. Good job, asshole. 
-
-* Mission for 5/22/2014: Make sure that doesn't happen again.
+5/23/2014
+Users can rate businesses, but the form doesn't close after they're rated. Also page to refresh. Also need to stop them from rating a business twice.
 
 
 If its easy to share things w/in this app, they will-- create social circles.
@@ -27,6 +26,11 @@ Log in w/ FB.
 
 
 User Leaflet for maps? [http://leafletjs.com/](http://leafletjs.com/)
+
+
+* You locked yourself out of the Geocoding API. Good job, asshole. 
+
+* Mission for 5/22/2014: Make sure that doesn't happen again.
 
 
 
