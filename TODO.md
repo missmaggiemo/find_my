@@ -1,11 +1,9 @@
 # TODO
 
 5/23/2014
-Need to stop users from rating a business twice.
-Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)
-
-
-
+<!-- Need to stop users from rating a business twice. -->
+<!-- Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform) -->
+<!-- Icon at map center on results show page. -->
 
 
 If its easy to share things w/in this app, they will-- create social circles.
