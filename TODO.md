@@ -6,13 +6,10 @@
 <!-- Icon at map center on results show page. -->
 
 
-If its easy to share things w/in this app, they will-- create social circles.
-
-
 
 
 Bizarre error crap when there's an error. WTF. That needs to be fixed.
-Also, it sends users to /users?
+<!-- Also, it sends users to /users? -->
 
 
 
@@ -57,13 +54,6 @@ Businesses have lnks to Yelp if you want to review and Foursquare if you want to
 
 Why am I getting an invalid array length when I get the biz JSON? Why do I have a yelp reviews model if I'll never get more than 1 review?
 
-### Locations
-
-From your location, should be able to see highest rated restaurants? 
-
-Highest rated stuff comes up on root new search page? (Pins in the highest-rated stuff on the map?)
-
-
 
 ### Users
 
@@ -73,15 +63,17 @@ Highest rated stuff comes up on root new search page? (Pins in the highest-rated
 
 <!-- * Users can 'rate' businesses. -->
 
+Users have friends, can recommend businesses, users can see friends' activity (feed).
 
+Find similar users! Kth nearest neighbor based on ratings and favorites. Businesses have categories.
 
 
 Keep track of 10 most recent searches. (Or maybe all searches made w/in 1 week?)
 
 If its easy to share things w/in this app, they will-- create social circles.
 
-Add Facebook login for users?
 
+* Add guest login.
 
 ### Ratings
 
@@ -104,3 +96,7 @@ Integrate 4square, better sorting of results.
 Log in with FB.-- can you see friends? send friend recommendations?
 
 Users can write reviews (that don't go on Yelp or 4square).
+
+From your location, should be able to see highest rated restaurants? 
+
+Highest rated stuff comes up on root new search page? (Pins in the highest-rated stuff on the map?)
