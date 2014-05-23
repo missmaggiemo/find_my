@@ -67,13 +67,11 @@
           <h4>Average Rating: <%= @business.yelp_rating %></h4>
         </div>
         <div class="yelp_review_container col-md-6">
-          <% @yelp_reviews.each do |review| %>
-            <div class="yelp-review-snippet">
-              <p><%= review.yelp_user_name %></p>
-              <img src="<%= review.rating_image_large_url %>">
-              <p><%= review.excerpt %></p>
-            </div>
-          <% end %>
+          <div class="yelp-review-snippet">
+            <p><%= @yelp_reviews[0].yelp_user_name %></p>
+            <img src="<%= @yelp_reviews[0].rating_image_large_url %>">
+            <p><%= @yelp_reviews[0].excerpt %></p>
+          </div>
         </div>
         <div class="yelp-pic col-md-2"><img class="img-responsive" src="<%= @business.image_url %>"></div>
       </div>
