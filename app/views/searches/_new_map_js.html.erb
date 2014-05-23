@@ -12,13 +12,19 @@ function initialize() {
 
     navigator.geolocation.getCurrentPosition(make_map, handleError);
     
+    var searchLoc = document.getElementById('search_location');
+    
     autocomplete = new google.maps.places.Autocomplete(
-        /** @type {HTMLInputElement} */(document.getElementById('search_location')),
+        /** @type {HTMLInputElement} */(searchLoc),
         { types: ['geocode'] });
     // When the user selects an address from the dropdown,
     // populate the address fields in the form.
     google.maps.event.addListener(autocomplete, 'place_changed', function() {
       fillInAddress();
+    });
+    
+    google.maps.event.addDomListener(searchLoc, 'keydown', function(e) { 
+      if (e.keyCode == 13) { e.preventDefault(); }
     });
     
   }
