@@ -237,7 +237,7 @@ a.biz-snippet-link {
 
 //user show
 
-.container.user-show {
+#user-info-row {
   margin-top: 10vh;
   
   #profile-pic-container {
@@ -251,7 +251,6 @@ a.biz-snippet-link {
        border-radius: 100%; 
       }
     }
-  
   }
   
   .info {
@@ -265,10 +264,19 @@ a.biz-snippet-link {
       margin-top: 10px;
     }
   }    
-  
-  
 }
 
+#user-activity-row {
+  margin: 20px 0 40px 0;
+  
+  .activity-container {
+    background-color: #EEE;
+    padding: 20px;
+    border-radius: 10px;    
+    margin: 10px;
+    min-height: 300px;
+  }
+}
 
 
 

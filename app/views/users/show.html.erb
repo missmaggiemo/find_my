@@ -6,7 +6,7 @@
 
 <div class="container user-show">
 
-  <div class="row">
+  <div class="row" id="user-info-row">
     <div class="col-md-3" id="profile-pic-container">
 
       <div class="gravatar" id="profile-pic">
@@ -16,25 +16,35 @@
       </div>
     </div>
 
-    <div class="col-md-7" id="profile-info-container">
+    <div class="col-md-9" id="profile-info-container">
       <div class="profile-header">
         <h1 id="user-welcome"><%= @user.username %> <small><%= @user.email %></small></h1>
       </div>  
-      <div class="info">
-
-        <p>TODO: </p>
-        <p>See location?</p>
-
-        <p>See recent ratings? <span class="rating"><%- 5.times do %><span class="glyphicon glyphicon-star"></span><% end -%></span></p>
-
-        <p>See favorite places? Can <span class="favorite"><span class="glyphicon glyphicon-heart-empty"></span></span> businesses?</p>
-        
-        <p>See recent searches? Create a recent_search join table that saves each search that a user makes when they're logged in and deletes the old ones?</p>
-        
+      <div class="info" id="feed">
+        <h2>Feed <small>Feed goes here.</small></h2>        
       </div>
-
     </div>
+  </div>
   
+  <div class="row" id="user-activity-row">
+    <div class="col-md-4 favorites-container">
+      <div class="activity-container">
+        <h2>Favorites</h2>
+        <h2><small>Favorite businesses go here.</small></h2>
+      </div>
+    </div>
+    <div class="col-md-4 recent-ratings-container">
+      <div class="activity-container">
+        <h2>Recent Ratings</h2>
+        <h2><small>Recent ratings go here.</small></h2>
+      </div>      
+    </div>
+    <div class="col-md-4 recent-searches-container">
+      <div class="activity-container">
+        <h2>Recent Searches</h2>
+        <h2><small>Recent searches go here.</small></h2>
+      </div>
+    </div>
   </div>
   
 </div>
@@ -45,13 +55,6 @@
 <% content_for :scripts do %>
 
 <script type="text/javascript">
-// $("#profile-pic").mouseover(function (event) {
-//   $("#gravatar-change").attr("class", "show");
-// });
-// 
-// $("#profile-pic").mouseleave(function (event) {
-//   $("#gravatar-change").attr("class", "hidden");
-// });
 
 </script>
 
