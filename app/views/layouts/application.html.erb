@@ -19,5 +19,17 @@
 
 <%= yield :scripts %>
 
+
+<script type="text/javascript">
+  
+  $("div.modal-content").hover( function (event) {
+    var closeX = $("<button type='button' class='close' data-dismiss='modal' id='close-x' aria-hidden='true'>&times;</button>");
+    $(this).prepend(closeX);
+  }, function (event) {
+    var closeX = $(this).find("button#close-x").remove();
+  });
+  
+</script>
+
 </body>
 </html>
