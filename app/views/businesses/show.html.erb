@@ -22,18 +22,26 @@
   <div class="info">
     
     <div class="info-aspect rating-container">
+      <h3>
+        <a href="<%= current_user ? "#" : new_user_session_url %>" 
+        data-toggle="modal" 
+        data-target="#rating-modal">
+        
         <% if @business.rating %>
-          <h3><span class="rating">
-            <% @business.rating.to_i.times do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-            <% if @business.rating - @business.rating.to_i > 0 %>
-              <span class="glyphicon glyphicon-star-empty"></span>
-            <% end %>
-          </span></h3>
-        <% else %>
-          <h3><span class="no-rating">Not yet rated.</span></h3>
+              <span class="rating" id="biz-rating">
+              <% @business.rating.to_i.times do %>
+                <span class="glyphicon glyphicon-star"></span>
+              <% end %>
+              <% if @business.rating - @business.rating.to_i > 0 %>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              <% end %>
+              </span>
+        <% else %>  
+            <span class="no-rating" id="biz-rating">Not yet rated.</span>
         <% end %>
+        
+        </a>
+      </h3>
     </div>
     <div class="info-aspect phone-container">
       <h4><%= @business.display_phone %></h4>
@@ -66,5 +74,85 @@
   </div>
   
 </div>
+
+
+
+
+<div class="modal fade" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="ratingModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div id="rating-form">
+        <h3>How was <%= @business.name %>?</h3>
+        <span class="rating">
+          <% 5.times do |n| %>
+            <span class="glyphicon glyphicon-star rating-star" value="0"></span>
+          <% end %>
+        </span>
+        <div id="button-div">
+          <button id="submit-rating" class="btn btn-default" data-biz_id="<%= @business.id %>">Rate!</button>
+        </div>
+      </div>        
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
+<% content_for :scripts do %>
+
+
+<script type="text/javascript">
+
+<% if current_user %>
+
+  $("#rating-form").on('click', '.rating-star', function (event) {
+    event.preventDefault();
+
+    if ($(this).attr("value") == 1) {
+      $(this).attr("value", 0);
+      $(this).css("color", "black");
+    } else {
+      $(this).attr("value", 1);
+      $(this).css("color", "gold");
+    }
+
+  });
+
+
+  $("#rating-form").on('click', 'button', function (event) {
+    event.preventDefault();
+  
+    var rating = 0;
+    var bizId = $(this).data('biz_id');
+  
+    $("#rating-form .rating-star").each( function (index, star) {
+      if ($(star).attr("value") == 1) {
+        rating ++;
+      }
+    });
+
+    var data = {
+      rating: {
+        stars: rating,
+        business_id: bizId,
+        user_id: <%= current_user.id %>
+      }
+    };
+  
+    // ajax to create rating
+    $.ajax({
+      url: "<%= ratings_url %>",
+      method: 'post',
+      data: data,
+      success: function (resp) {
+        console.log("rating succeeded!");
+      }
+    });  
+  });
+  
+  <% end %>
+  
+</script>
 
 <% end %>

@@ -23,6 +23,10 @@ gem 'coffee-rails', '4.0.1'
 # coffescript
 gem 'jquery-rails', '3.0.4'
 # jquery
+
+gem 'underscore-rails'
+# underscore
+
 gem 'turbolinks', '1.1.1'
 # loads all javascript
 gem 'jbuilder', '1.0.2'

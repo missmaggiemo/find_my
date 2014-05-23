@@ -16,7 +16,7 @@
 
 a:hover {
   text-decoration: none;
-  background: transparent;
+  background: transparent !important;
 }
 
 body, html {
@@ -319,4 +319,21 @@ a#biz-show-yelp-link {
 }
 
 
+//ratings form
 
+.modal-content {
+  text-align: center;
+  
+  #rating-form {
+    margin: 20px auto;
+    
+    .rating {
+      font-size: 3em;
+      color: black;
+    }
+    
+    #button-div {
+      margin: 20px;
+    }
+  }  
+}
