@@ -1,31 +1,113 @@
 <%= render 'layouts/map_js' %>
 <script type="text/javascript">
 
+// autocomplete address if user wants to search for another place
+
+var placeSearch, autocomplete;
+
+// initialize
+
+function initialize() {
+  if (navigator.geolocation){
+
+    navigator.geolocation.getCurrentPosition(make_map, handleError);
+    
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {HTMLInputElement} */(document.getElementById('search_location')),
+        { types: ['geocode'] });
+    // When the user selects an address from the dropdown,
+    // populate the address fields in the form.
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      fillInAddress();
+    });
+    
+  }
+  else{
+    console.log("No geolocation whatsoever!");
+    make_map();
+  }
+}
+
+
+// fill in form
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  
+  var place = autocomplete.getPlace();
+  
+  var addressText = place.formatted_address;
+  
+  console.log("addressText:", addressText);
+  
+  document.getElementById('search_location').value = addressText;
+
+  codeAddress(addressText);
+
+}
+
+
+
+// geocode to fill in address from geolocatiom data
+
   function codeLatLng(latlng) {
     geocoder = new google.maps.Geocoder();
+    
     geocoder.geocode({'latLng': latlng}, function(results, status) {
-      console.log( "Geocoder status: " + status.toString());
+      
+      console.log( "GeocodeLatLng status: " + status.toString());
+      
       if (status == google.maps.GeocoderStatus.OK) {
         if (results[0]) {
           var address = results[0].formatted_address;
           document.getElementById("search_location").setAttribute('value', address);
         }
       } else {
-        console.log("Geocoder failed due to: " + status);
+        console.log("GeocodeLatLng failed due to: " + status);
+      }
+      
+    });
+  }
+  
+  function codeAddress(address) {
+
+    geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({'address': address}, function(results, status) {
+
+      console.log( "GeocodeAddress status: " + status.toString());
+          
+      if (status == google.maps.GeocoderStatus.OK) {
+        var position = {
+          coords: {
+            latitude: results[0].geometry.location.lat(),
+            longitude: results[0].geometry.location.lng()
+          }
+        };
+        make_map(position);
+        
+      } else {
+        console.log("GeocodeAddress failed due to: " + status);
       }
     });
   }
+
+  // make google map
 
   function make_map(position) {
     
     var lat = typeof position !== 'undefined' ? position.coords.latitude : 37.4292;
     var lng = typeof position !== 'undefined' ? position.coords.longitude : -122.1381;
-    
+
     console.log("Here's where the map is currently centered:");
     console.log(lat, lng);
     console.log("Default map location is Palo Alto.");
-    
+
     var latlng = new google.maps.LatLng(lat, lng);
+    
+    var bounds = new google.maps.LatLngBounds(latlng, latlng);
+    
+    console.log(bounds);
     
     var mapOptions = {
       center: latlng,
@@ -41,7 +123,11 @@
         position: latlng,
         map: map
     });
+    
+    autocomplete.setBounds(bounds);
   }
+  
+  // handle geolocation error
   
   function handleError(error) {
     switch(error.code) {
@@ -64,15 +150,6 @@
     }
   }
   
-  function initialize() {
-    if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(make_map, handleError);
-    }
-    else{
-      console.log("No geolocation whatsoever!");
-      make_map();
-    }
-  }
   
   google.maps.event.addDomListener(window, 'load', initialize);
   
