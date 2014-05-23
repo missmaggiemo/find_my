@@ -316,6 +316,16 @@ a#biz-show-yelp-link {
   width: 50%;
 }
 
+#business-name {
+  a .glyphicon-heart-empty {
+    color: black;
+  }
+  
+  a .favorite.glyphicon-heart-empty {
+    color: red;
+  }
+}
+
 .info-aspect {
   margin: 20px;
 }

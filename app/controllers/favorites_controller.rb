@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
   def create
     @fav = Favorite.new(fav_params)
     if @fav.save
-      head :ok
+      render json: @fav
     else
       render json: @fav.errors.full_messages, status: 422
     end  

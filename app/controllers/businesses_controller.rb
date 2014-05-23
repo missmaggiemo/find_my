@@ -13,6 +13,8 @@ class BusinessesController < ApplicationController
     @center = @business.location.coordinates
     biz_results = JSON.parse(YelpSession.get_yelp_json_for_business(@business.id_string))
     @yelp_reviews = YelpReview.yelp_business_json_to_reviews(@business.id, biz_results)
+    @favorite = Favorite.find_by(user_id: current_user.id, business_id: @business.id) if current_user
+    
     respond_to do |format|
       format.html { render action: 'show' }
       format.json { render json: @business }

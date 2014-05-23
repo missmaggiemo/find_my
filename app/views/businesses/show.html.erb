@@ -17,7 +17,33 @@
 <div class="container col-md-8" id="business-show-container">
   
   <div class="biz-header">
-      <h1 id="business_name"><%= @business.name %> <small><%= @business.location.city %></small></h1>
+      <h1 id="business_name">
+        <% if @favorite && current_user %>
+        <a href="#">
+          <span class="favorite glyphicon glyphicon-heart-empty" 
+            id="favorite-heart" 
+            data-fav_id="<%= @favorite.id %>">
+          </span>
+      <% elsif current_user %>
+        <a href="#">
+          <span class="glyphicon glyphicon-heart-empty" 
+            id="favorite-heart"
+            data-user_id="<%= current_user ? current_user.id : 0 %>"
+            data-biz_id="<%= @business.id %>">
+          </span>
+      <% else %>
+        <a href="<%= new_user_session_url %>"
+        data-toggle="modal" 
+        data-target="#sign-in-modal">
+          <span class="glyphicon glyphicon-heart-empty" 
+            id="favorite-heart">
+          </span>
+      <% end %>
+        </a>
+      
+        <%= @business.name %>
+        <small><%= @business.location.city %></small>
+      </h1>
   </div>  
   <div class="info">
     
@@ -141,6 +167,58 @@
   });
   
 <% end %>
+
+function createFav ($heart) {
+  var user_id = $heart.data('user_id');
+  var biz_id = $heart.data('biz_id');
+  
+  var data = {
+    favorite: {
+      business_id: biz_id,
+      user_id: user_id
+    }
+  };
+    
+  $.ajax({
+    url: "<%= favorites_url %>",
+    method: 'post',
+    data: data,
+    success: function (resp) {
+      $heart.data('fav_id', resp.id);
+      $heart.addClass('favorite');
+    }
+  });
+}
+
+function destroyFav ($heart) {
+  var fav_id = $heart.data('fav_id');
+  var thisLoc = window.location.pathname;
+      
+  $.ajax({
+    url: "<%= favorites_url %>/" + fav_id,
+    method: 'delete',
+    success: function (resp) {
+      console.log(resp);
+      $heart.removeClass('favorite');
+      $heart.removeData('fav_id');
+    }
+  });
+}
+  
+$("#favorite-heart").click( function (event) {
+  event.preventDefault();
+  
+  var $heart = $(event.target);
+  
+  if ($heart.data('fav_id')) {
+    destroyFav($heart);
+  } else {
+    createFav($heart);
+  }
+  
+});
+  
+  
   
 </script>
 
