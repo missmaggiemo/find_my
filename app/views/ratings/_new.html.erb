@@ -1,0 +1,18 @@
+<div class="modal fade" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="ratingModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal" id="close-x" aria-hidden="true">&times;</button>
+      <div id="rating-form">
+        <h3>How was <%= business.name %>?</h3>
+        <span class="rating">
+          <% 5.times do |n| %>
+            <span class="glyphicon glyphicon-star rating-star" data-value="<%= n + 1 %>"></span>
+          <% end %>
+        </span>
+        <div id="button-div">
+          <button id="submit-rating" class="btn btn-default" data-biz_id="<%= business.id %>" data-rating="0">Rate!</button>
+        </div>
+      </div>        
+    </div>
+  </div>
+</div>

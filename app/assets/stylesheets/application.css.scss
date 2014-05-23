@@ -14,9 +14,10 @@
 
 @import "bootstrap";
 
-a:hover {
+body a:hover {
   text-decoration: none;
   background: transparent !important;
+  color: inherit;
 }
 
 body, html {
@@ -214,7 +215,7 @@ a.biz-snippet-link {
   &:hover {
     color: black;
     div.biz-snippet {
-      background-color: #D8D8D8;
+      background-color: #EEE;
     }
   }
 }
@@ -257,7 +258,7 @@ a.biz-snippet-link {
     text-align: left;
     margin: 20px 0 20px 0;
     padding: 15px;
-    background-color: #D8D8D8;
+    background-color: #EEE;
     border-radius: 10px;
   
     p {
@@ -306,7 +307,7 @@ a#biz-show-yelp-link {
 .yelp-info-container {
   margin: 20px 20px 20px 0;
   padding: 20px;
-  background-color: #D8D8D8;
+  background-color: #EEE;
   border-radius: 10px;
 }
 
@@ -324,6 +325,10 @@ a#biz-show-yelp-link {
 
 .modal-content {
   text-align: center;
+
+  #close-x {
+    margin: 15px;
+  }
   
   #rating-form {
     margin: 20px auto;

@@ -23,9 +23,18 @@
     
     <div class="info-aspect rating-container">
       <h3>
-        <a href="<%= current_user ? "#" : new_user_session_url %>" 
-        data-toggle="modal" 
-        data-target="#rating-modal">
+
+        <% if current_user && !current_user.ratings.map(&:business_id).include?(@business.id) %>
+          <a href="#"
+          data-toggle="modal" 
+          data-target="#rating-modal">
+        <% elsif !current_user %>
+          <a href="<%= new_user_session_url %>"
+          data-toggle="modal" 
+          data-target="#sign-in-modal">        
+        <% else %>
+          <a>
+        <% end %>
         
         <% if @business.rating %>
               <span class="rating" id="biz-rating">
@@ -76,25 +85,8 @@
 </div>
 
 
+<%= render partial: "ratings/new", locals: { business: @business } %>
 
-
-<div class="modal fade" id="rating-modal" tabindex="-1" role="dialog" aria-labelledby="ratingModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div id="rating-form">
-        <h3>How was <%= @business.name %>?</h3>
-        <span class="rating">
-          <% 5.times do |n| %>
-            <span class="glyphicon glyphicon-star rating-star" value="0"></span>
-          <% end %>
-        </span>
-        <div id="button-div">
-          <button id="submit-rating" class="btn btn-default" data-biz_id="<%= @business.id %>">Rate!</button>
-        </div>
-      </div>        
-    </div>
-  </div>
-</div>
 
 <% end %>
 
@@ -104,35 +96,33 @@
 
 <script type="text/javascript">
 
-<% if current_user %>
+<% if current_user && !current_user.ratings.map(&:business_id).include?(@business.id) %>
 
   $("#rating-form").on('click', '.rating-star', function (event) {
+    
     event.preventDefault();
-
-    if ($(this).attr("value") == 1) {
-      $(this).attr("value", 0);
-      $(this).css("color", "black");
-    } else {
-      $(this).attr("value", 1);
-      $(this).css("color", "gold");
-    }
-
+    
+    var nStars = $(this).data("value");
+    
+    $(this).closest("#rating-form").find("#submit-rating").data("rating", nStars);
+    
+    $("#rating-form .rating-star").each( function (index, star) {
+      if ($(star).data("value") <= nStars) {
+        $(star).css("color", "gold");
+      } else {
+        $(star).css("color", "black");
+      }
+    });
   });
 
 
-  $("#rating-form").on('click', 'button', function (event) {
+  $("#rating-form").on('click', '#submit-rating', function (event) {
     event.preventDefault();
   
-    var rating = 0;
+    var rating = $(this).data("rating");
     var bizId = $(this).data('biz_id');
     var thisLoc = window.location.pathname;
   
-    $("#rating-form .rating-star").each( function (index, star) {
-      if ($(star).attr("value") == 1) {
-        rating ++;
-      }
-    });
-
     var data = {
       rating: {
         stars: rating,
@@ -147,13 +137,12 @@
       method: 'post',
       data: data,
       success: function (resp) {
-        console.log("rating succeeded!");
         window.location = thisLoc;
       }
     });  
   });
   
-  <% end %>
+<% end %>
   
 </script>
 

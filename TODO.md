@@ -1,12 +1,15 @@
 # TODO
 
 5/23/2014
-Users can rate businesses, but the form doesn't close after they're rated. Also page to refresh. Also need to stop them from rating a business twice.
+Need to stop users from rating a business twice.
+Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)
+
+
+
 
 
 If its easy to share things w/in this app, they will-- create social circles.
 
-Autocomplete address in search. [https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform](https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform)
 
 
 
@@ -54,7 +57,7 @@ Fancy links for businesses?
 
 Businesses have lnks to Yelp if you want to review and Foursquare if you want to check-in.
 
-
+Why am I getting an invalid array length when I get the biz JSON? Why do I have a yelp reviews model if I'll never get more than 1 review?
 
 ### Locations
 
@@ -70,9 +73,14 @@ Highest rated stuff comes up on root new search page? (Pins in the highest-rated
 
 * Users can 'favorite' businesses.
 
-* Users can 'rate' businesses.
+<!-- * Users can 'rate' businesses. -->
+
+
+
 
 Keep track of 10 most recent searches. (Or maybe all searches made w/in 1 week?)
+
+If its easy to share things w/in this app, they will-- create social circles.
 
 Add Facebook login for users?
 
