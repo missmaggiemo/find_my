@@ -1,3 +1,5 @@
+require "addressable/uri"
+
 class YelpSession
   
   def self.generate_yelp_results(search_term, location, offset = 0)
@@ -29,7 +31,7 @@ class YelpSession
     consumer = OAuth::Consumer.new(consumer_key, consumer_secret, {:site => "http://#{api_host}"})
     access_token = OAuth::AccessToken.new(consumer, token, token_secret)
 
-    path = "http://api.yelp.com/v2/business/#{id_string}"
+    path = Addressable::URI.encode("http://api.yelp.com/v2/business/#{id_string}")
 
     access_token.get(path).body
   end

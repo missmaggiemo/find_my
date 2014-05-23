@@ -141,6 +141,7 @@ body {
 .user-form {
   width: 40%;
   margin: 5vw;
+  text-align: left;
   
   .user-form-links {
     margin-top: 20px;
@@ -213,7 +214,7 @@ a.biz-snippet-link {
   &:hover {
     color: black;
     div.biz-snippet {
-      background-color: #F8F8F8;
+      background-color: #D8D8D8;
     }
   }
 }
@@ -256,7 +257,7 @@ a.biz-snippet-link {
     text-align: left;
     margin: 20px 0 20px 0;
     padding: 15px;
-    background-color: #F8F8F8;
+    background-color: #D8D8D8;
     border-radius: 10px;
   
     p {
@@ -305,7 +306,7 @@ a#biz-show-yelp-link {
 .yelp-info-container {
   margin: 20px 20px 20px 0;
   padding: 20px;
-  background-color: #F8F8F8;
+  background-color: #D8D8D8;
   border-radius: 10px;
 }
 

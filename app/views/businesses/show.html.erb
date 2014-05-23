@@ -125,6 +125,7 @@
   
     var rating = 0;
     var bizId = $(this).data('biz_id');
+    var thisLoc = window.location.pathname;
   
     $("#rating-form .rating-star").each( function (index, star) {
       if ($(star).attr("value") == 1) {
@@ -147,6 +148,7 @@
       data: data,
       success: function (resp) {
         console.log("rating succeeded!");
+        window.location = thisLoc;
       }
     });  
   });
