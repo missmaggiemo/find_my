@@ -21,7 +21,14 @@
         <h1 id="user-welcome"><%= @user.username %> <small><%= @user.email %></small></h1>
       </div>  
       <div class="info" id="feed">
-        <h2>Feed <small>Activity feed will go here.</small></h2>        
+        <div class="info-container-scroll">
+          <h2><span class="logo my">my</span> feed</h2>
+          <% unless @user.feed.empty? %>
+            <%= render partial: 'users/feed', locals: { feed: @user.feed } %>
+          <% else %>
+            <h2><small>You don't have any activity yet!</small></h2>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

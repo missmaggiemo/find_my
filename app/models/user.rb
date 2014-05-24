@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
  def favorites
    Favorite.where(user_id: self.id).order(created_at: :desc)
  end
+ 
+ def recent_favorites
+   Favorite.where(user_id: self.id).order(created_at: :desc).limit(10)   
+ end
 
  def ratings
    Rating.where(user_id: self.id).order(created_at: :desc)
@@ -26,6 +30,12 @@ class User < ActiveRecord::Base
  def recent_searches
    SavedSearch.where(user_id: self.id).order(created_at: :desc).limit(10)
  end
+ 
+ def feed
+   feed_array = self.recent_favorites + self.recent_ratings + self.recent_searches
+   feed_array.sort_by { |feed_item| feed_item.created_at }.reverse
+ end
+
 
 
  

@@ -256,9 +256,17 @@ a.biz-snippet-link {
   .info {
     text-align: left;
     margin: 20px 0 20px 0;
-    padding: 15px;
+    padding: 20px;
     background-color: #EEE;
     border-radius: 10px;
+    height: 200px;
+    overflow: hidden;
+    
+    .info-container-scroll {
+      width: 110%;
+      height: 100%;
+      overflow: auto;
+    }
   
     p {
       margin-top: 10px;
@@ -316,10 +324,22 @@ a.biz-snippet-link {
   
   .search-pic {
     margin-bottom: 20px;
+  }  
+}
+
+
+.feed-item {
+  margin: 20px;
+      
+  .feed-pic {
+    max-height: 100px;
+    
+    img {
+      max-height: 100%;
+    }
   }
   
 }
-
 
 
 
