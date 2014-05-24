@@ -1,14 +1,18 @@
 # TODO
 
-5/24/2014
+5/26/2014
 
 Why is the user profile broken on my phone?
 
-Businesses should have hours of operation.
+Businesses should have hours of operation. Probably need to scrape Yelp for that.
 
 Feed should look better.
 
 In fact, user profile should look better.
+
+Search for users by username or email.
+
+Search for businesses by category.
 
 
 
