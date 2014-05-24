@@ -1,0 +1,12 @@
+<div class="search-snip activity-snip" id="fav-<%= saved_search.id %>">
+  <a href="<%= search_url(search) %>" class="biz-link">
+    <div class="row">
+      <div class="search-pic col-xs-3">
+        <%= image_tag "google_pin.png", class: "img-responsive" %>
+      </div>
+      <div class="search-info col-xs-9">
+        <h4><%= search.search_term %><br><small><%= search.location %></small></h4>
+      </div>      
+    </div>
+  </a>
+</div>

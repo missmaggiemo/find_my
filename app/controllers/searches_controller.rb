@@ -31,6 +31,9 @@ class SearchesController < ApplicationController
 
     respond_to do |format|
       if @search.save
+        if current_user
+          SavedSearch.create(user_id: current_user.id, search_id: @search.id)
+        end
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
         format.json { render action: 'show', status: :created, location: @search }
       else

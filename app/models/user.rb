@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
  has_many :favorites
  
+ has_many :saved_searches
+ 
  def favorites
    Favorite.where(user_id: self.id).order(created_at: :desc)
  end
@@ -16,5 +18,15 @@ class User < ActiveRecord::Base
  def ratings
    Rating.where(user_id: self.id).order(created_at: :desc)
  end
+ 
+ def recent_ratings
+   Rating.where(user_id: self.id).order(created_at: :desc).limit(10)   
+ end
+ 
+ def recent_searches
+   SavedSearch.where(user_id: self.id).order(created_at: :desc).limit(10)
+ end
+
+
  
 end

@@ -13,4 +13,6 @@ class Search < ActiveRecord::Base
   
   validates :location, :search_term, presence: true
   
+  has_many :saved_searches
+  
 end

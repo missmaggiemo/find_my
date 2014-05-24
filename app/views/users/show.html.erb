@@ -31,7 +31,7 @@
       <div class="activity-container">
         <div class="activity-container-scroll">
           <h2><span class="logo my">my</span> favorites</h2>
-          <% if @user.favorites %>
+          <% unless @user.favorites.empty? %>
             <% @user.favorites.each do |fav| %>
               <%= render partial: 'favorites/fav_snippet', locals: { fav: fav, biz: Business.find(fav.business_id) } %>
             <% end %>
@@ -45,12 +45,12 @@
       <div class="activity-container">
         <div class="activity-container-scroll">
           <h2><span class="logo my">my</span> recent ratings</h2>
-          <% if @user.ratings %>
-            <% @user.ratings.each do |rating| %>
+          <% unless @user.recent_ratings.empty? %>
+            <% @user.recent_ratings.each do |rating| %>
               <%= render partial: 'ratings/rating_snippet', locals: { rating: rating, biz: Business.find(rating.business_id) } %>
             <% end %>
           <% else %>
-            <h2><small>Favorite businesses will go here.</small></h2>
+            <h2><small>Recently rated businesses will go here.</small></h2>
           <% end %>          
         </div>
       </div>      
@@ -59,7 +59,13 @@
       <div class="activity-container">
         <div class="activity-container-scroll">
           <h2><span class="logo my">my</span> recent searches</h2>
-          <h2><small>Recent searches will go here.</small></h2>
+          <% unless @user.recent_searches.empty? %>
+            <% @user.recent_searches.each do |saved_search| %>
+              <%= render partial: 'searches/search_snippet', locals: { saved_search: saved_search, search: Search.find(saved_search.search_id) } %>
+            <% end %>
+          <% else %>
+            <h2><small>Recent searches will go here.</small></h2>
+          <% end %>
         </div>
       </div>
     </div>
