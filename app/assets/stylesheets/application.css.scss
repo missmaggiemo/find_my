@@ -269,15 +269,52 @@ a.biz-snippet-link {
 #user-activity-row {
   margin: 20px 0 40px 0;
   
+  @media (max-width: 992px) {
+    .col-md-4 {
+      padding: 0;
+    }
+  }
+  
   .activity-container {
-    background-color: #EEE;
-    padding: 20px;
     border-radius: 10px;    
-    margin: 10px;
-    min-height: 300px;
+    margin: 20px;
+    height: 400px;
+    background-color: #EEE;
+    overflow: hidden;
+    
+    @media (max-width: 992px) {
+      margin: 40px 0 0 0;
+    }
+    
+    .activity-container-scroll {
+      padding: 20px;
+      padding-right: 30px;
+      overflow: auto;
+      width: 110%;
+      height: 100%;
+      
+      h2 {
+        margin-bottom: 20px;
+      }
+    }
   }
 }
 
+.favorite-snip {
+  
+  .biz-info {
+    margin-bottom: 20px;
+  }
+  
+  h4 {
+    margin: 0;
+  }
+  
+  .yelp-pic {
+    margin-bottom: 20px;
+  }
+  
+}
 
 
 

@@ -6,5 +6,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
  has_many :ratings
+
+ has_many :favorites
+ 
+ def favorites
+   Favorite.where(user_id: self.id).order(created_at: :desc)
+ end
+
  
 end

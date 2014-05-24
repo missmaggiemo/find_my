@@ -29,20 +29,32 @@
   <div class="row" id="user-activity-row">
     <div class="col-md-4 favorites-container">
       <div class="activity-container">
-        <h2>Favorites</h2>
-        <h2><small>Favorite businesses will go here.</small></h2>
+        <div class="activity-container-scroll">
+          <h2><span class="logo my">my</span> favorites</h2>
+          <% if @user.favorites %>
+            <% @user.favorites.each do |fav| %>
+              <%= render partial: 'favorites/fav_snippet', locals: { fav: fav, biz: Business.find(fav.business_id) } %>
+            <% end %>
+          <% else %>
+            <h2><small>Favorite businesses will go here.</small></h2>
+          <% end %>          
+        </div>
       </div>
     </div>
     <div class="col-md-4 recent-ratings-container">
       <div class="activity-container">
-        <h2>Recent Ratings</h2>
-        <h2><small>Recent ratings will go here.</small></h2>
+        <div class="activity-container-scroll">
+          <h2><span class="logo my">my</span> recent ratings</h2>
+          <h2><small>Recent ratings will go here.</small></h2>
+        </div>
       </div>      
     </div>
     <div class="col-md-4 recent-searches-container">
       <div class="activity-container">
-        <h2>Recent Searches</h2>
-        <h2><small>Recent searches will go here.</small></h2>
+        <div class="activity-container-scroll">
+          <h2><span class="logo my">my</span> recent searches</h2>
+          <h2><small>Recent searches will go here.</small></h2>
+        </div>
       </div>
     </div>
   </div>

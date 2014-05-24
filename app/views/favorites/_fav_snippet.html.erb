@@ -1,0 +1,12 @@
+<div class="favorite-snip" id="fav-<%= fav.id %>">
+  <a href="<%= business_url(biz) %>" class="biz-link">
+    <div class="row">
+      <div class="yelp-pic col-xs-3">
+        <img src="<%= biz.image_url %>" class="img-responsive">
+      </div>
+      <div class="biz-info col-xs-9">
+        <h4><%= biz.name %><br><small><%= biz.location.city %></small></h4>
+      </div>      
+    </div>
+  </a>
+</div>
