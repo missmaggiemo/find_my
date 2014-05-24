@@ -93,9 +93,7 @@ function fillInAddress() {
     var latlng = new google.maps.LatLng(lat, lng);
     
     var bounds = new google.maps.LatLngBounds(latlng, latlng);
-    
-    console.log(bounds);
-    
+        
     var mapOptions = {
       center: latlng,
       zoom: 15
