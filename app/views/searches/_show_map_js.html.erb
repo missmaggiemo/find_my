@@ -16,6 +16,15 @@
     
     var map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);  
+    
+    // new google.maps.Marker({
+//       position: map.getCenter(),
+//       icon: {
+//         path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+//         scale: 4
+//       },
+//       map: map
+//     });
         
     <% businesses.each do |business| %>    
   
@@ -37,14 +46,6 @@
     
     <% end %>
     
-    new google.maps.Marker({
-      position: map.getCenter(),
-      icon: {
-        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-        scale: 4
-      },
-      map: map
-    });
   }
   
   function bindInfoWindow(marker, map, infowindow, html) {

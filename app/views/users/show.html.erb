@@ -45,7 +45,13 @@
       <div class="activity-container">
         <div class="activity-container-scroll">
           <h2><span class="logo my">my</span> recent ratings</h2>
-          <h2><small>Recent ratings will go here.</small></h2>
+          <% if @user.ratings %>
+            <% @user.ratings.each do |rating| %>
+              <%= render partial: 'ratings/rating_snippet', locals: { rating: rating, biz: Business.find(rating.business_id) } %>
+            <% end %>
+          <% else %>
+            <h2><small>Favorite businesses will go here.</small></h2>
+          <% end %>          
         </div>
       </div>      
     </div>

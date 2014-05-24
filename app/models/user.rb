@@ -13,5 +13,8 @@ class User < ActiveRecord::Base
    Favorite.where(user_id: self.id).order(created_at: :desc)
  end
 
+ def ratings
+   Rating.where(user_id: self.id).order(created_at: :desc)
+ end
  
 end
