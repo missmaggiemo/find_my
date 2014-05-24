@@ -11,6 +11,11 @@ class User < ActiveRecord::Base
  
  has_many :saved_searches
  
+ has_many :friendships, dependent: :destroy
+ 
+ has_many :friends, through: :friendships, source: :friend
+ 
+ 
  def favorites
    Favorite.where(user_id: self.id).order(created_at: :desc)
  end
@@ -27,15 +32,26 @@ class User < ActiveRecord::Base
    Rating.where(user_id: self.id).order(created_at: :desc).limit(10)   
  end
  
+ def saved_searches
+   SavedSearch.where(user_id: self.id).order(created_at: :desc)
+ end
+ 
  def recent_searches
    SavedSearch.where(user_id: self.id).order(created_at: :desc).limit(10)
  end
  
- def feed
-   feed_array = self.recent_favorites + self.recent_ratings + self.recent_searches
-   feed_array.sort_by { |feed_item| feed_item.created_at }.reverse
+ def activity
+   self.favorites + self.ratings + self.saved_searches
  end
 
+ 
+ def feed
+   feed_array = self.recent_favorites + self.recent_ratings + self.recent_searches
+   self.friends.each do |friend|
+     feed_array = feed_array + friend.activity[0, 10]
+   end
+   feed_array.sort_by { |feed_item| feed_item.created_at }.reverse
+ end
 
 
  

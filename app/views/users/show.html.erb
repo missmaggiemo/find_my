@@ -18,7 +18,29 @@
 
     <div class="col-md-9" id="profile-info-container">
       <div class="profile-header">
-        <h1 id="user-welcome"><%= @user.username %> <small><%= @user.email %></small></h1>
+        <h1 id="user-welcome"><%= @user.username %>
+          <small><%= @user.email %></small>
+          <% if current_user %>
+            <% if @user != current_user && !current_user.friends.include?(@user) %>
+              <button 
+                class="btn btn-default friend-btn" 
+                id="friend-btn" 
+                data-user_id="<%= current_user.id %>" 
+                data-friend_id="<%= @user.id %>">
+                <span class="glyphicon glyphicon-plus"></span>
+                friend
+              </button>
+            <% elsif current_user.friends.include?(@user) %>
+              <button 
+                class="btn btn-default friend-btn" 
+                id="friend-btn" 
+                data-f_id="<%= Friendship.find_by(user_id: current_user.id, friend_id: @user.id).id %>">
+                <span class="glyphicon glyphicon-minus"></span>
+                unfriend
+              </button>
+            <% end %>
+          <% end %>
+        </h1>
       </div>  
       <div class="info" id="feed">
         <div class="info-container-scroll">
@@ -86,6 +108,54 @@
 <% content_for :scripts do %>
 
 <script type="text/javascript">
+
+function addFriend ($button) {
+  var unfriendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-minus'></span> unfriend</button>";
+  var data = {
+    friendship: {
+      user_id: $button.data('user_id'),
+      friend_id: $button.data('friend_id')
+    }
+  };
+  
+  $.ajax({
+    url: "<%= friendships_url %>",
+    method: 'post',
+    data: data,
+    success: function(resp) {
+      console.log(resp);
+      $unfriendButton = $(unfriendHtml);
+      $unfriendButton.data('f_id', resp.id);
+      $button.replaceWith($unfriendButton);
+    }
+  });
+}
+
+function removeFriend ($button) {
+  var friendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-plus'></span> friend</button>";
+  var id = $button.data('f_id');
+  $.ajax({
+    url: "/friendships/" + id,
+    method: 'delete',
+    success: function(resp) {
+      console.log(resp);
+      $friendButton = $(friendHtml);
+      $friendButton.data('user_id', <%= current_user.id if current_user %>);
+      $friendButton.data('friend_id', <%= @user.id %>);
+      $button.replaceWith($friendButton);
+    }
+  });
+}
+
+$("#user-welcome").on('click', "#friend-btn", function (event) {
+  event.preventDefault();
+  var $button = $(this);
+  if ($button.data('f_id')) {
+    removeFriend($button);
+  } else {
+    addFriend($button);
+  }
+});
 
 </script>
 
