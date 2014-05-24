@@ -1,0 +1,17 @@
+<div class="col-sm-3 feed-pic">
+    <img src="<%= business.image_url %>" class="img-responsive">
+</div>
+<div class="col-sm-9 feed-text">
+    <h4><%= user.username %> rated</h4>
+    <a href="<%= business_url(business) %>">
+      <h4><%= business.name %>
+        <br>
+        <small><span class="rating">
+          <% rating.stars.to_i.times do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </span></small>
+      </h4>
+    </a>
+</div>    
+

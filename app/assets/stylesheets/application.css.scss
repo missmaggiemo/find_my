@@ -318,13 +318,10 @@ a.biz-snippet-link {
     margin: 0;
   }
   
-  .yelp-pic {
+  .yelp-pic, .search-pic {
     margin-bottom: 20px;
+    max-height: 100px;
   }
-  
-  .search-pic {
-    margin-bottom: 20px;
-  }  
 }
 
 

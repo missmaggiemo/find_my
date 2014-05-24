@@ -1,37 +1,13 @@
 <% feed.each do |feed_item| %>
 <div class="feed-item">
   <div class="row feed-row">
-    <div class="col-sm-3 feed-pic">
-      <% if feed_item.class == Favorite || feed_item.class == Rating %>
-        <img src="<%= Business.find(feed_item.business_id).image_url %>" class="img-responsive">
-      <% elsif feed_item.class == SavedSearch %>
-        <%= image_tag "google_pin.png", class: "img-responsive" %>
-      <% end %>
-    </div>
-    <div class="col-sm-9 feed-text">
-      <% if feed_item.class == Favorite %>
-        <h4><%= User.find(feed_item.user_id).username %> favorited</h4>
-        <h4><%= Business.find(feed_item.business_id).name %>
-          <br>
-          <small><%= Business.find(feed_item.business_id).location.city %></small>
-        </h4>
-      <% elsif feed_item.class == Rating %>
-        <h4><%= User.find(feed_item.user_id).username %> rated</h4>
-        <h4><%= Business.find(feed_item.business_id).name %>
-          <br>
-          <small><span class="rating">
-            <% feed_item.stars.to_i.times do %>
-              <span class="glyphicon glyphicon-star"></span>
-            <% end %>
-          </span></small>
-        </h4>
-      <% elsif feed_item.class == SavedSearch %>
-        <h4><%= User.find(feed_item.user_id).username %> searched for</h4>
-        <h4><%= Search.find(feed_item.search_id).search_term %>
-          <br>
-          <small><%= Search.find(feed_item.search_id).location %></small></h4>
-      <% end %>
-    </div>    
+    <% if feed_item.class == Favorite %>
+      <%= render partial: 'users/feed_fav', locals: { favorite: feed_item, user: User.find(feed_item.user_id), business: Business.find(feed_item.business_id) } %>
+    <% elsif feed_item.class == Rating %>
+      <%= render partial: 'users/feed_rating', locals: { rating: feed_item, user: User.find(feed_item.user_id), business: Business.find(feed_item.business_id) } %>
+    <% elsif feed_item.class == SavedSearch %>
+      <%= render partial: 'users/feed_search', locals: { saved_search: feed_item, user: User.find(feed_item.user_id), search: Search.find(feed_item.search_id) } %>
+    <% end %>
   </div>
 </div>
 <% end %>

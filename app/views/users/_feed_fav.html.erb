@@ -1,0 +1,12 @@
+<div class="col-sm-3 feed-pic">
+    <img src="<%= business.image_url %>" class="img-responsive">
+</div>
+<div class="col-sm-9 feed-text">
+    <h4><%= user.username %> favorited</h4>
+    <a href="<%= business_url(business) %>">
+      <h4><%= business.name %>
+        <br>
+        <small><%= business.location.city %></small>
+      </h4>
+    </a>
+</div>
