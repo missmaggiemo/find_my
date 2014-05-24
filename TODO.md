@@ -1,7 +1,8 @@
 # TODO
 
 5/24/2014
-Users can have friends, 'friend' other users.
+
+Why is the user profile broken on my phone?
 
 Businesses should have hours of operation.
 
