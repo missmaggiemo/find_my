@@ -1,5 +1,16 @@
 # TODO
 
+5/24/2014
+Users can have friends, 'friend' other users.
+
+Businesses should have hours of operation.
+
+Feed should look better.
+
+In fact, user profile should look better.
+
+
+
 5/23/2014
 
 Users can favorite busineses.
