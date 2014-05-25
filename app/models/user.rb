@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
  
  has_many :friends, through: :friendships, source: :friend
  
+
+ def email_hash
+   Digest::MD5.hexdigest(self.email.downcase)
+ end
  
  def favorites
    Favorite.where(user_id: self.id).order(created_at: :desc)

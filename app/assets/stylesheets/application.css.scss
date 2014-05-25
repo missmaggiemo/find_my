@@ -259,7 +259,7 @@ a.biz-snippet-link {
     padding: 20px;
     background-color: #EEE;
     border-radius: 10px;
-    height: 200px;
+    min-height: 60vh;
     overflow: hidden;
     
     .info-container-scroll {
@@ -274,36 +274,44 @@ a.biz-snippet-link {
   }    
 }
 
+.activity-container, #friends-container {
+  border-radius: 10px;    
+  margin: 20px;
+  height: 400px;
+  background-color: #EEE;
+  overflow: hidden;
+  
+  @media (max-width: 992px) {
+    margin: 40px 0 0 0;
+  }
+  
+  #friends-scroll, .activity-container-scroll {
+    padding: 20px;
+    padding-right: 30px;
+    overflow: auto;
+    width: 110%;
+    height: 100%;
+    
+    h2 {
+      margin-bottom: 20px;
+    }
+    
+    h4 {
+      margin: 0 0 10px 0;
+    }
+    
+    img {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 #user-activity-row {
   margin: 20px 0 40px 0;
   
   @media (max-width: 992px) {
     .col-md-4 {
       padding: 0;
-    }
-  }
-  
-  .activity-container {
-    border-radius: 10px;    
-    margin: 20px;
-    height: 400px;
-    background-color: #EEE;
-    overflow: hidden;
-    
-    @media (max-width: 992px) {
-      margin: 40px 0 0 0;
-    }
-    
-    .activity-container-scroll {
-      padding: 20px;
-      padding-right: 30px;
-      overflow: auto;
-      width: 110%;
-      height: 100%;
-      
-      h2 {
-        margin-bottom: 20px;
-      }
     }
   }
 }

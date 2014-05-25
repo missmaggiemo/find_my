@@ -18,9 +18,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <%= current_user.username %>! <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li class="link" ><a href="<%= user_url(current_user) %>">Profile</a></li>
-            <!-- <li class="link" ><a href="#">Recent Searches</a></li> -->
-            <!-- <li class="link" ><a href="#">Favorite Businesses</a></li> -->
+            <li class="link" ><a href="<%= user_feed_url(current_user) %>"><span class="logo my">my</span> feed</a></li>
+            <li class="link" ><a href="<%= user_url(current_user) %>"><span class="logo my">my</span> activity</a></li>
             <li class="divider"></li>
             <li class="link" ><%= link_to "Sign Out", destroy_user_session_url, method: :delete %></li>
           </ul>

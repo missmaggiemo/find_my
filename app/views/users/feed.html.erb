@@ -8,11 +8,27 @@
 
   <div class="row" id="user-info-row">
     <div class="col-md-3" id="profile-pic-container">
-
       <div class="gravatar" id="profile-pic">
         <a href="http://en.gravatar.com/emails" target="_blank">
-          <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=200&r=pg">
+          <img src="http://www.gravatar.com/avatar/<%= @user.email_hash %>?s=200&r=pg">
         </a>
+      </div>
+      <div class="friends-container" id="friends-container">
+        <div class="friends-scroll" id="friends-scroll">
+          <h2><span class="logo my">my</span> friends</h2>
+          <% @user.friends.each do |friend| %>
+          <a href="<%= user_url(friend) %>" class="friend-div-link">
+            <div class="friend-div row">
+              <div class="col-xs-3 feed-pic">
+                  <img src="http://www.gravatar.com/avatar/<%= friend.email_hash %>?s=100&r=pg" class="img-responsive">
+              </div>
+              <div class="col-xs-9 feed-text">
+                <h4><%= friend.username %></h4>
+              </div>
+            </div>
+          </a>
+          <% end %>
+        </div>
       </div>
     </div>
 
@@ -20,26 +36,6 @@
       <div class="profile-header">
         <h1 id="user-welcome"><%= @user.username %>
           <small><%= @user.email %></small>
-          <% if current_user %>
-            <% if @user != current_user && !current_user.friends.include?(@user) %>
-              <button 
-                class="btn btn-default friend-btn" 
-                id="friend-btn" 
-                data-user_id="<%= current_user.id %>" 
-                data-friend_id="<%= @user.id %>">
-                <span class="glyphicon glyphicon-plus"></span>
-                friend
-              </button>
-            <% elsif current_user.friends.include?(@user) %>
-              <button 
-                class="btn btn-default friend-btn" 
-                id="friend-btn" 
-                data-f_id="<%= Friendship.find_by(user_id: current_user.id, friend_id: @user.id).id %>">
-                <span class="glyphicon glyphicon-minus"></span>
-                unfriend
-              </button>
-            <% end %>
-          <% end %>
         </h1>
       </div>  
       <div class="info" id="feed">
@@ -53,53 +49,7 @@
         </div>
       </div>
     </div>
-  </div>
-  
-  <div class="row" id="user-activity-row">
-    <div class="col-md-4 favorites-container">
-      <div class="activity-container">
-        <div class="activity-container-scroll">
-          <h2><span class="logo my">my</span> favorites</h2>
-          <% unless @user.favorites.empty? %>
-            <% @user.favorites.each do |fav| %>
-              <%= render partial: 'favorites/fav_snippet', locals: { fav: fav, biz: Business.find(fav.business_id) } %>
-            <% end %>
-          <% else %>
-            <h2><small>Favorite businesses will go here.</small></h2>
-          <% end %>          
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 recent-ratings-container">
-      <div class="activity-container">
-        <div class="activity-container-scroll">
-          <h2><span class="logo my">my</span> recent ratings</h2>
-          <% unless @user.recent_ratings.empty? %>
-            <% @user.recent_ratings.each do |rating| %>
-              <%= render partial: 'ratings/rating_snippet', locals: { rating: rating, biz: Business.find(rating.business_id) } %>
-            <% end %>
-          <% else %>
-            <h2><small>Recently rated businesses will go here.</small></h2>
-          <% end %>          
-        </div>
-      </div>      
-    </div>
-    <div class="col-md-4 recent-searches-container">
-      <div class="activity-container">
-        <div class="activity-container-scroll">
-          <h2><span class="logo my">my</span> recent searches</h2>
-          <% unless @user.recent_searches.empty? %>
-            <% @user.recent_searches.each do |saved_search| %>
-              <%= render partial: 'searches/search_snippet', locals: { saved_search: saved_search, search: Search.find(saved_search.search_id) } %>
-            <% end %>
-          <% else %>
-            <h2><small>Recent searches will go here.</small></h2>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+  </div>  
 </div>
 
 <% end %>
