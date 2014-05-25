@@ -13,9 +13,9 @@
           <img src="http://www.gravatar.com/avatar/<%= @user.email_hash %>?s=200&r=pg">
         </a>
       </div>
+      <h2 class="friends-header"><span class="logo my">my</span> friends</h2>
       <div class="friends-container" id="friends-container">
         <div class="friends-scroll" id="friends-scroll">
-          <h2><span class="logo my">my</span> friends</h2>
           <% @user.pending_friendships.each do |friendship, friend| %>
             <div class="friend-pending-container">
               <div class="friend-div row">
