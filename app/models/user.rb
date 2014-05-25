@@ -13,8 +13,14 @@ class User < ActiveRecord::Base
  
  has_many :friendships, dependent: :destroy
  
- has_many :friends, through: :friendships, source: :friend
+ has_many :friend_requests, class_name: "Friendship", foreign_key: "friend_id", primary_key: "id"
  
+ has_many :friends, through: :friendships, source: :friend
+
+
+ def pending_friendships
+   self.friend_requests.select { |req| !req.confirmed }.map { |req| [req, User.find(req.user_id)] }
+ end
 
  def email_hash
    Digest::MD5.hexdigest(self.email.downcase)

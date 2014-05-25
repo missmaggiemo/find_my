@@ -9,6 +9,16 @@ class FriendshipsController < ApplicationController
     end  
   end
   
+  def update
+    @friendship = Friendship.find(params[:id])
+    if @friendship && @friendship.update(friendship_params)
+      render json: @friendship
+    else
+      render json: @friendship.errors.full_messages, status: 422
+    end
+  end
+
+  
   def destroy
     @friendship = Friendship.find(params[:id])
     if @friendship
@@ -22,8 +32,7 @@ class FriendshipsController < ApplicationController
   private
   
   def friendship_params
-    params.require(:friendship).permit(:user_id, :friend_id)
+    params.require(:friendship).permit(:user_id, :friend_id, :confirmed)
   end
-
 
 end

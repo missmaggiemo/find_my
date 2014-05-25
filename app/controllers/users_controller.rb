@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   
   def feed
     @user = User.find(params[:id])
+    redirect_to user_url(@user) unless current_user == @user
   end
 
 end

@@ -34,7 +34,8 @@
               <button 
                 class="btn btn-default friend-btn" 
                 id="friend-btn" 
-                data-f_id="<%= Friendship.find_by(user_id: current_user.id, friend_id: @user.id).id %>">
+                data-f_one_id="<%= Friendship.find_by(user_id: current_user.id, friend_id: @user.id).id %>"
+                data-f_two_id="<%= Friendship.find_by(friend_id: current_user.id, user_id: @user.id).id %>">
                 <span class="glyphicon glyphicon-minus"></span>
                 unfriend
               </button>
@@ -100,7 +101,7 @@
 <script type="text/javascript">
 
   function addFriend ($button) {
-    var unfriendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-minus'></span> unfriend</button>";
+    var unfriendHtml = "<button class='btn btn-default friend-btn'><span class='glyphicon glyphicon-asterisk'></span> friend rquest pending</button>";
     var data = {
       friendship: {
         user_id: $button.data('user_id'),
@@ -123,16 +124,26 @@
 
   function removeFriend ($button) {
     var friendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-plus'></span> friend</button>";
-    var id = $button.data('f_id');
+    var idOne = $button.data('f_one_id');
+    var idTwo = $button.data('f_two_id');
     $.ajax({
-      url: "/friendships/" + id,
+      url: "/friendships/" + idOne,
       method: 'delete',
       success: function(resp) {
         console.log(resp);
-        $friendButton = $(friendHtml);
-        $friendButton.data('user_id', <%= current_user.id if current_user %>);
-        $friendButton.data('friend_id', <%= @user.id %>);
-        $button.replaceWith($friendButton);
+        
+        $.ajax({
+          url: "/friendships/" + idTwo,
+          method: 'delete',
+          success: function(resp) {
+            console.log(resp);
+            $friendButton = $(friendHtml);
+            $friendButton.data('user_id', <%= current_user.id if current_user %>);
+            $friendButton.data('friend_id', <%= @user.id %>);
+            $button.replaceWith($friendButton);
+          }
+        });
+        
       }
     });
   }
@@ -140,7 +151,7 @@
   $("#user-welcome").on('click', "#friend-btn", function (event) {
     event.preventDefault();
     var $button = $(this);
-    if ($button.data('f_id')) {
+    if ($button.data('f_one_id')) {
       removeFriend($button);
     } else {
       addFriend($button);

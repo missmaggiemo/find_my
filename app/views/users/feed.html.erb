@@ -16,6 +16,26 @@
       <div class="friends-container" id="friends-container">
         <div class="friends-scroll" id="friends-scroll">
           <h2><span class="logo my">my</span> friends</h2>
+          <% @user.pending_friendships.each do |friendship, friend| %>
+            <div class="friend-pending-container">
+              <div class="friend-div row">
+                <a href="<%= user_url(friend) %>" class="friend-div-link">
+                  <div class="col-xs-3 feed-pic">
+                      <img src="http://www.gravatar.com/avatar/<%= friend.email_hash %>?s=100&r=pg" class="img-responsive">
+                  </div>
+                </a>
+                <div class="col-xs-7 feed-text" id="friend-pending-text">
+                  <p><%= friend.username %> wants to be your friend!</p>
+                </div>
+              </div>
+              <div class="friend-div row btn-row">
+                <div class="col-xs-10 friend-btn-container">
+                  <button class='btn btn-default btn-xs friend-confirm-btn' id='friend-confirm-btn-ok' data-user_id="<%= current_user.id %>" data-friend_id="<%= friend.id %>" data-f_id="<%= friendship.id %>"><span class='glyphicon glyphicon-ok'></span> confirm</button>
+                  <button class='btn btn-default btn-xs friend-confirm-btn' id='friend-confirm-btn-remove' data-f_id="<%= friendship.id %>"><span class='glyphicon glyphicon-remove'></span> ignore</button>
+                </div>              
+              </div>            
+            </div>
+            <% end %>
           <% @user.friends.each do |friend| %>
           <a href="<%= user_url(friend) %>" class="friend-div-link">
             <div class="friend-div row">
@@ -60,11 +80,14 @@
 <script type="text/javascript">
 
   function addFriend ($button) {
-    var unfriendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-minus'></span> unfriend</button>";
+    var confirmHtml = "friend request confirmed!";
+    var id = $button.data('f_id');
+    var $btnDiv = $button.parent();
     var data = {
       friendship: {
         user_id: $button.data('user_id'),
-        friend_id: $button.data('friend_id')
+        friend_id: $button.data('friend_id'),
+        confirmed: true
       }
     };
   
@@ -74,37 +97,46 @@
       data: data,
       success: function(resp) {
         console.log(resp);
-        $unfriendButton = $(unfriendHtml);
-        $unfriendButton.data('f_id', resp.id);
-        $button.replaceWith($unfriendButton);
+        $btnDiv.html("");
+        $btnDiv.closest(".friend-pending-container").find("#friend-pending-text").html(confirmHtml);
+      }
+    });
+    
+    $.ajax({
+      url: "/friendships/" + id,
+      method: 'patch',
+      data: { friendship: { confirmed: true } },
+      success: function(resp) {
+        console.log(resp);
       }
     });
   }
 
-  function removeFriend ($button) {
-    var friendHtml = "<button class='btn btn-default friend-btn' id='friend-btn'><span class='glyphicon glyphicon-plus'></span> friend</button>";
+  function ignoreFriend ($button) {
+    var confirmHtml = "friend request has been removed";
     var id = $button.data('f_id');
+    var $btnDiv = $button.parent();
     $.ajax({
       url: "/friendships/" + id,
       method: 'delete',
       success: function(resp) {
         console.log(resp);
-        $friendButton = $(friendHtml);
-        $friendButton.data('user_id', <%= current_user.id if current_user %>);
-        $friendButton.data('friend_id', <%= @user.id %>);
-        $button.replaceWith($friendButton);
+        $btnDiv.html("");
+        $btnDiv.html(confirmHtml);
       }
     });
   }
 
-  $("#user-welcome").on('click', "#friend-btn", function (event) {
+  $("#friends-container").on('click', "#friend-confirm-btn-ok", function (event) {
     event.preventDefault();
     var $button = $(this);
-    if ($button.data('f_id')) {
-      removeFriend($button);
-    } else {
-      addFriend($button);
-    }
+    addFriend($button);
+  });
+  
+  $("#friends-container").on('click', "#friend-confirm-btn-remove", function (event) {
+    event.preventDefault();
+    var $button = $(this);
+    ignoreFriend($button);
   });
 
 </script>
