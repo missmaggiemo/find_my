@@ -48,6 +48,11 @@
             </div>
           </a>
           <% end %>
+          <% if @user.friends.empty? %>
+          <div class="friend-div row">
+            <h2><small>You don't have any friends yet!</small></h2>
+          </div>
+          <% end %>
         </div>
       </div>
     </div>
