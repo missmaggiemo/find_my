@@ -8,6 +8,8 @@ YelpApp::Application.routes.draw do
   
   resources :users
   
+  get 'users/:id/feed', to: 'users#feed', as: 'user_feed'
+  
   resources :businesses, only: [:show]
 
   resources :searches, only: [:create, :new, :show]

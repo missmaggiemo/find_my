@@ -11,7 +11,7 @@
 
       <div class="gravatar" id="profile-pic">
         <a href="http://en.gravatar.com/emails" target="_blank">
-          <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=100&r=pg">
+          <img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=200&r=pg">
         </a>
       </div>
     </div>
@@ -42,6 +42,16 @@
           <% end %>
         </h1>
       </div>  
+      <div class="info" id="feed">
+        <div class="info-container-scroll">
+          <h2><span class="logo my">my</span> feed</h2>
+          <% unless @user.feed.empty? %>
+            <%= render partial: 'users/feed', locals: { feed: @user.feed } %>
+          <% else %>
+            <h2><small>You don't have any activity yet!</small></h2>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
   
