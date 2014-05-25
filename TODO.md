@@ -3,24 +3,33 @@
 5/26/2014
 
 
-<!-- Users should have a friends tile under their picture, next to their feed. --> In this tile, friend requests should be at the top. 
+<!-- Users should have a friends tile under their picture, next to their feed. --> <!-- In this tile, friend requests should be at the top.  -->
 
 <!-- Activity (all favorites, ratings, and 10 recent searches, in newest-to-oldest) should be its own page. -->
 
 <!-- When someone “friend”s you, you can approve the friend request, and then the relationship is created? -->
 
-Search for users by username or email.
+Search for users by username or email(?).
 
 Search for businesses by category.
 
-Why is the user profile broken on my phone?
 
-Businesses should have hours of operation. Probably need to scrape Yelp for that.
+Sign up link on log in page.
+
+
+Why are the user profile and feed broken on my phone?
+
+
+
+Yelp map centers over the bay for less common searches. Can I fix that?
+
+
 
 Feed should look better.
 
 In fact, user profile should look better.
 
+Businesses should have hours of operation. Probably need to scrape Yelp for that.
 
 
 5/23/2014

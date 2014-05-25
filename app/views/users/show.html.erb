@@ -10,7 +10,8 @@
     <div class="col-md-3" id="profile-pic-container">
 
       <div class="gravatar" id="profile-pic">
-        <a href="http://en.gravatar.com/emails" target="_blank">
+        <a href="<%= current_user == @user ? "http://en.gravatar.com/emails" : "#" %>" 
+          target="<%= current_user == @user ? "_blank" : "" %>">
           <img src="http://www.gravatar.com/avatar/<%= @user.email_hash %>?s=100&r=pg">
         </a>
       </div>
