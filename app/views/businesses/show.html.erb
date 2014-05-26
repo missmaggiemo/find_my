@@ -14,96 +14,101 @@
 
 <% content_for :page do %>
 
-<div class="container col-md-8" id="business-show-container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8" id="business-show-container">
   
-  <div class="biz-header">
-      <h1 id="business_name">
-        <% if @favorite && current_user %>
-        <a href="#">
-          <span class="favorite glyphicon glyphicon-heart-empty" 
-            id="favorite-heart" 
-            data-fav_id="<%= @favorite.id %>">
-          </span>
-      <% elsif current_user %>
-        <a href="#">
-          <span class="glyphicon glyphicon-heart-empty" 
-            id="favorite-heart"
-            data-user_id="<%= current_user ? current_user.id : 0 %>"
-            data-biz_id="<%= @business.id %>">
-          </span>
-      <% else %>
-        <a href="<%= new_user_session_url %>"
-        data-toggle="modal" 
-        data-target="#sign-in-modal">
-          <span class="glyphicon glyphicon-heart-empty" 
-            id="favorite-heart">
-          </span>
-      <% end %>
-        </a>
-      
-        <%= @business.name %>
-        <small><%= @business.location.city %></small>
-      </h1>
-  </div>  
-  <div class="info">
-    
-    <div class="info-aspect rating-container">
-      <h3>
-
-        <% if current_user && !current_user.ratings.map(&:business_id).include?(@business.id) %>
-          <a href="#"
-          data-toggle="modal" 
-          data-target="#rating-modal">
-        <% elsif !current_user %>
-          <a href="<%= new_user_session_url %>"
-          data-toggle="modal" 
-          data-target="#sign-in-modal">        
-        <% else %>
-          <a>
-        <% end %>
-        
-        <% if @business.rating %>
-              <span class="rating" id="biz-rating">
-              <% @business.rating.to_i.times do %>
-                <span class="glyphicon glyphicon-star"></span>
-              <% end %>
-              <% if @business.rating - @business.rating.to_i > 0 %>
-                <span class="glyphicon glyphicon-star-empty"></span>
-              <% end %>
+      <div class="biz-header">
+          <h1 id="business_name">
+            <% if @favorite && current_user %>
+            <a href="#">
+              <span class="favorite glyphicon glyphicon-heart-empty" 
+                id="favorite-heart" 
+                data-fav_id="<%= @favorite.id %>">
               </span>
-        <% else %>  
-            <span class="no-rating" id="biz-rating">Not yet rated.</span>
-        <% end %>
+          <% elsif current_user %>
+            <a href="#">
+              <span class="glyphicon glyphicon-heart-empty" 
+                id="favorite-heart"
+                data-user_id="<%= current_user ? current_user.id : 0 %>"
+                data-biz_id="<%= @business.id %>">
+              </span>
+          <% else %>
+            <a href="<%= new_user_session_url %>"
+            data-toggle="modal" 
+            data-target="#sign-in-modal">
+              <span class="glyphicon glyphicon-heart-empty" 
+                id="favorite-heart">
+              </span>
+          <% end %>
+            </a>
+      
+            <%= @business.name %>
+            <small><%= @business.location.city %></small>
+          </h1>
+      </div>  
+      <div class="info">
+    
+        <div class="info-aspect rating-container">
+          <h3>
+
+            <% if current_user && !current_user.ratings.map(&:business_id).include?(@business.id) %>
+              <a href="#"
+              data-toggle="modal" 
+              data-target="#rating-modal">
+            <% elsif !current_user %>
+              <a href="<%= new_user_session_url %>"
+              data-toggle="modal" 
+              data-target="#sign-in-modal">        
+            <% else %>
+              <a>
+            <% end %>
         
-        </a>
-      </h3>
-    </div>
-    <div class="info-aspect phone-container">
-      <h4><%= @business.display_phone %></h4>
-    </div>
-    <div class="info-aspect address-container">
-      <h4><%= @business.location.display_address %></h4>
-    </div>
-    
-    <a id="biz-show-yelp-link" href="<%= @business.url %>" target="_blank">
-      <div class="yelp-info-container row">
-        <div class="yelp-info col-md-4">
-          <div class="yelp-logo"><%= image_tag "yelp_logo.png", class: "img-responsive" %></div>
-          <h4>Review Count: <%= @business.review_count %></h4>
-          <h4>Average Rating: <%= @business.yelp_rating %></h4>
+            <% if @business.rating %>
+                  <span class="rating" id="biz-rating">
+                  <% @business.rating.to_i.times do %>
+                    <span class="glyphicon glyphicon-star"></span>
+                  <% end %>
+                  <% if @business.rating - @business.rating.to_i > 0 %>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                  <% end %>
+                  </span>
+            <% else %>  
+                <span class="no-rating" id="biz-rating">Not yet rated.</span>
+            <% end %>
+        
+            </a>
+          </h3>
         </div>
-        <div class="yelp_review_container col-md-6">
-          <div class="yelp-review-snippet">
-            <p><%= @yelp_reviews[0].yelp_user_name %></p>
-            <img src="<%= @yelp_reviews[0].rating_image_large_url %>">
-            <p><%= @yelp_reviews[0].excerpt %></p>
+        <div class="info-aspect phone-container">
+          <h4><%= @business.display_phone %></h4>
+        </div>
+        <div class="info-aspect address-container">
+          <h4><%= @business.location.display_address %></h4>
+        </div>
+    
+        <a id="biz-show-yelp-link" href="<%= @business.url %>" target="_blank">
+          <div class="yelp-info-container row">
+            <div class="yelp-info col-md-4">
+              <div class="yelp-logo"><%= image_tag "yelp_logo.png", class: "img-responsive" %></div>
+              <h4>Review Count: <%= @business.review_count %></h4>
+              <h4>Average Rating: <%= @business.yelp_rating %></h4>
+            </div>
+            <div class="yelp_review_container col-md-6">
+              <div class="yelp-review-snippet">
+                <p><%= @yelp_reviews[0].yelp_user_name %></p>
+                <img src="<%= @yelp_reviews[0].rating_image_large_url %>">
+                <p><%= @yelp_reviews[0].excerpt %></p>
+              </div>
+            </div>
+            <div class="yelp-pic col-md-2"><img class="img-responsive" src="<%= @business.image_url %>"></div>
           </div>
-        </div>
-        <div class="yelp-pic col-md-2"><img class="img-responsive" src="<%= @business.image_url %>"></div>
+        </a>
+    
+    
       </div>
-    </a>
-    
-    
+  
+    </div>
   </div>
   
 </div>

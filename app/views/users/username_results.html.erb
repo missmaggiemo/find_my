@@ -4,16 +4,17 @@
 
 <% content_for :page do %>
 
-<div class="container results-container">
-  <% unless @matches.empty? %>
-    <h3 class="results-length">There are <%= @matches.length %> users with usernames and/or email addresses that match "<%= @search_term %>"...</h3>
-    <% @matches.each do |user| %>
-      <%= render partial: 'users/user_snippet', locals: { user: user, feed_item: user.feed.first } %>
-    <% end %>  
-  <% else %>
-    <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any users named "<%= @search_term %>"!</h1>
-  <% end %>
-  
+<div class="container">
+  <div class="results-container">
+    <% unless @matches.empty? %>
+      <h3 class="results-length">There are <%= @matches.length %> users with usernames and/or email addresses that match "<%= @search_term %>"...</h3>
+      <% @matches.each do |user| %>
+        <%= render partial: 'users/user_snippet', locals: { user: user, feed_item: user.feed.first } %>
+      <% end %>  
+    <% else %>
+      <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any users named "<%= @search_term %>"!</h1>
+    <% end %>
+  </div>  
 </div>
 
 <% end %>
