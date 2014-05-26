@@ -9,9 +9,9 @@
 
 <!-- When someone “friend”s you, you can approve the friend request, and then the relationship is created? -->
 
-* Search for users by username or email(?).
+<!-- * Search for users by username or email(?). -->
 
-* Search for businesses by category.
+<!-- * Search for businesses by category. -->
 
 
 * Sign up link on log in page.
