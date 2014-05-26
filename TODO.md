@@ -21,7 +21,31 @@
 <!-- * Why are the user profile and feed broken on my phone? -->
 
 
-Business name search can search for multiple words and narrows down by intersection.
+On map:
+
+* flags need to be killed when you click a new flag
+
+* markers/flags should react to mouse scroll
+
+
+
+Users:
+
+* friendly id
+
+
+
+First reactions:
+
+* wants to log in with username search bars-- like that's the login form
+
+
+
+
+
+
+
+
 
 
 
