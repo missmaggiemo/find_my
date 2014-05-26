@@ -1,0 +1,17 @@
+<% content_for :navbar do %>
+  <%= render 'layouts/nav' %>
+<% end %>
+
+<% content_for :page do %>
+
+<div class="container results-container">
+  <% @matches.each do |user| %>
+    <%= render partial: 'users/user_snippet', locals: { user: user } %>
+  <% end %>  
+  <% if @matches.empty? %>
+  <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any users named "<%= @search_term %>"!</h1>
+  <% end %>
+  
+</div>
+
+<% end %>

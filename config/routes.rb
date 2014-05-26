@@ -4,6 +4,10 @@ YelpApp::Application.routes.draw do
   
   get 'home', to: 'static_pages#home'
   
+  get 'users/username_search', to: 'users#username_results', as: 'user_results'
+  
+  get 'businesses/biz_name_search', to: 'businesses#biz_name_results', as: 'biz_results'
+  
   devise_for :users
   
   resources :users

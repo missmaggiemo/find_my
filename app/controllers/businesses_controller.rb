@@ -23,6 +23,17 @@ class BusinessesController < ApplicationController
       format.json { render json: @business }
     end
   end
+  
+  def biz_name_results
+    biz_name = params[:biz_name]
+    @matches = []
+    Business.all.each do |biz|
+      @matches << biz if biz.name.match(/#{biz_name}/i)
+    end
+    @matches = @matches.sort_by { |biz| (biz.yelp_rating + biz.rating.to_i) * -1 }
+    @search_term = biz_name
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

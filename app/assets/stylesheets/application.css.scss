@@ -205,13 +205,13 @@ body {
 
 //biz snippet
 
-.biz-snippet {
+.biz-snippet, .user-snippet {
   padding: 20px;
   width: 80%;
   border-radius: 10px;
 }
 
-a.biz-snippet-link {
+a.biz-snippet-link, a.user-snippet-link {
   &:hover {
     color: black;
     div.biz-snippet {
@@ -446,4 +446,16 @@ a#biz-show-yelp-link {
       margin: 20px;
     }
   }  
+}
+
+
+
+//name search pages
+
+.snippet-pic {
+  margin: 20px;
+}
+
+.results-container {
+  margin: 40px;
 }

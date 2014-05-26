@@ -9,42 +9,30 @@
 
 <!-- When someone “friend”s you, you can approve the friend request, and then the relationship is created? -->
 
-Search for users by username or email(?).
+* Search for users by username or email(?).
 
-Search for businesses by category.
-
-
-Sign up link on log in page.
+* Search for businesses by category.
 
 
-Why are the user profile and feed broken on my phone?
+* Sign up link on log in page.
 
 
 
-Yelp map centers over the bay for less common searches. Can I fix that?
+* Why are the user profile and feed broken on my phone?
 
 
 
-Feed should look better.
-
-In fact, user profile should look better.
-
-Businesses should have hours of operation. Probably need to scrape Yelp for that.
+* Yelp map centers over the bay for less common searches. Can I fix that?
 
 
-5/23/2014
 
-Users can favorite busineses.
+* Feed should look better.
 
-On biz show:
+* In fact, user profile should look better.
 
-  * heart that on click either creates or destroys a favorite via jQuery.
+* Businesses should have hours of operation. Probably need to scrape Yelp for that.
 
-On user profile:
 
-  * list of businesses that they've favorited
-  
-  * list of businesses that they've rated (and their rating)
 
 
 
@@ -70,9 +58,6 @@ Avg. rating, user's rating, favorite.
 
 
 
-Fancy links for businesses?
-
-/business/name-of-business-city-state
 
 Businesses have links <!-- to Yelp if you want to review and --> Foursquare if you want to check-in.
 
@@ -81,23 +66,18 @@ Why am I getting an invalid array length when I get the biz JSON? Why do I have 
 
 ### Users
 
-<!-- Add users. -->
+* Users can recommend businesses to their friends?
 
-* Users can 'favorite' businesses.
 
-<!-- * Users can 'rate' businesses. -->
-
-Users have friends, can recommend businesses, users can see friends' activity (feed).
 
 Find similar users! Kth nearest neighbor based on ratings and favorites. Businesses have categories.
 
 
-Keep track of 10 most recent searches. (Or maybe all searches made w/in 1 week?)
 
 If its easy to share things w/in this app, they will-- create social circles.
 
 
-* Add guest login.
+* Add guest login? Maybe just tell them to log in as me?
 
 ### Ratings
 

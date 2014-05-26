@@ -1,0 +1,13 @@
+<a class="user-snippet-link" href="<%= user_url(user) %>"><div class="user-snippet" id="user-<%= user.id %>">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="snippet-pic">
+        <img src="http://www.gravatar.com/avatar/<%= user.email_hash %>?s=100&r=pg">  
+      </div>  
+    </div>    
+    <div class="col-md-6">
+      <h3><%= user.username %></h3>
+    </div>
+  </div>
+</div></a>
+

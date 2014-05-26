@@ -1,0 +1,16 @@
+<% content_for :navbar do %>
+  <%= render 'layouts/nav' %>
+<% end %>
+
+<% content_for :page do %>
+
+<div class="container results-container">
+  <% @matches.each do |biz| %>
+    <%= render partial: 'searches/business_snippet', locals: { business: biz } %>
+  <% end %>  
+  <% if @matches.empty? %>
+  <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any businesses with "<%= @search_term %>" in the name! </h1>
+  <% end %>
+</div>
+
+<% end %>
