@@ -14,12 +14,6 @@
 
 @import "bootstrap";
 
-body a:hover {
-  text-decoration: none;
-  background: transparent !important;
-  color: inherit;
-}
-
 body, html {
   width: 100%;
 }
@@ -27,6 +21,15 @@ body, html {
 body {
   margin: 0;
   padding: 0;
+  
+  a:hover {
+    text-decoration: none;
+    background: transparent !important;
+    color: inherit;
+  }
+  a {
+    color: rgb(51, 51, 51);
+  }
 }
 
 //logo
