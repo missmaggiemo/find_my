@@ -42,8 +42,12 @@ body {
   font-size: 20em;
   text-align: center;
   vertical-align: middle;
-  padding: 40vh 5vw;
+  padding: 8vh 5vw;
   z-index: -1;
+  
+  @media (max-width: 900px) {
+    overflow: hidden;
+  }
 }
 
 .logo.my {
