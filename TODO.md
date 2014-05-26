@@ -14,16 +14,18 @@
 <!-- * Search for businesses by category. -->
 
 
-* Sign up link on log in page.
+<!-- * Sign up link on log in page. -->
 
 
 
-* Why are the user profile and feed broken on my phone?
+<!-- * Why are the user profile and feed broken on my phone? -->
+
+
+Business name search can search for multiple words and narrows down by intersection.
 
 
 
 * Yelp map centers over the bay for less common searches. Can I fix that?
-
 
 
 * Feed should look better.

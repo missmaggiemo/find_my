@@ -28,9 +28,14 @@ class BusinessesController < ApplicationController
     biz_name = params[:biz_name]
     @matches = []
     Business.all.each do |biz|
-      @matches << biz if biz.name.match(/#{biz_name}/i)
+      regex_val = biz.name.match(/#{biz_name}/i) ? 1 : 0
+      intersect_val = (biz.name.downcase.split(' ') & biz_name.downcase.split(' ')).length
+      match_val = intersect_val + regex_val
+      if match_val > 0
+        @matches << [biz, match_val] 
+      end
     end
-    @matches = @matches.sort_by { |biz| (biz.yelp_rating + biz.rating.to_i) * -1 }
+    @matches = @matches.sort_by { |biz, match_val| (match_val * (biz.yelp_rating + biz.rating.to_i)) * -1 }.map { |arr| arr[0] }
     @search_term = biz_name
   end
 
