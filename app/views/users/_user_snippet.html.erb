@@ -1,13 +1,23 @@
-<a class="user-snippet-link" href="<%= user_url(user) %>"><div class="user-snippet" id="user-<%= user.id %>">
+<div class="user-snippet" id="user-<%= user.id %>">
   <div class="row">
-    <div class="col-md-3">
+    <a class="user-snippet-link" href="<%= user_url(user) %>"><div class="col-md-3">
       <div class="snippet-pic">
         <img src="http://www.gravatar.com/avatar/<%= user.email_hash %>?s=100&r=pg">  
       </div>  
-    </div>    
-    <div class="col-md-6">
+    </div></a>
+    <div class="col-md-9">
       <h3><%= user.username %></h3>
+      <div class="first-activity">
+        <% if feed_item.class == Favorite %>
+          <%= render partial: 'users/first_activity_fav', locals: { favorite: feed_item, user: User.find(feed_item.user_id), business: Business.find(feed_item.business_id) } %>
+        <% elsif feed_item.class == Rating %>
+          <%= render partial: 'users/first_activity_rating', locals: { rating: feed_item, user: User.find(feed_item.user_id), business: Business.find(feed_item.business_id) } %>
+        <% elsif feed_item.class == SavedSearch %>
+          <%= render partial: 'users/first_activity_search', locals: { saved_search: feed_item, user: User.find(feed_item.user_id), search: Search.find(feed_item.search_id) } %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div></a>
+  <hr class="user-hr">  
+</div>
 

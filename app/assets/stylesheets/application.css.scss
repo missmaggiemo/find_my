@@ -211,7 +211,7 @@ body {
   border-radius: 10px;
 }
 
-a.biz-snippet-link, a.user-snippet-link {
+a.biz-snippet-link{
   &:hover {
     color: black;
     div.biz-snippet {
@@ -220,7 +220,7 @@ a.biz-snippet-link, a.user-snippet-link {
   }
 }
 
-.biz-hr {
+.biz-hr, .user-hr {
   width: 100%;
   position: relative;
   left: 0;
@@ -457,5 +457,33 @@ a#biz-show-yelp-link {
 }
 
 .results-container {
-  margin: 40px;
+  margin-top: 40px;
+  text-align: center;
+  
+  div.biz-snippet, div.user-snippet {
+    text-align: left;
+    margin: 20px auto;
+  }
+}
+
+.first-activity-text {
+  h4 {
+    display: inline-block;
+  }
+}
+
+div.user-snippet {
+  &:hover {
+    background-color: #EEE;
+  }
+}
+
+.results-length {
+  color: #999;
+  font-style: italic;
+}
+
+.no-results {
+  font-size: 3em;
+  margin: 30vh 10vw;
 }

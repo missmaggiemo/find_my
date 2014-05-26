@@ -1,0 +1,28 @@
+<a class="biz-snippet-link" href="<%= business_path(business) %>"><div class="biz-snippet" id="biz-<%= business.id %>">
+  <div class="row">
+    <div class="col-sm-3 biz-pic">
+      <img src="<%= business.image_url %>" class="img-responsive">
+    </div>
+    <div class="col-sm-9">
+      <h3><%= business.name %></h3>
+      <p>Average Rating: 
+        <% if business.rating %>
+          <span class="rating">
+            <% business.rating.to_i.times do %>
+              <span class="glyphicon glyphicon-star"></span>
+            <% end %>
+            <% if business.rating - business.rating.to_i > 0 %>
+              <span class="glyphicon glyphicon-star-empty"></span>
+            <% end %>
+          </span>  
+        <% else %>
+          <span class="no-rating">Not yet rated.</span>
+        <% end %>
+      </p>
+      <p>Number of Reviews: <%= business.review_count%></p>
+      <p>Address: <%= business.location.display_address %></p>
+      <p>Phone Number: <%= business.display_phone %></p>      
+    </div>
+  </div>
+  <hr class="biz-hr">  
+</div></a>

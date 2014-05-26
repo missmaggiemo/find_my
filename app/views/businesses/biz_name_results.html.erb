@@ -5,11 +5,13 @@
 <% content_for :page do %>
 
 <div class="container results-container">
-  <% @matches.each do |biz| %>
-    <%= render partial: 'searches/business_snippet', locals: { business: biz } %>
-  <% end %>  
-  <% if @matches.empty? %>
-  <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any businesses with "<%= @search_term %>" in the name! </h1>
+  <% unless @matches.empty? %>
+    <h3 class="results-length">There are <%= @matches.length %> businesses with names that match "<%= @search_term %>"...</h3>
+    <% @matches.each do |biz| %>
+      <%= render partial: 'businesses/business_snippet', locals: { business: biz } %>
+    <% end %>  
+  <% else %>
+  <h1 class="no-results"><span class="logo my">Oh no!</span> It looks like there aren't any businesses named "<%= @search_term %>"! </h1>
   <% end %>
 </div>
 

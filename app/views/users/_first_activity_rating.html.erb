@@ -1,0 +1,13 @@
+<div class="first-activity-text">
+    <h4>recently rated</h4>
+    <a href="<%= business_url(business) %>">
+      <h4><%= business.name %>
+        <small><span class="rating">
+          <% rating.stars.to_i.times do %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </span></small>
+      </h4>
+    </a>
+</div>    
+
