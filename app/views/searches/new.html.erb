@@ -1,6 +1,6 @@
 <% content_for :headers do %>
   <% if current_user && current_user.username == 'guest' %>
-  <script src="/assets/shepherd.js"></script>
+  <%= javascript_include_tag 'shepherd' %>
   <% end %>
   <%= render 'searches/new_map_js' %>
 <% end %>
