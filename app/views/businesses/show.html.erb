@@ -205,7 +205,9 @@ function destroyFav ($heart) {
     success: function (resp) {
       console.log(resp);
       $heart.removeClass('favorite');
-      $heart.removeData('fav_id');
+      $heart.data('fav_id', null);
+      $heart.data('user_id', <%= current_user ? current_user.id : 0 %>);
+      $heart.data('biz_id', <%= @business.id %>);
     }
   });
 }
