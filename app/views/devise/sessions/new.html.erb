@@ -13,14 +13,30 @@
           <div class="form-group"><label for="user_password">Password</label>
             <input autocomplete="off" class="form-control" id="user_password" name="user[password]" type="password"></div>
 
-          <div><input class="btn btn-primary" name="commit" type="submit" value="Sign In"></div>
+          <div><input class="btn btn-primary" id="sign-in-btn" name="commit" type="submit" value="Sign In"></div>
       </form>
     </div>    
     
     <div class="user-form-links">
       <%= render "devise/shared/links" %>
     </div>
+    
+    <div id="guest-spacer">
+      <button id="guest-login" class="btn btn-default">Sign In as Guest</button>
+    </div>
 
   </div>
+
+<% end %>
+
+<% content_for :scripts do %>
+
+<script type="text/javascript">
+$('#guest-login').click( function (event) {
+  $('#user_email').val('guest@missmaggiemo.com');
+  $('#user_password').val('testtest');
+  $('#sign-in-btn').trigger('click');
+});
+</script>
 
 <% end %>
