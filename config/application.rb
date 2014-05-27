@@ -23,6 +23,7 @@ module YelpApp
     I18n.enforce_available_locales = false
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts')
 
   end
 end
