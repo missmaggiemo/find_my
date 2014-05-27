@@ -21,7 +21,7 @@
     <div class="col-md-9" id="profile-info-container">
       <div class="profile-header">
         <h1 id="user-welcome"><%= @user.username %>
-          <small id="user_email"><%= @user.email %></small>
+          <small><%= @user.email %></small>
           <% if current_user %>
             <% if @user != current_user && !current_user.friends.include?(@user) %>
               <button 
@@ -102,9 +102,18 @@
 
 <script type="text/javascript">
 
+<% if @user == current_user %>
+$('#user-welcome small').attr('id', 'user_email');
+<% end %>
+
 $('small#user_email').dblclick( function (event) {
-  var inputHtml = "<div class='input-group' id='email-form'><input type='text' name='user[email]' value='' id='user-email-input'><button id='user-email-button' class='btn btn-default'>Update Email</button></div>";
+  var inputHtml = "<div class='input-group' id='email-form'><input type='text' name='user[email]' value='' id='user-email-input' autofocus><button id='user-email-button' class='btn btn-default'>Update Email</button></div>";
   $(this).html(inputHtml);
+});
+
+$('small#user_email').on('blur', '#user-email-input', function (event) {
+  var emailHtml = "<%= @user.email %>";
+  $('small#user_email').html(emailHtml);
 });
 
 $('small#user_email').on('click', '#user-email-button', function(event) {
