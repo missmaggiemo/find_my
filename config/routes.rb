@@ -10,7 +10,7 @@ YelpApp::Application.routes.draw do
   
   devise_for :users
   
-  resources :users
+  resources :users, only: [:show, :update]
   
   get 'users/:id/feed', to: 'users#feed', as: 'user_feed'
   

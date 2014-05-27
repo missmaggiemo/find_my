@@ -21,7 +21,7 @@
     <div class="col-md-9" id="profile-info-container">
       <div class="profile-header">
         <h1 id="user-welcome"><%= @user.username %>
-          <small><%= @user.email %></small>
+          <small id="user_email"><%= @user.email %></small>
           <% if current_user %>
             <% if @user != current_user && !current_user.friends.include?(@user) %>
               <button 
@@ -101,6 +101,32 @@
 <% content_for :scripts do %>
 
 <script type="text/javascript">
+
+$('small#user_email').dblclick( function (event) {
+  var inputHtml = "<div class='input-group' id='email-form'><input type='text' name='user[email]' value='' id='user-email-input'><button id='user-email-button' class='btn btn-default'>Update Email</button></div>";
+  $(this).html(inputHtml);
+});
+
+$('small#user_email').on('click', '#user-email-button', function(event) {
+  event.preventDefault();
+  console.log('clicked');
+  var $emailForm = $('#email-form');
+  var $button = $(this);
+  var email = $('#user-email-input').val();
+  var data = { user: { email: email } };
+  var username = "<%= current_user.username %>";
+  
+  $.ajax({
+    url: '/users/' + username,
+    method: 'patch',
+    data: data,
+    success: function (resp) {
+      console.log(resp.email);
+      $emailForm.replaceWith(resp.email);
+    }
+  });
+});
+
 
   function addFriend ($button) {
     var unfriendHtml = "<button class='btn btn-default friend-btn'><span class='glyphicon glyphicon-asterisk'></span> friend request pending</button>";

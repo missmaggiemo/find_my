@@ -1,6 +1,6 @@
 # TODO
 
-* guided-tour --> button to log them in as a guest user, guided tour upon guest login or button to take tour
+* guided-tour (shepherd)[http://github.hubspot.com/shepherd/docs/welcome/]--> button to log them in as a guest user, guided tour upon guest login or button to take tour
 
 * Yelp map centers over the bay for less common searches. Can I fix that?
 
@@ -11,7 +11,7 @@
 * button to sign in as guest with Trellino --> pre-seeded with lists and cards, etc.
 
 
-* start working on my portfolio-- make asteroids cool
+* start working on my portfolio-- make asteroids cool (pixelated like old video games?)
 
 
 
