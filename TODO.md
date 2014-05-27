@@ -1,55 +1,63 @@
 # TODO
 
-5/26/2014
-
-
-<!-- Users should have a friends tile under their picture, next to their feed. --> <!-- In this tile, friend requests should be at the top.  -->
-
-<!-- Activity (all favorites, ratings, and 10 recent searches, in newest-to-oldest) should be its own page. -->
-
-<!-- When someone “friend”s you, you can approve the friend request, and then the relationship is created? -->
-
-<!-- * Search for users by username or email(?). -->
-
-<!-- * Search for businesses by category. -->
-
-
-<!-- * Sign up link on log in page. -->
-
-
-
-<!-- * Why are the user profile and feed broken on my phone? -->
-
-
-On map:
-
-<!-- * flags need to be killed when you click a new flag -->
-
-<!-- * markers/flags should react to mouse scroll -->
-
-
-
-Users:
-
-* friendly id
-
-
-
-First reactions:
-
-* wants to log in with username search bars-- like that's the login form
-
-
-
-
-
-
-
-
-
-
+* guided-tour --> button to log them in as a guest user, guided tour upon guest login or button to take tour
 
 * Yelp map centers over the bay for less common searches. Can I fix that?
+
+* deploy personal web to AWS S3
+
+
+
+* button to sign in as guest with Trellino --> pre-seeded with lists and cards, etc.
+
+
+* start working on my portfolio-- make asteroids cool
+
+
+
+
+
+
+
+
+
+
+
+
+
+Later, V2
+
+Recommendation System:
+
+Recommend based on categories, number of Yelp reviews (< 100, 100-500, 500-1000, > 1000), and number of stars (+/- 0.5).
+
+Need categories model, catrgories join table. Probably will need to reset DB.
+
+Generate 1 recommendation each time the user logs in. Post it in their feed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 * Feed should look better.
@@ -133,4 +141,3 @@ There's got to be a way to query the Yelp API to infinite scroll through results
 Load data so that I don't have to ping the database? (Just for demo?)
 
 
-User Leaflet for maps? [http://leafletjs.com/](http://leafletjs.com/)
