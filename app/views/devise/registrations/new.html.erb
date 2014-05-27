@@ -26,7 +26,35 @@
   <div class="user-form-links">
     <%= render "devise/shared/links" %>
   </div>
+  
+  <div id="guest-spacer">
+    <button id="guest-login" class="btn btn-default">Sign In as Guest</button>
+  </div>
     
 </div>
+
+<% end %>
+
+<% content_for :scripts do %>
+
+<script type="text/javascript">
+$('#guest-login').click( function (event) {
+  var data = {
+    user: {
+      email: 'guest@missmaggiemo.com',
+      password: 'testtest'
+    }
+  };
+  
+  $.ajax({
+    url: "<%= new_user_session_url %>",
+    method: 'post',
+    data: data,
+    success: function (resp) {
+      window.location = "/";
+    }
+  })
+});
+</script>
 
 <% end %>
