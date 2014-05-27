@@ -1,4 +1,7 @@
 <% content_for :headers do %>
+  <% if current_user.username == 'guest' %>
+  <script src="/assets/shepherd.js"></script>
+  <% end %>
   <%= render 'searches/new_map_js' %>
 <% end %>
 
@@ -21,3 +24,74 @@
   </div>
 <% end %>
 
+
+<% content_for :scripts do %>
+
+<% if current_user.username == 'guest' %>
+
+<script type="text/javascript">
+
+tour = new Shepherd.Tour({
+  defaults: {
+    classes: 'shepherd-theme-arrows',
+    showCancelLink: true,
+    buttons: [{
+      text: 'Next',
+      classes: 'btn btn-default'
+    }]
+  }
+});
+
+var step1 = "Hi! Welcome to <strong>Find<em>my</em></strong>, a humble little project.<br>I'm going to give you a little tour of the features on this page!";
+
+var usernameSearch = "This form searches through usernames and email addresses,<br>so you can find friends without knowing their exact username.";
+
+var bizNameSearch = "This form searches through business names,<br>so you can find restaurants that you're already familiar with.<br>The search results are ranked based on exact matches,<br>near matches, and rating scores.";
+
+var locationSearch = "If you kindly give me permission, your approximate location will appear here.<br>You can use that, or enter another address. As you type,<br>the address will complete for you, like any good address form should.";
+
+var lunchSearch = "Why don't you try searching for <strong>lunch</strong> near you?";
+
+tour.addStep('username-search', {
+  title: 'Welcome!',
+  text: step1,
+  attachTo: 'nav bottom',
+  advanceOn: '.btn click'
+});
+
+tour.addStep('username-search', {
+  title: 'Find your friends here!',
+  text: usernameSearch,
+  attachTo: '#username-search bottom',
+  advanceOn: '.btn click'
+});
+
+tour.addStep('biz-name-search', {
+  title: 'Find your favorite businesses here!',
+  text: bizNameSearch,
+  attachTo: '#biz-name-search bottom',
+  advanceOn: '.btn click'
+});
+
+tour.addStep('search-location', {
+  title: 'Search',
+  text: locationSearch,
+  attachTo: '#search_location',
+  advanceOn: '.btn click'
+});
+
+tour.addStep('search-term', {
+  title: 'Search',
+  text: lunchSearch,
+  attachTo: '#search_term',
+  advanceOn: '.btn click',
+  buttons: false
+});
+
+
+tour.start();
+</script>
+
+<% end %>
+
+<% end %>

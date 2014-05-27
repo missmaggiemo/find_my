@@ -27,7 +27,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-        <li class="dropdown">
+        <li class="dropdown" id="current-user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hi, <%= current_user.username %>! <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li class="link" ><a href="<%= user_feed_url(current_user) %>"><span class="logo my">my</span> feed</a></li>

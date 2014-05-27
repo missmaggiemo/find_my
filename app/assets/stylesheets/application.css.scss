@@ -9,6 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require shepherd-theme-arrows-plain-buttons
+ *= require shepherd-theme-arrows
  *= require_tree .
  */
 
@@ -29,6 +31,20 @@ body {
   }
   a {
     color: rgb(51, 51, 51);
+  }
+
+  a.shepherd-button {
+    text-decoration: none;
+    background: #FFF !important;
+    color: #999 !important;
+    border: #999 1px solid !important;
+  }
+  
+  a.shepherd-button:hover {
+    text-decoration: none;
+    background: #3288E6 !important;
+    color: white !important;
+    border: #3288E6 1px solid !important;
   }
 }
 
