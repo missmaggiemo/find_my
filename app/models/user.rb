@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
  has_many :friend_requests, class_name: "Friendship", foreign_key: "friend_id", primary_key: "id"
  
  has_many :friends, through: :friendships, source: :friend
+ 
+ def friends
+   self.friendships.select { |friend| friend.confirmed }.map(&:friend)
+ end
 
 
  def pending_friendships

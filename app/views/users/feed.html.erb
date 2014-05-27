@@ -127,7 +127,7 @@
       success: function(resp) {
         console.log(resp);
         $btnDiv.html("");
-        $btnDiv.html(confirmHtml);
+        $btnDiv.closest(".friend-pending-container").find("#friend-pending-text").html(confirmHtml);
       }
     });
   }
