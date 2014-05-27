@@ -37,15 +37,14 @@ gem 'oauth', '0.4.7'
 gem 'addressable'
 gem 'rest-client'
 gem 'devise'
+gem 'friendly_id'
+
 
 group :development do
-
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
-
 end
-
 
 group :development, :test do
   # gem 'sqlite3', '1.3.8'
@@ -67,7 +66,6 @@ group :test do
   gem 'growl', '1.0.3'
   # for guard-rspec
 end
-
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false

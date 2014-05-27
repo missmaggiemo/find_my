@@ -1,5 +1,8 @@
 
 class Business < ActiveRecord::Base
+  extend FriendlyId
+  
+  friendly_id :id_string
   
   has_one :location
   

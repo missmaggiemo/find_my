@@ -23,9 +23,9 @@
 
 On map:
 
-* flags need to be killed when you click a new flag
+<!-- * flags need to be killed when you click a new flag -->
 
-* markers/flags should react to mouse scroll
+<!-- * markers/flags should react to mouse scroll -->
 
 
 

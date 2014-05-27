@@ -57,15 +57,12 @@
     });
     
     var tile = document.getElementById(marker.title);
-    console.log(tile);
     
     google.maps.event.addDomListener(tile, 'mouseover', function () {
-      console.log('bounce');
       marker.setAnimation(google.maps.Animation.BOUNCE);
     });
     
     google.maps.event.addDomListener(tile, 'mouseleave', function () {
-      console.log('no bounce');
       marker.setAnimation(null);
     });    
     

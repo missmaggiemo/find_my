@@ -3,11 +3,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:feed]
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(username: params[:id])
   end
   
   def feed
-    @user = User.find(params[:id])
+    @user = User.find_by(username: params[:id])
     redirect_to user_url(@user) unless current_user == @user
   end
   
