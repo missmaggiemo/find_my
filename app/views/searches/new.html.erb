@@ -1,5 +1,5 @@
 <% content_for :headers do %>
-  <% if current_user.username == 'guest' %>
+  <% if current_user && current_user.username == 'guest' %>
   <script src="/assets/shepherd.js"></script>
   <% end %>
   <%= render 'searches/new_map_js' %>
@@ -27,7 +27,7 @@
 
 <% content_for :scripts do %>
 
-<% if current_user.username == 'guest' %>
+<% if current_user && current_user.username == 'guest' %>
 
 <script type="text/javascript">
 
