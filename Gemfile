@@ -38,6 +38,8 @@ gem 'addressable'
 gem 'rest-client'
 gem 'devise'
 gem 'friendly_id'
+gem 'newrelic_rpm'
+
 
 
 group :development do
