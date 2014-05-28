@@ -1,17 +1,5 @@
 # TODO
 
-* guided-tour (shepherd)[http://github.hubspot.com/shepherd/docs/welcome/]--> button to log them in as a guest user, guided tour upon guest login or button to take tour
-
-* Yelp map centers over the bay for less common searches. Can I fix that?
-
-* deploy personal web to AWS S3
-
-
-
-* button to sign in as guest with Trellino --> pre-seeded with lists and cards, etc.
-
-
-* start working on my portfolio-- make asteroids cool (pixelated like old video games?)
 
 
 
@@ -75,11 +63,6 @@ _You locked yourself out of the Geocoding API on 5/21/2014 for 24 hrs. Good job,
 
 ### Searches
 
-Save searches automagically when user is logged in. Save 10 most recent searches (and that's it).
-
-
-
-Fancy links for searches?
 
 **searches aren't objects-- just calls a get method, etc. Users can save searches by saving the links to the searches.
 
