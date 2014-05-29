@@ -58,14 +58,9 @@
     </div>
 
     <div class="col-md-9" id="profile-info-container">
-      <div class="profile-header">
-        <h1 id="user-welcome"><%= @user.username %>
-          <small><%= @user.email %></small>
-        </h1>
-      </div>  
+      <h2><span class="logo my">my</span> feed</h2>
       <div class="info" id="feed">
         <div class="info-container-scroll">
-          <h2><span class="logo my">my</span> feed</h2>
           <% unless @user.feed.empty? %>
             <%= render partial: 'users/feed', locals: { feed: @user.feed } %>
           <% else %>
