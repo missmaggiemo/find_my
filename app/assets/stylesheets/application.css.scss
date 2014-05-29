@@ -454,6 +454,10 @@ a#biz-show-yelp-link {
   padding: 20px;
   background-color: #EEE;
   border-radius: 10px;
+
+  @media (min-width: 992px) {
+   max-width: 800px; 
+  }
 }
 
 .yelp-logo {
