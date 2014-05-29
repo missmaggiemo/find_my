@@ -1,6 +1,8 @@
 # TODO
 
-
+Smooth scroll to the business tile when you hover over a marker on the search results page.
+ 
+Look into caching for mobile-- my app is super slow on my phone.
 
 
 
