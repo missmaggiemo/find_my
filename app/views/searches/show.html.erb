@@ -17,7 +17,7 @@
   <div id="results-list">
   
     <% @business_results.each do |business| %>
-      <%= render partial: 'business_snippet', locals: {business: business} %>
+      <%= render partial: 'businesses/business_snippet', locals: {business: business} %>
     <% end %>
   
   </div>  

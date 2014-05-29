@@ -224,8 +224,8 @@ body {
     padding-bottom: 20px;
     
     a:first-child {
-      div {
-       margin: 20px 0 0 0; 
+      .biz-snippet {
+       margin: 30px 0 0 0; 
       }
     }
   }  
@@ -239,6 +239,12 @@ body {
   padding: 20px;
   width: 80%;
   border-radius: 10px;
+}
+
+.biz-snippet {
+  h3 {
+    margin-top: 0;
+  }
 }
 
 a.biz-snippet-link{

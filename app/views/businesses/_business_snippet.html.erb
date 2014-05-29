@@ -1,9 +1,9 @@
 <a class="biz-snippet-link" href="<%= business_path(business) %>"><div class="biz-snippet" id="biz-<%= business.id %>" name="biz-<%= business.id %>">
   <div class="row">
-    <div class="col-sm-3 biz-pic">
+    <div class="col-xs-3 biz-pic">
       <img src="<%= business.image_url %>" class="img-responsive">
     </div>
-    <div class="col-sm-9">
+    <div class="col-xs-9">
       <h3><%= business.name %></h3>
       <p>Average Rating: 
         <% if business.rating %>
