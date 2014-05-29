@@ -31,19 +31,29 @@
       });
     
       var infowindow = new google.maps.InfoWindow();
-      
-      var html = "<div class='map-info'><a href='#biz-<%= business.id %>' class='marker-link' data-id='<%= business.id %>'><strong><%= business.name %></strong><br><%= business.location.display_address %></a></div>";
-    
-      bindInfoWindow(marker, map, infowindow, html);
-    
+
+      var html = "<div class='map-info'><strong><%= business.name %></strong><br><%= business.location.display_address %></div>";
+
+      bindMarkerEvents(marker, map, infowindow, html);
+        
     <% end %>
     
   }
   
-  function bindInfoWindow(marker, map, infowindow, html) {
+  function bindMarkerEvents(marker, map, infowindow, html) {
     google.maps.event.addListener(marker, 'click', function() {
+
+      var $target = $('div#' + this.title);
+            
+      var scrollOffset = $('#results-list').find('a').first().offset().top;
+                  
+      // smooth scroll      
+        $('#results-list').animate({
+          scrollTop: $target.offset().top - scrollOffset - 20
+        }, 700);        
+
       var infoWindows = document.getElementsByClassName('map-info');
-      
+    
       if (infoWindows.length > 0) {
         [].forEach.call(infoWindows, function (el, index, array) {
           // what a mess I can't believe it but you know what it works
@@ -51,9 +61,10 @@
           infoDiv.parentElement.removeChild(infoDiv);
         });
       }
-      
+    
       infowindow.setContent(html);
       infowindow.open(map, marker);
+      
     });
     
     var tile = document.getElementById(marker.title);
@@ -66,7 +77,7 @@
       marker.setAnimation(null);
     });    
     
-  } 
+  }; 
   
   google.maps.event.addDomListener(window, 'load', initialize);
   
