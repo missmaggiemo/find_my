@@ -102,7 +102,8 @@
 
 <script type="text/javascript">
 
-<% if @user == current_user %>
+<% if current_user && @user == current_user %>
+
 $('#user-welcome small').attr('id', 'user_email');
 <% end %>
 
