@@ -107,7 +107,7 @@
   $('#user-welcome small').attr('id', 'user_email');
 
   $('small#user_email').dblclick( function (event) {
-    var inputHtml = "<div class='input-group' id='email-form'><input type='text' name='user[email]' value='' id='user-email-input' autofocus><button id='user-email-button' class='btn btn-default'>Update Email</button></div>";
+    var inputHtml = "<div class='input-group' id='email-form'><input type='text' name='user[email]' value='' placeholder='<%= current_user.email %>' id='user-email-input' autofocus><button id='user-email-button' class='btn btn-default'>Update Email</button></div>";
     $(this).html(inputHtml);
   });
 
