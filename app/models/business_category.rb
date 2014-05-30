@@ -1,6 +1,10 @@
 class BusinessCategory < ActiveRecord::Base
 
-validate :business_id, :category_id, presence: true  
+  validate :business_id, :category_id, presence: true  
+  
+  belongs_to :category
+  
+  belongs_to :business
 
   def self.yelp_business_json_to_categories(biz_id, json)
     business = Business.find(biz_id)

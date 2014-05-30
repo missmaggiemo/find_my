@@ -10,6 +10,10 @@ class Business < ActiveRecord::Base
   
   has_many :yelp_reviews
   
+  has_many :business_categories
+  
+  has_many :categories, through: :business_categories, source: :category
+  
   def rating
     unless self.ratings.empty?
       self.ratings.map(&:stars).inject(&:+) / self.ratings.length.to_f
