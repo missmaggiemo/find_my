@@ -12,6 +12,7 @@ class BusinessesController < ApplicationController
   def show
     @center = @business.location.coordinates
     biz_results = JSON.parse(YelpSession.get_yelp_json_for_business(@business.id_string))
+    BusinessCategory.yelp_business_json_to_categories(@business.id, biz_results)
     @yelp_reviews = YelpReview.yelp_business_json_to_reviews(@business.id, biz_results)
     
     # categories should go here

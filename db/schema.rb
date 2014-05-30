@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529190217) do
+ActiveRecord::Schema.define(version: 20140530164620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_categories", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "business_categories", ["business_id"], name: "index_business_categories_on_business_id", using: :btree
+  add_index "business_categories", ["category_id", "business_id"], name: "index_business_categories_on_category_id_and_business_id", unique: true, using: :btree
+  add_index "business_categories", ["category_id"], name: "index_business_categories_on_category_id", using: :btree
 
   create_table "businesses", force: true do |t|
     t.string   "name",                 null: false
@@ -38,6 +49,16 @@ ActiveRecord::Schema.define(version: 20140529190217) do
     t.boolean  "is_closed"
     t.float    "yelp_rating"
   end
+
+  create_table "categories", force: true do |t|
+    t.string   "title",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category_alias"
+  end
+
+  add_index "categories", ["category_alias"], name: "index_categories_on_category_alias", unique: true, using: :btree
+  add_index "categories", ["title"], name: "index_categories_on_title", unique: true, using: :btree
 
   create_table "favorites", force: true do |t|
     t.integer  "user_id",     null: false
