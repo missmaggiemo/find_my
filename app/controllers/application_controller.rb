@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     if request.referer == sign_in_url
       super
     else
-      user.generate_recommendation
       stored_location_for(user) || request.referer || root_path
     end
   end
