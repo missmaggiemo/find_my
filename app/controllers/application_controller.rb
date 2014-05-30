@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
     if request.referer == registration_url
       super
     else
-      stored_location_for(user) || request.referer || root_path
+      root_path
     end
   end
 
