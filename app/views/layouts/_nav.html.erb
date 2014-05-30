@@ -37,8 +37,8 @@
           </ul>
         </li>
         <% else %>
-        <li><a href="<%= new_user_session_url %>" data-toggle="modal" data-target="#sign-in-modal">Sign <span class="logo my">In</span></a></li>
-        <li><a href="<%= new_user_registration_url %>" data-toggle="modal" data-target="#sign-up-modal">Sign <span class="logo my">Up</span></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#sign-in-modal">Sign <span class="logo my">In</span></a></li>
+        <li><a href="#" data-toggle="modal" data-target="#sign-up-modal">Sign <span class="logo my">Up</span></a></li>
         <% end %>
 
       </ul>
@@ -50,7 +50,44 @@
 <!-- Modal -->
 <div class="modal fade user-form-modal" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="sign-in-modal" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">      
+    <div class="modal-content">  
+
+        <div class="user-form sign-in">
+
+          <h2>Sign <span class="logo my">In</span></h2>
+
+          <div class="form-box">
+            <form accept-charset="UTF-8" action="/users/sign_in" class="new_user" id="new_user" method="post">
+              <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><%= form_auth %></div>
+                <div class="form-group"><label for="user_email">Email</label>
+                <input autofocus="autofocus" class="form-control" id="user_email" name="user[email]" type="email" value=""></div>
+
+                <div class="form-group"><label for="user_password">Password</label>
+                  <input autocomplete="off" class="form-control" id="user_password" name="user[password]" type="password"></div>
+
+                <div><input class="btn btn-primary" id="sign-in-btn" name="commit" type="submit" value="Sign In"></div>
+            </form>
+          </div>    
+    
+          <div class="user-form-links">
+            <%= render "devise/shared/links" %>
+          </div>
+    
+          <div id="guest-spacer">
+            <button id="guest-login-1" class="btn btn-default">Sign In as Guest</button>
+          </div>
+
+        </div>
+
+
+      <script type="text/javascript">
+      $('#guest-login-1').click( function (event) {
+        $('#user_email').val('guest@missmaggiemo.com');
+        $('#user_password').val('testtest');
+        $('#sign-in-btn').trigger('click');
+      });
+      </script>
+
     </div>
   </div>
 </div>
@@ -59,6 +96,60 @@
 <div class="modal fade user-form-modal" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="sign-in-modal" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
+      
+      <div class="user-form sign-up">
+        <h2>Sign <span class="logo my">Up</span></h2>
+
+        <div class="form-box">
+          <form accept-charset="UTF-8" action="/users" class="new_user" id="new_user" method="post">
+            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="✓"><%= form_auth %></div>
+
+              <div class="form-group"><label for="user_email">Email</label>
+              <input autofocus="autofocus" class="form-control" id="user_email" name="user[email]" type="email" value=""></div>
+
+              <div class="form-group"><label for="user_username">Username</label>
+              <input autofocus="autofocus" class="form-control" id="user_username" name="user[username]" type="text" value=""></div>
+
+              <div class="form-group"><label for="user_password">Password</label>
+                <input autocomplete="off" class="form-control" id="user_password" name="user[password]" type="password"></div>
+
+              <div class="form-group"><label for="user_password_confirmation">Password confirmation</label>
+                <input autocomplete="off" class="form-control" id="user_password_confirmation" name="user[password_confirmation]" type="password"></div>
+
+              <div><input class="btn btn-primary" name="commit" type="submit" value="Sign Up"></div>
+          </form>
+        </div>
+  
+        <div class="user-form-links">
+          <%= render "devise/shared/links" %>
+        </div>
+  
+        <div id="guest-spacer">
+          <button id="guest-login-2" class="btn btn-default">Sign In as Guest</button>
+        </div>
+    
+      </div>
+
+      <script type="text/javascript">
+      $('#guest-login-2').click( function (event) {
+        var data = {
+          user: {
+            email: 'guest@missmaggiemo.com',
+            password: 'testtest'
+          }
+        };
+  
+        $.ajax({
+          url: "<%= new_user_session_url %>",
+          method: 'post',
+          data: data,
+          success: function (resp) {
+            window.location = "/";
+          }
+        })
+      });
+      </script>
+      
     </div>
   </div>
 </div>
