@@ -5,13 +5,13 @@
     </div>
     <div class="col-xs-9">
       <h3><%= business.name %></h3>
-      <p>Average Rating: 
-        <% if business.rating %>
+      <p>Average Yelp Rating: 
+        <% if business.yelp_rating %>
           <span class="rating">
-            <% business.rating.to_i.times do %>
+            <% business.yelp_rating.to_i.times do %>
               <span class="glyphicon glyphicon-star"></span>
             <% end %>
-            <% if business.rating - business.rating.to_i > 0 %>
+            <% if business.yelp_rating - business.rating.to_i > 0 %>
               <span class="glyphicon glyphicon-star-empty"></span>
             <% end %>
           </span>  
