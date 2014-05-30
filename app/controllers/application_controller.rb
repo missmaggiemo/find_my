@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(user)
     sign_in_url = url_for(:action => 'new', :controller => 'sessions', :only_path => false, :protocol => 'http')
-    if request.referer == sign_in_url
-      super
+    if request.referer == new_user_session_url || request.referer == new_user_registration_url
+      root_path
     else
       stored_location_for(user) || request.referer || root_path
     end
@@ -22,10 +22,10 @@ class ApplicationController < ActionController::Base
   
   def after_sign_up_path_for(user)
     registration_url = url_for(:action => 'new', :controller => 'users', :only_path => false, :protocol => 'http')
-    if request.referer == registration_url
-      super
-    else
+    if request.referer == new_user_session_url || request.referer == new_user_registration_url
       root_path
+    else
+      stored_location_for(user) || request.referer || root_path
     end
   end
 
