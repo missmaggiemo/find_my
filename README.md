@@ -1,10 +1,8 @@
 # README
 
-### Welcome to find _my_, my final project for App Academy.
+### Welcome to find_my_, my final project for App Academy.
 
-So, like, it's basically... A redesign of Yelp. 
-
-Yelp is ugly and junked up with features. This app aims to be neither of those things, while still allowing you to search for businesses, rate them, review them, and 'favorite' the ones you like best.
+Yelp is ugly and junked up with features. This app aims to be neither of those things, while still allowing you to search for businesses, rate businesses, and 'favorite' the ones you like best.
 
 Enjoy!
 
