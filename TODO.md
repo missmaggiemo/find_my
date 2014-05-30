@@ -1,29 +1,32 @@
 # TODO
 
-<!-- Smooth scroll to the business tile when you hover over a marker on the search results page. -->
- 
-Look into caching for mobile-- my app is super slow on my phone.
-
-
-
-
-
-
-
-
-
-
-
-
-Later, V2
-
 Recommendation System:
 
-Recommend based on categories, number of Yelp reviews (< 100, 100-500, 500-1000, > 1000), and number of stars (+/- 0.5).
+** Recommend businesses based on businesses that you've rated (5 stars) or favorited.
 
-Need categories model, catrgories join table. Probably will need to reset DB.
+** Recommend based on categories, number of Yelp reviews (< 100, 100-500, 500-1000, > 1000), and number of stars (+/- 0.5).
 
-Generate 1 recommendation each time the user logs in. Post it in their feed.
+* Need categories model, catrgories join table. Probably will need to reset DB.
+
+* Recommendations model: user_id, biz_id, viewed (bool)
+
+* Generate 1 recommendation each time the user logs in. Post it above their feed.
+
+* Have a 'new recommendation' button on the feed page. Generate a modal when clicked with the business tile?
+
+
+
+
+
+
+<!-- Smooth scroll to the business tile when you hover over a marker on the search results page. -->
+ 
+<!-- Look into caching for mobile- my app is super slow on my phone. -->
+
+
+
+
+
 
 
 
