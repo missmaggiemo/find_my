@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-md-9" id="profile-info-container">
-      <h2><span class="logo my">my</span> recommendations <span id="new_rec" class="glyphicon glyphicon-refresh"></span></h2>
+      <h2><span class="logo my">my</span> recommendations <span id="new_rec" data-user_id="<%= @user.id %>" class="glyphicon glyphicon-refresh"></span></h2>
       <div class="info" id="recommendations">
         <div class= "info-container-scroll">
           <% unless @user.new_recommendations.empty? %>
@@ -150,6 +150,39 @@
     ignoreFriend($button);
   });
 
+</script>
+
+<script type="text/javascript">
+
+$("#recommendations").on("click", ".rec-url", function (event) {
+  var $bizUrl = $(this);
+  var recId = $bizUrl.data('rec_id');
+  
+  $.ajax({
+    url: '/recommendations/' + recId,
+    method: 'patch',
+    data: {recommendation: { viewed: true }},
+    success: function(resp) {
+      // console.log(resp);
+    }
+  });
+});
+
+$("#new_rec").click( function (event) {
+  event.preventDefault();
+  var userId = $(this).data('user_id');
+  var currentUrl = window.location.href;
+  $.ajax({
+    url: '/users/' + userId + '/recommendation',
+    method: 'get',
+    success: function (resp) {
+      window.location = window.location.href;
+    }
+  });
+  // refresh recs
+  
+});
+  
 </script>
 
 <% end %>

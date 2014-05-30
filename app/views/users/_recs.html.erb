@@ -5,7 +5,7 @@
         <img src="<%= rec.business.image_url %>" class="img-responsive">
     </div>
     <div class="col-sm-9 rec-text">
-        <a href="<%= business_url(rec.business) %>">
+        <a class="rec-url" data-rec_id="<%= rec.id %>" href="<%= business_url(rec.business) %>">
           <h4><%= rec.business.name %>
             <br>
             Average Yelp Rating:
