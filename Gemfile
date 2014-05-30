@@ -39,6 +39,8 @@ gem 'rest-client'
 gem 'devise'
 gem 'friendly_id'
 gem 'newrelic_rpm'
+gem 'memcachier'
+gem 'dalli'
 
 
 
