@@ -32,13 +32,13 @@ class User < ActiveRecord::Base
 
     viable_categories = []
 
-    if self.favorites
+    unless self.favorites.empty?
       most_recent_fav = self.favorites.first.business
       viable_categories = viable_categories + most_recent_fav.categories
     end
 
 
-    if self.ratings
+    unless self.ratings.empty?
       most_recent_rating = self.ratings.select { |rate| rate.stars >= 4 }.first.business
       viable_categories = viable_categories + most_recent_rating.categories
     end
