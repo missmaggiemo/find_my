@@ -28,30 +28,41 @@ class User < ActiveRecord::Base
  
  def generate_recommendation
  
-   possible_recs = []
-   
-   most_recent_fav = self.favorites.first.business
-   
-   most_recent_rating = self.ratings.select { |rate| rate.stars >= 4 }.first.business
-   
-   viable_categories = most_recent_fav.categories | most_recent_rating.categories
+    possible_recs = []
 
-   # how do I find businesses based on categories?
-   
-   viable_categories.each do |cat|
-     possible_recs = possible_recs | cat.businesses
-   end
-   
-   possible_recs = possible_recs.sort_by { |biz| (biz.categories & viable_categories).length + biz.yelp_rating }.reverse
-      
-   possible_recs.each do |biz|
-     unless Recommendation.find_by(user_id: self.id, business_id: biz.id)
-       Recommendation.create(user_id: self.id, business_id: biz.id, viewed: false)
-       break
-     end
-   end
-   
-   self.new_recommendations.first
+    viable_categories = []
+
+    if self.favorites
+      most_recent_fav = self.favorites.first.business
+      viable_categories = viable_categories + most_recent_fav.categories
+    end
+
+
+    if self.ratings
+      most_recent_rating = self.ratings.select { |rate| rate.stars >= 4 }.first.business
+      viable_categories = viable_categories + most_recent_rating.categories
+    end
+
+    viable_categories.uniq!
+    
+    return nil if viable_categories.empty?
+
+    # how do I find businesses based on categories?
+
+    viable_categories.each do |cat|
+      possible_recs = possible_recs | cat.businesses
+    end
+
+    possible_recs = possible_recs.sort_by { |biz| (biz.categories & viable_categories).length + biz.yelp_rating }.reverse
+  
+    possible_recs.each do |biz|
+      unless Recommendation.find_by(user_id: self.id, business_id: biz.id)
+        Recommendation.create(user_id: self.id, business_id: biz.id, viewed: false)
+        break
+      end
+    end
+
+    self.new_recommendations.first
 
  end
  
