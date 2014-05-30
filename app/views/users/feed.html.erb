@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-md-9" id="profile-info-container">
-      <h2><span class="logo my">my</span> recommendations <span id="new_rec" data-user_id="<%= @user.id %>" class="glyphicon glyphicon-refresh"></span></h2>
+      <h2><span class="logo my">my</span> recommendations <small><a href="#"><span id="new_rec" data-user_id="<%= @user.id %>" class="glyphicon glyphicon-refresh"></span></a></small></h2>
       <div class="info" id="recommendations">
         <div class= "info-container-scroll">
           <% unless @user.new_recommendations.empty? %>
