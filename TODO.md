@@ -6,7 +6,7 @@ Recommendation System:
 
 ** Recommend based on categories, number of Yelp reviews (< 100, 100-500, 500-1000, > 1000), and number of stars (+/- 0.5).
 
-* Need categories model, catrgories join table. Probably will need to reset DB.
+<!-- * Need categories model, catrgories join table. Probably will need to reset DB. -->
 
 * Recommendations model: user_id, biz_id, viewed (bool)
 
