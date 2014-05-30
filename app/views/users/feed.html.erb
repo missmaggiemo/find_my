@@ -58,6 +58,17 @@
     </div>
 
     <div class="col-md-9" id="profile-info-container">
+      <h2><span class="logo my">my</span> recommendations <span id="new_rec" class="glyphicon glyphicon-refresh"></span></h2>
+      <div class="info" id="recommendations">
+        <div class= "info-container-scroll">
+          <% unless @user.new_recommendations.empty? %>
+            <%= render partial: 'users/recs', locals: { recs: @user.new_recommendations[0, 5] } %>
+          <% else %>
+            <h2><small>You don't have any recommendations yet!</small></h2>
+          <% end %>
+        </div>
+      </div>
+      
       <h2><span class="logo my">my</span> feed</h2>
       <div class="info" id="feed">
         <div class="info-container-scroll">

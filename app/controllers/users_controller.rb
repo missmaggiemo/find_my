@@ -14,11 +14,16 @@ class UsersController < ApplicationController
       render json: "User #{params[:id]} doesn't exist"
     end
   end
-
   
   def feed
     @user = User.find_by(username: params[:id])
     redirect_to user_url(@user) unless current_user == @user
+  end
+  
+  def recommendation
+    @user = User.find(params[:id])
+    @rec = @user.generate_recommendation
+    render json: @rec, include: :business
   end
   
   def username_results

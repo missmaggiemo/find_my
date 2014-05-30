@@ -1,0 +1,25 @@
+<% recs.each do |rec| %>
+<div class="rec-item">
+  <div class="row rec-row">
+    <div class="col-sm-3 rec-pic">
+        <img src="<%= rec.business.image_url %>" class="img-responsive">
+    </div>
+    <div class="col-sm-9 rec-text">
+        <a href="<%= business_url(rec.business) %>">
+          <h4><%= rec.business.name %>
+            <br>
+            Average Yelp Rating:
+            <span class="rating">
+              <% rec.business.yelp_rating.to_i.times do %>
+                <span class="glyphicon glyphicon-star"></span>
+              <% end %>
+              <% if rec.business.yelp_rating - rec.business.rating.to_i > 0 %>
+                <span class="glyphicon glyphicon-star-empty"></span>
+              <% end %>
+            </span>  
+          </h4>
+        </a>
+    </div>    
+  </div>
+</div>
+<% end %>

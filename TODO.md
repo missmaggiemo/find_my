@@ -8,11 +8,13 @@ Recommendation System:
 
 <!-- * Need categories model, catrgories join table. Probably will need to reset DB. -->
 
-* Recommendations model: user_id, biz_id, viewed (bool)
-
-* Generate 1 recommendation each time the user logs in. Post it above their feed.
+<!-- * Recommendations model: user_id, biz_id, viewed (bool) -->
 
 * Have a 'new recommendation' button on the feed page. Generate a modal when clicked with the business tile?
+
+* Recs are marked as viewed when a user visits the URL.
+
+* Let users dismiss recommendations. (Mark as viewed, go away.)
 
 
 

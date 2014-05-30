@@ -21,10 +21,49 @@ class User < ActiveRecord::Base
  
  has_many :friends, through: :friendships, source: :friend
  
+ has_many :recommendations
+ 
+ 
+ 
+ 
+ def generate_recommendation
+ 
+   possible_recs = []
+   
+   most_recent_fav = self.favorites.first.business
+   
+   most_recent_rating = self.ratings.select { |rate| rate.stars >= 4 }.first.business
+   
+   viable_categories = most_recent_fav.categories | most_recent_rating.categories
+
+   # how do I find businesses based on categories?
+   
+   viable_categories.each do |cat|
+     possible_recs = possible_recs | cat.businesses
+   end
+   
+   possible_recs = possible_recs.sort_by { |biz| (biz.categories & viable_categories).length + biz.yelp_rating }.reverse
+      
+   possible_recs.each do |biz|
+     unless Recommendation.find_by(user_id: self.id, business_id: biz.id)
+       Recommendation.create(user_id: self.id, business_id: biz.id, viewed: false)
+       break
+     end
+   end
+   
+   self.new_recommendations.first
+
+ end
+ 
+ 
+ def new_recommendations
+   Recommendation.where(user_id: self.id, viewed: false).order(created_at: :desc)
+ end
+ 
+ 
  def friends
    self.friendships.select { |friend| friend.confirmed }.map(&:friend)
  end
-
 
  def pending_friendships
    self.friend_requests.select { |req| !req.confirmed }.map { |req| [req, User.find(req.user_id)] }
@@ -61,7 +100,6 @@ class User < ActiveRecord::Base
  def activity
    self.favorites + self.ratings + self.saved_searches
  end
-
  
  def feed
    feed_array = self.recent_favorites + self.recent_ratings + self.recent_searches

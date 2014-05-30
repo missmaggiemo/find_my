@@ -14,6 +14,8 @@ YelpApp::Application.routes.draw do
   
   get 'users/:id/feed', to: 'users#feed', as: 'user_feed'
   
+  get 'users/:id/recommendation', to: 'users#recommendation', as: 'user_rec'
+  
   resources :businesses, only: [:show]
 
   resources :searches, only: [:create, :new, :show]

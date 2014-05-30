@@ -14,6 +14,8 @@ class Business < ActiveRecord::Base
   
   has_many :categories, through: :business_categories, source: :category
   
+  has_many :recommendations
+  
   def rating
     unless self.ratings.empty?
       self.ratings.map(&:stars).inject(&:+) / self.ratings.length.to_f
@@ -39,11 +41,17 @@ class Business < ActiveRecord::Base
       snippet_text: json["snippet_text"],
       id_string: json["id"]
     )
+    
+    categories_json = json["categories"]
       
     # this could all be totally broken because I can't test it right now
     unless biz = Business.find_by(id_string: new_biz.id_string)
       new_biz.save!
+      categories_json.each do |cat_json|
+        BusinessCategory.json_to_category(new_biz.id, cat_json)
+      end
     end
+    
     biz || new_biz
   end
   

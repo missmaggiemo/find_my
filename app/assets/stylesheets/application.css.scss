@@ -308,15 +308,13 @@ a.biz-snippet-link{
     padding: 5%;
     background-color: #EEE;
     border-radius: 10px;
-    min-height: 60vh;
-    max-height: 100vh;
+    
     overflow: hidden;
     
     .info-container-scroll {
       overflow: auto;
       width: 110%;
       height: 100%;
-      max-height: 100vh;
     }
   
     p {
@@ -326,6 +324,24 @@ a.biz-snippet-link{
     h2 {
       margin-top: 0;
     }
+  }
+  
+  .info#recommendations {
+    max-height: 400px;
+    
+    .info-container-scroll {
+      max-height: 400px;
+    }
+  }
+  
+  .info#feed {
+    min-height: 60vh;
+    max-height: 100vh;
+    
+    .info-container-scroll {
+      max-height: 100vh;
+    }
+    
   }    
 }
 
@@ -404,10 +420,10 @@ h2.friends-header {
 }
 
 
-.feed-item {
+.feed-item, .rec-item {
   margin: 20px;
       
-  .feed-pic {
+  .feed-pic, .rec-pic {
     max-height: 100px;
     
     img {
