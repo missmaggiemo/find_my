@@ -28,6 +28,10 @@ Recommendation System:
 
 
 
+Tile images in feed with text on top.
+
+** If you have images, make them as big as is manageable.
+
 
 
 

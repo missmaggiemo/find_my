@@ -305,7 +305,7 @@ a.biz-snippet-link{
   .info {
     text-align: left;
     margin: 20px 0 20px 0;
-    padding: 5%;
+    padding: 15px;
     background-color: #EEE;
     border-radius: 10px;
     
@@ -330,7 +330,7 @@ a.biz-snippet-link{
     max-height: 400px;
     
     .info-container-scroll {
-      max-height: 400px;
+      max-height: 375px;
     }
   }
   
@@ -339,7 +339,7 @@ a.biz-snippet-link{
     max-height: 100vh;
     
     .info-container-scroll {
-      max-height: 100vh;
+      max-height: 95vh;
     }
     
   }    
