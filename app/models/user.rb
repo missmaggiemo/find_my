@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
     possible_recs = possible_recs.sort_by { |biz| (biz.categories & viable_categories).length + biz.yelp_rating }.reverse
   
     possible_recs.each do |biz|
-      unless Recommendation.find_by(user_id: self.id, business_id: biz.id)
+      unless Recommendation.find_by(user_id: self.id, business_id: biz.id) || self.visited_businesses.include?(biz)
         Recommendation.create(user_id: self.id, business_id: biz.id, viewed: false)
         break
       end
@@ -70,7 +70,12 @@ class User < ActiveRecord::Base
  def new_recommendations
    Recommendation.where(user_id: self.id, viewed: false).order(created_at: :desc)
  end
- 
+
+
+  def visited_businesses
+    self.ratings.map(&:business) | self.favorites.map(&:business)
+  end
+
  
  def friends
    self.friendships.select { |friend| friend.confirmed }.map(&:friend)
