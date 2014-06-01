@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
 
 
   def visited_businesses
-    self.ratings.map(&:business) | self.favorites.map(&:business)
+    (self.ratings + self.favorites).sort_by { |el| el.created_at }.reverse.map(&:business)
   end
 
  
