@@ -31,19 +31,12 @@ class User < ActiveRecord::Base
     possible_recs = []
 
     viable_categories = []
+    
+    visited = self.visited_businesses
 
-    unless self.favorites.empty?
-      most_recent_fav = self.favorites.first.business
-      viable_categories = viable_categories + most_recent_fav.categories
+    unless visited.empty?
+      viable_categories = visited[0, 3].map(&:categories).flatten.uniq
     end
-
-
-    unless self.ratings.empty?
-      most_recent_rating = self.ratings.select { |rate| rate.stars >= 4 }.first.business
-      viable_categories = viable_categories + most_recent_rating.categories
-    end
-
-    viable_categories.uniq!
     
     return nil if viable_categories.empty?
 
@@ -56,7 +49,7 @@ class User < ActiveRecord::Base
     possible_recs = possible_recs.sort_by { |biz| (biz.categories & viable_categories).length + biz.yelp_rating }.reverse
   
     possible_recs.each do |biz|
-      unless Recommendation.find_by(user_id: self.id, business_id: biz.id) || self.visited_businesses.include?(biz)
+      unless visited.include?(biz) || Recommendation.find_by(user_id: self.id, business_id: biz.id)
         Recommendation.create(user_id: self.id, business_id: biz.id, viewed: false)
         break
       end
