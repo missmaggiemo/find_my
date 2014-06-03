@@ -17,3 +17,12 @@ This app utilizes these APIs:
 [Google Maps](https://developers.google.com/maps/web/) 
 
 [Google Geocoding](https://developers.google.com/maps/documentation/geocoding/)
+
+#### Upcoming Features (in order of ambition)
+
+* Incorporate FourSquare and Google Places.
+
+* Businesses should have hours of operation. (Need more than just Yelp's API.)
+
+* Improvements to the recommendation algorithm. Perhaps recommend based on other users?
+
