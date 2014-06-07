@@ -3,6 +3,8 @@
 
 Upcoming features:
 
+* Tweak design of user pages to make them easier to navigate
+
 * SSL
 
 * Let users dismiss recommendations. (Mark as viewed, go away.)
