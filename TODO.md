@@ -3,6 +3,10 @@
 
 Upcoming features:
 
+* Recommendations takes location into account?
+
+* Bookmark businesses to view later?
+
 * Tweak design of user pages to make them easier to navigate
 
 * SSL
