@@ -5,6 +5,8 @@ Upcoming features:
 
 * Recommendations takes location into account?
 
+* Images are clickable in recommendations!
+
 * Bookmark businesses to view later?
 
 * Tweak design of user pages to make them easier to navigate
