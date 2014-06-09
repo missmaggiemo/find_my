@@ -2,7 +2,7 @@
 <div class="rec-item">
   <div class="row rec-row">
     <div class="col-sm-3 rec-pic">
-        <img src="<%= rec.business.image_url %>" class="img-responsive">
+        <a class="rec-url" data-rec_id="<%= rec.id %>" href="<%= business_url(rec.business) %>"><img src="<%= rec.business.image_url %>" class="img-responsive"></a>
     </div>
     <div class="col-sm-9 rec-text">
         <a class="rec-url" data-rec_id="<%= rec.id %>" href="<%= business_url(rec.business) %>">
