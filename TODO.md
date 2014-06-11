@@ -3,7 +3,7 @@
 
 Upcoming features:
 
-* Recommendations takes location into account?
+* Recommendations takes location into account? 
 
 * Images are clickable in recommendations!
 
@@ -17,7 +17,7 @@ Upcoming features:
 
 * Tile images in feed with text on top- If you have images, make them as big as is manageable.
 
-* Businesses should have hours of operation. Probably need to scrape Yelp for that.
+* Businesses should have hours of operation. Probably need to scrape Yelp for that. Or just use a different API altogether. Or utilize multiple APIs. (FourSquare, Google Places)
 
 * Change layout of business to include user's rating if they've rated that business.
 
