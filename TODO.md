@@ -11,8 +11,6 @@ Upcoming features:
 
 * Tweak design of user pages to make them easier to navigate
 
-* SSL
-
 * Let users dismiss recommendations. (Mark as viewed, go away.)
 
 * Tile images in feed with text on top- If you have images, make them as big as is manageable.
