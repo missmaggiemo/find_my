@@ -3,6 +3,8 @@
 
 Upcoming features:
 
+* Shepherd throughout guest user
+
 * Recommendations takes location into account? 
 
 * Images are clickable in recommendations!
