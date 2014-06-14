@@ -2,6 +2,11 @@ class Location < ActiveRecord::Base
   
   belongs_to :business
   
+  def biz_id
+    self.business_id.to_i
+  end
+
+  
   def self.json_to_location(business_id, json)    
     new_loc = Location.new(
       business_id: business_id,
