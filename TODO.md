@@ -3,7 +3,9 @@
 
 Upcoming features:
 
-* Shepherd throughout guest user
+* Research Elastic Search?
+
+* Shepherd throughout guest user-- be sure to note that the data is persisted?
 
 * Recommendations takes location into account? 
 
