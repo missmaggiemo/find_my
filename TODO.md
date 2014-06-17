@@ -3,6 +3,8 @@
 
 Upcoming features:
 
+* Optimize a little better for mobile-- maybe friends list is smaller or at the bottom?
+
 * Research Elastic Search?
 
 * Shepherd throughout guest user-- be sure to note that the data is persisted?
