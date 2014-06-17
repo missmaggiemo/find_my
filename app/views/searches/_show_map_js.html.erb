@@ -19,22 +19,26 @@
         mapOptions);      
             
     <% businesses.each do |business| %>    
-  
-      var bizLat = <%= business.location.coordinates['latitude'] %>;
+      
+      <% unless business.location.coordinates['latitude'].nil? || business.location.coordinates['longitude'].nil? %>
+      
+        var bizLat = <%= business.location.coordinates['latitude'] %>;
     
-      var bizLng = <%= business.location.coordinates['longitude'] %>;
+        var bizLng = <%= business.location.coordinates['longitude'] %>;
             
-      var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(bizLat, bizLng),
-          map: map,
-          title: "biz-<%= business.id %>"
-      });
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(bizLat, bizLng),
+            map: map,
+            title: "biz-<%= business.id %>"
+        });
     
-      var infowindow = new google.maps.InfoWindow();
+        var infowindow = new google.maps.InfoWindow();
 
-      var html = "<div class='map-info'><strong><%= business.name %></strong><br><%= business.location.display_address %></div>";
+        var html = "<div class='map-info'><strong><%= business.name %></strong><br><%= business.location.display_address %></div>";
 
-      bindMarkerEvents(marker, map, infowindow, html);
+        bindMarkerEvents(marker, map, infowindow, html);
+
+      <% end %>
         
     <% end %>
     

@@ -4,6 +4,7 @@ class GeocodeSession
   
   def self.get_geocode_from_address(address)
     json_hash = parse_json_from_uri(geocode_api_request(address))
+    return nil if json_hash["status"] == "ZERO_RESULTS"
     {}.tap do |geocode_hash|
       geocode_hash['latitude'] = json_hash["results"][0]["geometry"]["location"]["lat"]
       geocode_hash['longitude'] = json_hash["results"][0]["geometry"]["location"]["lng"]

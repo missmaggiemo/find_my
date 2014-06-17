@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
  end
  
  def activity
-   self.favorites + self.ratings + self.saved_searches
+   (self.favorites + self.ratings + self.saved_searches).sort_by { |feed_item| -1 * feed_item.created_at.to_i }
  end
  
  def feed
