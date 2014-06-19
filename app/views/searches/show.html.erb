@@ -26,3 +26,55 @@
 
 
 <% end %>
+
+<% content_for :scripts do %>
+
+  <% if current_user && current_user.username == 'guest' %>
+
+  <script type="text/javascript">
+
+  tour = new Shepherd.Tour({
+    defaults: {
+      classes: 'shepherd-theme-arrows',
+      showCancelLink: true,
+      buttons: [{
+        text: 'Next',
+        classes: 'btn btn-default'
+      }]
+    }
+  });
+
+  var bizTile = "The marker associated with the business's address will<br>bounce so that you can see where that business is located.";
+
+  var bizMarker = "An infowindow will pop up with the name and the address of the business.<br>The business associated with that marker will scroll to the top of the page.";
+
+  var bizClick = "Clicking on a business result will take you to that business's page. Why don't you try clicking on this one?";
+
+  tour.addStep('biz-tile', {
+    title: 'Try hovering over a business result!',
+    text: bizTile,
+    attachTo: '.biz-snippet',
+    advanceOn: '.btn click'
+  });
+
+  tour.addStep('biz-marker', {
+    title: "Try clicking on a marker!",
+    text: bizMarker,
+    attachTo: '#map-canvas',
+    advanceOn: '.btn click'
+  });
+  
+  tour.addStep('biz-click', {
+    title: 'Visit a business page!',
+    text: bizClick,
+    attachTo: '.biz-snippet',
+    advanceOn: '.btn click',
+    buttons: false
+  });
+
+  tour.start();
+  </script>
+
+  <% end %>
+
+<% end %>
