@@ -266,7 +266,10 @@ $("#favorite-heart").click( function (event) {
     text: userMenu,
     attachTo: 'nav bottom',
     advanceOn: '.btn click',
-    buttons: false
+    buttons: false,
+    tetherOptions: {
+      targetOffset: '20% 50%'
+    }
   });
 
   tour.start();
