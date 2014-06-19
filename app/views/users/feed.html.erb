@@ -58,7 +58,7 @@
     </div>
 
     <div class="col-md-9" id="profile-info-container">
-      <h2><span class="logo my">my</span> recommendations <small><a href="#"><span id="new_rec" data-user_id="<%= @user.id %>" class="glyphicon glyphicon-refresh"></span></a></small></h2>
+      <h2 class="recs-header"><span class="logo my">my</span> recommendations <small><a href="#"><span id="new_rec" data-user_id="<%= @user.id %>" class="glyphicon glyphicon-refresh"></span></a></small></h2>
       <div class="info" id="recommendations">
         <div class= "info-container-scroll">
           <% unless @user.new_recommendations.empty? %>
@@ -69,7 +69,7 @@
         </div>
       </div>
       
-      <h2><span class="logo my">my</span> feed</h2>
+      <h2 class="feed-header"><span class="logo my">my</span> feed</h2>
       <div class="info" id="feed">
         <div class="info-container-scroll">
           <% unless @user.feed.empty? %>
@@ -184,5 +184,57 @@ $("#new_rec").click( function (event) {
 });
   
 </script>
+
+<% if current_user && current_user.username == 'guest' %>
+
+  <script type="text/javascript">
+
+  tour = new Shepherd.Tour({
+    defaults: {
+      classes: 'shepherd-theme-arrows',
+      showCancelLink: true,
+      buttons: [{
+        text: 'Next',
+        classes: 'btn btn-default'
+      }]
+    }
+  });
+
+  var feedRecs = "Check out your tailored recommendations!<br><br>These recommendations are based on your behavior--<br>the last three businesses that you favorited or rated.";
+
+  var feedRecsRefresh = "Click the <span class='glyphicon glyphicon-refresh'></span> to get another recommendation.";
+
+  var feedFeed = "Just like Facebook, Twitter, and other major social networking sites,<br>here on your Find<em>my</em> feed, you can keep track of what your friends are up to!";
+
+  tour.addStep('feed-recs', {
+    title: '<strong>Not sure where to go next?</strong>',
+    text: feedRecs,
+    attachTo: '#recommendations',
+    advanceOn: '.btn click'
+  });
+
+
+  tour.addStep('feed-recs-refresh', {
+    title: '<strong>New ideas, on demand!</strong>',
+    text: feedRecsRefresh,
+    attachTo: '.recs-header small right',
+    advanceOn: '.btn click',
+    tetherOptions: {
+      targetOffset: '-6px 10px'
+    }
+  });
+  
+  tour.addStep('feed-recs', {
+    title: '<strong>Check out what your friends are doing!</strong>',
+    text: feedFeed,
+    attachTo: '.feed-header span bottom',
+    scrollTo: true,
+    buttons: false
+  });
+
+  tour.start();
+  </script>
+
+<% end %>
 
 <% end %>
