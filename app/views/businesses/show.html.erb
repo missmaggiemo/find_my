@@ -223,8 +223,55 @@ $("#favorite-heart").click( function (event) {
   
 });
   
-  
-  
 </script>
 
+
+<% if current_user && current_user.username == 'guest' %>
+
+  <script type="text/javascript">
+
+  tour = new Shepherd.Tour({
+    defaults: {
+      classes: 'shepherd-theme-arrows',
+      showCancelLink: true,
+      buttons: [{
+        text: 'Next',
+        classes: 'btn btn-default'
+      }]
+    }
+  });
+
+  var bizRate = "Why don't you rate it! Click on the stars or text above.<br><br>A modal will drop down asking you to give this business a number of stars.<br>Click on the stars to rate this business.<br><br>You'll be able to see the businesses that you've rated in your feed!";
+
+  var bizFav = "Maybe you'd like to remember this business for later.<br>Go ahead and click on the heart to \"favorite\" this business.<br><br>You'll be able to see businesses that you've favorited in your feed!";
+
+  var userMenu = "Now that you've generated a little activity, why don't we check out your feed?<br>Click the \"Hi, guest!\" dropdown menu, and then click the link for <em>my</em> feed.";
+
+  tour.addStep('biz-rate', {
+    title: '<strong>Love this business?</strong>',
+    text: bizRate,
+    attachTo: '#biz-rating bottom',
+    advanceOn: '.btn click'
+  });
+
+  tour.addStep('biz-fav', {
+    title: '<strong>Is this one of your favorite businesses?</strong>',
+    text: bizFav,
+    attachTo: '#favorite-heart bottom',
+    advanceOn: '.btn click'
+  });
+  
+  tour.addStep('biz-click', {
+    title: '<strong>Check out your feed!</strong>',
+    text: userMenu,
+    attachTo: 'nav bottom',
+    advanceOn: '.btn click',
+    buttons: false
+  });
+
+  tour.start();
+  </script>
+
+<% end %>
+  
 <% end %>

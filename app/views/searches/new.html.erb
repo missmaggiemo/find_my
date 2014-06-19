@@ -50,35 +50,35 @@
   var lunchSearch = "Why don't you try searching for <strong>lunch</strong> near you?";
 
   tour.addStep('username-search', {
-    title: 'Welcome!',
+    title: '<strong>Welcome!</strong>',
     text: step1,
     attachTo: 'nav bottom',
     advanceOn: '.btn click'
   });
 
   tour.addStep('username-search', {
-    title: 'Find your friends here!',
+    title: '<strong>Find your friends here!</strong>',
     text: usernameSearch,
     attachTo: '#username-search bottom',
     advanceOn: '.btn click'
   });
 
   tour.addStep('biz-name-search', {
-    title: 'Find your favorite businesses here!',
+    title: '<strong>Find your favorite businesses here!</strong>',
     text: bizNameSearch,
     attachTo: '#biz-name-search bottom',
     advanceOn: '.btn click'
   });
 
   tour.addStep('search-location', {
-    title: 'Search',
+    title: '<strong>Enter a location!</strong>',
     text: locationSearch,
     attachTo: '#search_location',
     advanceOn: '.btn click'
   });
 
   tour.addStep('search-term', {
-    title: 'Search',
+    title: '<strong>What do you want to find?</strong>',
     text: lunchSearch,
     attachTo: '#search_term',
     advanceOn: '.btn click',

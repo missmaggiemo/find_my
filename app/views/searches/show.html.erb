@@ -48,24 +48,24 @@
 
   var bizMarker = "An infowindow will pop up with the name and the address of the business.<br>The business associated with that marker will scroll to the top of the page.";
 
-  var bizClick = "Clicking on a business result will take you to that business's page. Why don't you try clicking on this one?";
+  var bizClick = "Clicking on a business result will take you to that business's page.<br>Why don't you try clicking on this one?";
 
   tour.addStep('biz-tile', {
-    title: 'Try hovering over a business result!',
+    title: '<strong>Try hovering over a business result!</strong>',
     text: bizTile,
     attachTo: '.biz-snippet',
     advanceOn: '.btn click'
   });
 
   tour.addStep('biz-marker', {
-    title: "Try clicking on a marker!",
+    title: '<strong>Try clicking on a marker!</strong>',
     text: bizMarker,
     attachTo: '#map-canvas',
     advanceOn: '.btn click'
   });
   
   tour.addStep('biz-click', {
-    title: 'Visit a business page!',
+    title: '<strong>Visit a business page!</strong>',
     text: bizClick,
     attachTo: '.biz-snippet',
     advanceOn: '.btn click',
