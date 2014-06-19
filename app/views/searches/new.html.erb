@@ -60,14 +60,20 @@
     title: '<strong>Find your friends here!</strong>',
     text: usernameSearch,
     attachTo: '#username-search bottom',
-    advanceOn: '.btn click'
+    advanceOn: '.btn click',
+    tetherOptions: {
+      targetOffset: '10px 0'
+    }
   });
 
   tour.addStep('biz-name-search', {
     title: '<strong>Find your favorite businesses here!</strong>',
     text: bizNameSearch,
     attachTo: '#biz-name-search bottom',
-    advanceOn: '.btn click'
+    advanceOn: '.btn click',
+    tetherOptions: {
+      targetOffset: '10px 0'
+    }
   });
 
   tour.addStep('search-location', {
