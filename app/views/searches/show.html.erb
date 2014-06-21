@@ -53,8 +53,11 @@
   tour.addStep('biz-tile', {
     title: '<strong>Try hovering over a business result!</strong>',
     text: bizTile,
-    attachTo: '.biz-snippet',
-    advanceOn: '.btn click'
+    attachTo: '#results-list',
+    advanceOn: '.btn click',
+    tetherOptions: {
+      targetOffset: '-20% 0'
+    }
   });
 
   tour.addStep('biz-marker', {
@@ -67,9 +70,11 @@
   tour.addStep('biz-click', {
     title: '<strong>Visit a business page!</strong>',
     text: bizClick,
-    attachTo: '.biz-snippet',
-    advanceOn: '.btn click',
-    buttons: false
+    attachTo: '#results-list',
+    buttons: false,
+    tetherOptions: {
+      targetOffset: '-20% 0'
+    }
   });
 
   tour.start();
