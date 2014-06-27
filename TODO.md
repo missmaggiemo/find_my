@@ -3,9 +3,9 @@
 
 Upcoming features:
 
-* Optimize a little better for mobile-- maybe friends list is smaller or at the bottom?
+* Make adding businesses to database faster-- search show page
 
-* Research Elastic Search?
+* Optimize a little better for mobile-- maybe friends list is smaller or at the bottom?
 
 * Recommendations takes location into account? 
 
